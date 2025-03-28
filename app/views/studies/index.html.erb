@@ -1,0 +1,58 @@
+<turbo-frame id="main_content">
+  <div class="main_header">
+    <%= render "bases/main_header" %>
+  </div>
+
+  <div class="main_bottom_study">
+    <div class="main_selector"><div class="study_select task">本日のタスク</div></div>
+    <div class="card_space">
+      <% @categories.each do |category| %>
+         <%= link_to study_path(category.id), data: { turbo_frame: "main_content" } do %>
+         <div class="card">
+            <div class="card_pic">
+            <% if category.category_img.attached? %>
+                <%= image_tag category.category_img, class: "card_img" %>
+             <% else %>
+                <%= image_tag "sample1.png", class: "card_img" %>
+            <% end %>
+            </div>
+            <div class="card_name"><%= category.category_name %></div>
+         </div>
+         <% end %>
+      <% end %>
+      
+
+      <!-- add, modal -->
+      <div class="card_add" id="openModal">
+         <div class="card_pic"><%= image_tag "sample2.png", class: "card_img"%></div>
+         <div class="card_name">+</div>
+      </div>
+
+      <div class="modal" id="modal">
+          <div class="modal__overlay" id="closeModal"></div>
+
+          <div class="modal__content">
+              <button class="modal__close-btn" id="closeModalBtn">×</button>
+              <h2>カテゴリーを追加</h2>
+              
+              <%= form_with(model: @category, url: categories_path, data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
+              <div class="form_group">
+                 <%= f.label :category_name, "カテゴリ名", class: "m_form_label" %><br>
+                 <%= f.text_field :category_name, class: "m_form_input" %>
+              </div>
+              
+              <div class="form_group">
+                 <%= f.label :category_img, "カテゴリ画像", class: "m_form_label" %><br>
+                 <%= f.file_field :category_img, class: "m_form_input" %>
+              </div>
+
+              <div class="form_actions">
+                 <%= f.submit "作成", class: "btn_primary" %>
+              </div>
+              <% end %>
+          </div>
+      </div>    
+  </div>
+
+  
+</turbo-frame>

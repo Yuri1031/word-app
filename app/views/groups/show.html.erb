@@ -1,0 +1,29 @@
+<turbo-frame id="main_content">
+  <div class="main_header">
+    <%= render "bases/main_header" %>
+  </div>
+
+  <div class="back_button_area">
+    <%= link_to "←", categories_path, class: "back_button" %>
+  </div>
+
+  <div class="main_bottom">
+    <div class="card_space_category">
+      <div class="card_category_name"><%= @group.group_name%></div>
+
+      <% @group_words.each do |group_word| %>
+      <%= link_to group_group_word_path(@group, group_word), data: { turbo_frame: "main_content" } do %>
+      <div class="card_show">
+        <div class="card_title"><%= group_word.word.title %></div>
+      </div>
+      <% end %>
+      <% end %>
+      
+
+      
+
+
+
+    </div>    
+  </div>  
+</turbo-frame>

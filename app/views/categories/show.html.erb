@@ -1,0 +1,52 @@
+<turbo-frame id="main_content">
+  <div class="main_header">
+    <%= render "bases/main_header" %>
+  </div>
+
+  <div class="back_button_area">
+    <%= link_to "←", categories_path, class: "back_button" %>
+  </div>
+
+  <div class="main_bottom">
+    <div class="card_space_category">
+      <div class="card_category_name"><%= @category.category_name%></div>
+
+      <% @words.each do |word| %>
+      <%= link_to category_word_path(word.category_id, word.id), data: { turbo_frame: "main_content" } do %>
+      <div class="card_show">
+        <div class="card_title"><%= word.title %></div>
+      </div>
+      <% end %>
+      <% end %>
+      
+
+      <!-- add, modal -->
+      <div class="card_show_add" id="openModal">
+        <div class="card_title">+</div>
+      </div>
+      
+      <div class="modal" id="modal">
+          <div class="modal__overlay" id="closeModal"></div>
+
+          <div class="modal__content">
+              <button class="modal__close-btn" id="closeModalBtn">×</button>
+              <h2>タイトルを追加</h2>
+              
+              <%= form_with(model: @word, url: category_words_path(@category), data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
+              <div class="form_group">
+                 <%= f.label :category_name, "タイトル", class: "m_form_label" %><br>
+                 <%= f.text_field :category_name, class: "m_form_input" %>
+              </div>
+
+              <div class="form_actions">
+                 <%= f.submit "作成", class: "btn_primary" %>
+              </div>
+              <% end %>
+          </div>
+      </div>    
+
+
+
+    </div>    
+  </div>  
+</turbo-frame>

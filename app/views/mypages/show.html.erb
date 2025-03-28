@@ -1,0 +1,125 @@
+<turbo-frame id="main_content">
+    <div class="mypage_main">
+        <div class="mypage_one">
+            <div class="mypage_one_left">
+                <div class="mypage_user_img">
+                    <%# image_tag current_user.profile_pic.attached? ? current_user.profile_pic : 'sample1.png', class: 'mypage_pro_img' %>
+                </div>
+                <div data-controller="modal">
+                    <div class="friends" data-action="click->modal#open">
+                          <%= image_tag 'friends.png', class: 'friends_icon' %>
+                          <span><%= current_user.friends_count %></span>
+                    </div>
+                    <!-- modal -->
+                    <div class="modal" data-modal-target="modal" style="display: none;">
+                        <div class="modal__overlay" data-action="click->modal#close"></div>
+                        <div class="modal__content">
+                            <button class="modal__close-btn" data-action="click->modal#close">×</button> 
+                            <h2>Friends</h2>
+                            <ul>
+                                <% current_user.friends.each do |friend| %>
+                                <li>
+                                    <%= friend.nickname %>
+                                    <%= button_to "削除", friend_path(friend), method: :delete, class: "btn_delete", data: { turbo_confirm: "本当に削除しますか？" } %>
+                                </li>
+                                <% end %>
+                            </ul>
+                            <%= form_with url: friends_path, method: :post, local: true do |f| %>
+                            <div class="form_group">
+                                <%= f.label :friend_email, "友達のメールアドレス" %>
+                                <%= f.text_field :friend_email, class: "m_form_input" %>
+                            </div>
+                            <div class="form_actions">
+                                <%= f.submit "追加", class: "btn_primary" %>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>   
+                </div>                
+            </div>  
+
+            <div class="mypage_one_right">
+                <div class="mypage_name">
+                    <h2><%= current_user.nickname || "Nickname" %></h2>
+                    <table class="mypage_info">
+                        <tr>
+                            <th class="mypage_label">Name:</th>
+                            <td class="mypage_value"><%= current_user.name || "name" %></td>
+                        </tr>
+                        <tr>
+                            <th class="mypage_label">Color:</th>
+                            <td class="mypage_value"><div class="color-box" style="background-color: <%= current_user.color.name %>;"></div></td>
+                        </tr>
+                        <tr>
+                            <th class="mypage_label">Email:</th>
+                            <td class="mypage_value"><%= current_user.email || "email" %></td>
+                        </tr>
+                    </table>
+                </div>
+                <div data-controller="modal">
+                    <div class="mypage_settings" data-action="click->modal#open">
+                       <%= image_tag 'setting.png', class: 'mypage_settings_icon' %>
+                    </div>
+                    <!-- modal -->
+                    <div class="modal" data-modal-target="modal" style="display: none;">
+                        <div class="modal__overlay" data-action="click->modal#close"></div>
+                        <div class="modal__content">
+                            <button class="modal__close-btn" data-action="click->modal#close">×</button> 
+                            <h2>Setting</h2>
+                            <%= form_with(model: @user, url: user_registration_path, method: :patch, data: { turbo_frame: "main_content", turbo_visit_control: "reload" }, html: { multipart: true }) do |f| %>
+
+                            <div class="form_group">
+                                <%= f.label :name, "ユーザー名", class: "m_form_label" %><br>
+                                <%= f.text_field :name, class: "m_form_input" %>
+                            </div>
+
+                            <div class="form_group">
+                                <%= f.label :nickname, "ニックネーム", class: "m_form_label" %><br>
+                                <%= f.text_field :nickname, class: "m_form_input" %>
+                            </div>
+
+                            <div class="form_group">
+                                <%= f.label :color_id, "色", class: "m_form_label" %><br>
+                                <%= f.collection_select(:color_id, Color.all, :id, :name, {}, { class: "select-box m_form_input", id: "profile_pic" }) %>
+                            </div>
+              
+                            <div class="form_group">
+                                <%= f.label :profile_pic, "プロフィール画像", class: "m_form_label" %><br>
+                                <%= f.file_field :profile_pic, class: "m_form_input" %>
+                            </div>
+
+                            <div class="form_group">
+                                <%= f.label :email, "メールアドレス", class: "m_form_label" %><br>
+                                <%= f.text_field :email, class: "m_form_input" %>
+                            </div>
+
+                            <div class="form_actions">
+                                <%= f.submit "更新", class: "btn_primary" %>
+                            </div>
+                            <% end %> 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="mypage_two">
+            <% @categories.each do |category| %>  
+            <div class="mypage_card_space">   
+                <div class="mypage_card">
+                    <div class="card_pic">
+                        <% if category.category_img.attached? %>
+                            <%= image_tag category.category_img, class: "card_img" %>
+                         <% else %>
+                            <%= image_tag "sample1.png", class: "card_img" %>
+                        <% end %>
+                    </div>
+                    <div class="card_name"><%= category.category_name %></div>
+                </div>
+                <% end %>            
+            </div>
+        </div>
+</turbo-frame>
+

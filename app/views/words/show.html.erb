@@ -1,0 +1,77 @@
+<turbo-frame id="main_content">
+  <div class="main_header">
+    <%= render "bases/main_header" %>
+  </div>
+
+  <div class="back_button_area_word">
+  <% if params[:from] == "study" %>
+    <%= link_to "←", study_path(@study), class: "back_button" %>
+  <% else %>
+    <%= link_to "←", category_path(@category), class: "back_button" %>
+  <% end %>
+</div>
+
+  <div class="main_bottom_word">
+    <!-- < -->
+    <div class="nav_button nav_button_left">
+      <%= link_to "＜", category_word_path(category_id: @category.id, id: @previous_word.id, from_study: params[:from_study]), data: { turbo_frame: "main_content" }, class: "nav_button_link", aria: { label: "前の単語" } %>
+    </div>
+    
+
+    <!-- card -->
+    <div class="main_card">
+      <div class="word_card_top">
+        <div class="word_title"><%= @word.title %></div>
+
+        <div class="word_menu">
+          <ul>
+            <li id="menu1" class="menu-button">
+              <button type="button" class="menu-toggle" aria-label="open the menu">☰</button>
+              <ul id="menu1-pull-down" class="menu1-lists hidden">
+                <li class="menu-item">
+                  <%= link_to edit_category_word_path(@word.category_id, @word.id), class: 'menu-link' do %>
+                      <%= image_tag "menu1.png", class: "icon" %>
+                      <span class="menu-text">edit</span>
+                  <% end %>
+                </li>
+
+                <li class="menu-item">
+                  <%= link_to category_word_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure? Do you want to delete this data?' }, class: 'menu-link' do %>
+                      <%= image_tag "menu2.png", class: "icon" %>
+                      <span class="menu-text">delete</span>
+                  <% end %>
+                </li>
+
+                <li class="menu-item">
+                  <%= link_to '#', class: 'menu-link' do %>
+                      <%= image_tag "menu3.png", class: "icon" %>
+                      <span class="menu-text">share</span>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="word_q"><%= @word.question %></div>
+      <div class="word_a"><%= @word.answer %></div>
+
+      <div class="toggle">
+        <label class="toggle-button-2" for="mark_toggle">
+          <input type="checkbox" id="mark_toggle" name="mark_toggle" data-word-id="<%= @word.id %>" <%= 'checked' if @word.word_marks.exists?(dif: 1) %> />
+        </label>
+      </div>
+
+
+    </div>
+
+    <!-- > -->
+    <div class="nav_button nav_button_right">
+      <%= link_to "＞", category_word_path(category_id: @category.id, id: @next_word.id, from_study: params[:from_study]), data: { turbo_frame: "main_content" }, class: "nav_button_link", aria: { label: "next" } %>
+    </div>
+
+  </div>  
+
+</turbo-frame>

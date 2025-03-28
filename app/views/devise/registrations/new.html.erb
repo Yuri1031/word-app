@@ -1,0 +1,58 @@
+<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>SIGN UP</div>
+     <div class='login-flash-message'></div>
+  </div>
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+
+  <div class="form-bottom">
+    <div class='form-text-wrap'>
+      <label class="form-text">name</label>
+      <span class="indispensable">必須</span>
+      <%= f.text_field :name, class:"input-default", id:"name", placeholder:""%>
+    </div>
+
+    <div class='form-text-wrap'>
+      <label class="form-text">nickname</label>
+      <span class="indispensable">必須</span>
+      <%= f.text_field :nickname, class:"input-default", id:"nickname", placeholder:""%>
+    </div>
+
+    <div class='form-text-wrap'>
+      <label class="form-text">profile picture</label>
+      <span class="indispensable"></span>
+      <%= f.file_field :profile_pic, class:"input-default", id:"profile_pic", placeholder:"" %>
+    </div>
+
+    <div class='form-text-wrap'>
+      <label class="form-text">favorite color</label>
+      <span class="indispensable">必須</span>
+      <%= f.collection_select(:color_id, Color.all, :id, :name, {}, {class:"select-box", id:"profile_pic"}) %>
+    </div>
+
+    <div class='form-text-wrap'>
+      <label class="form-text">mail address</label>
+      <span class="indispensable">必須</span>
+      <%= f.email_field :email, class:"input-default", id:"email", placeholder:"", autofocus: true %>
+    </div>
+    
+    <div class='form-text-wrap'>
+      <label class="form-text">password</label>
+      <span class="indispensable">必須</span>
+      <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
+    </div>
+    
+    <div class='login-btn'>
+      <%= f.submit "sign up" ,class:"login-red-btn" %>
+    </div>
+
+  </div>
+</div>
+<% end %>
+<%= render "devise/shared/links" %>
+
+
+

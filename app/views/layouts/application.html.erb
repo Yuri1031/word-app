@@ -7,10 +7,23 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "signup&login", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <div class="side_bar">
+        <%= render "bases/side_bar" %>
+      </div>
+
+      <div class="main">
+        <% if controller_name == "categories" && action_name == "index" %>
+            <%= render template: "categories/index" %>
+          <% else %>
+            <%= yield %>
+        <% end %>
+      </div>
+    </div>
   </body>
 </html>

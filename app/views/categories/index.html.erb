@@ -1,0 +1,58 @@
+<turbo-frame id="main_content">
+  <div class="main_header">
+    <%= render "bases/main_header" %>
+  </div>
+
+  <div class="main_bottom_category">
+   <div class="card_space">
+      <% @categories.each do |category| %>
+         <%= link_to category_path(category.id), data: { turbo_frame: "main_content" } do %>
+         <div class="card">
+            <div class="card_pic">
+            <% if category.category_img.attached? %>
+                <%= image_tag category.category_img, class: "card_img" %>
+             <% else %>
+                <%= image_tag "sample1.png", class: "card_img" %>
+            <% end %>
+            </div>
+            <div class="card_name"><%= category.category_name %></div>
+         </div>
+         <% end %>
+      <% end %>
+      
+
+      <!-- add, modal -->
+      <div data-controller="modal">
+        <div class="card_add" data-action="click->modal#open">
+          <div class="card_pic"><%= image_tag "sample2.png", class: "card_img"%></div>
+          <div class="card_name">+</div>
+        </div>
+
+        <div class="modal" data-modal-target="modal" style="display: none;">
+          <div class="modal__overlay" data-action="click->modal#close"></div>
+          <div class="modal__content">
+            <button class="modal__close-btn" data-action="click->modal#close">×</button> 
+            <h2>カテゴリーを追加</h2>
+              
+              <%= form_with(model: @category, url: categories_path, data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
+              <div class="form_group">
+                 <%= f.label :category_name, "カテゴリ名", class: "m_form_label" %><br>
+                 <%= f.text_field :category_name, class: "m_form_input" %>
+              </div>
+              
+              <div class="form_group">
+                 <%= f.label :category_img, "カテゴリ画像", class: "m_form_label" %><br>
+                 <%= f.file_field :category_img, class: "m_form_input" %>
+              </div>
+
+              <div class="form_actions">
+                 <%= f.submit "作成", class: "btn_primary" %>
+              </div>
+              <% end %>           
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+  
+</turbo-frame>

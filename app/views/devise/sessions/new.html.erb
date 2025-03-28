@@ -1,0 +1,39 @@
+
+
+<%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>LOG IN</div>
+     <div class='login-flash-message'></div>
+  </div>
+
+
+  <div class="form-bottom">
+    <div class='form-text-wrap'>
+      <label class="form-text">mail address</label>
+      <span class="indispensable">必須</span>
+      <%= f.email_field :email, class:"input-default", id:"email", placeholder:"", autofocus: true %>
+    </div>
+    
+    <div class='form-text-wrap'>
+      <label class="form-text">password</label>
+      <span class="indispensable">必須</span>
+      <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
+    </div>
+    
+    <div class='login-btn'>
+      <%= f.submit "login" ,class:"login-red-btn" %>
+    </div>
+
+    <div class='signup-btn'>
+      <%= link_to "signup", new_user_registration_path, class:"signin-btn" %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+
+
+
+

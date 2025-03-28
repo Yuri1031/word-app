@@ -4,6 +4,7 @@
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
 | nickname           | string     | null: false                    |
+| color_id           | integer    | null: false                    | ← ActiveHash予定。
 | profile_pic        | text       |                                | ← ActiveStorageにより不要。
 | email              | string     | null: false, unique: true      |
 | encrypted_password | string     | null: false                    |
@@ -23,7 +24,6 @@
 | img                | string     |                                | ← ActiveStorageにより不要。
 | user               | references | null: false, foreign_key: true |
 | category           | references | null: false, foreign_key: true |
-| word_mark          | references | null: false, foreign_key: true |
 
 - belongs_to :user
 - belong_to :category
@@ -46,8 +46,8 @@
 ## word_marks テーブル -------------------------------------------
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| dif_level          | integer    | null: false, default: 0        |
-| review_date        | datetime   | null: false       |
+| dif                | integer    | null: false, default: 0        |
+| review_date_id     | datetime   | null: false                    |
 | word               | references | null: false, foreign_key: true |
 
 enum dif_level: { easy: 0, normal: 1, hard: 2 }
@@ -74,7 +74,6 @@ enum dif_level: { easy: 0, normal: 1, hard: 2 }
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
 | group              | references | null: false, foreign_key: true |
-role: { admin: 0, member: 1 }
 
 - belongs_to :user
 - belongs_to :group

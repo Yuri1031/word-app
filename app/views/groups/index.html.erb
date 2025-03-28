@@ -1,0 +1,70 @@
+<turbo-frame id="main_content">
+  <div class="main_header">
+    <%= render "bases/main_header" %>
+  </div>
+
+
+  <div class="main_bottom_group">
+
+    <!-- add, modal -->
+    <div data-controller="modal">
+      <div class="group_create" data-action="click->modal#open">
+        <p>+</p>
+      </div>
+      
+      <div class="modal" data-modal-target="modal" style="display: none;">
+        <div class="modal__overlay" data-action="click->modal#close"></div>
+        <div class="modal__content">
+          <button class="modal__close-btn" data-action="click->modal#close">×</button>
+          <h2>グループを作成</h2>
+          <%= form_with(model: @group, url: groups_path, data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
+            <div class="form_group">
+              <%= f.label :group_name, "グループ名", class: "m_form_label" %><br>
+              <%= f.text_field :group_name, class: "m_form_input" %>
+            </div>
+
+            <div class="form_group">
+              <%= f.label :group_img, "グループ画像", class: "m_form_label" %><br>
+              <%= f.file_field :group_img, class: "m_form_input" %>
+            </div>
+
+            <div class="form_group">
+              <%= f.label :user_ids, "グループメンバー", class: "m_form_label" %><br>
+              <%= f.collection_check_boxes :user_ids, @users.presence || [], :id, :name, { multiple: true }, class: "m_form_input" %>
+            </div>
+
+            <div class="form_actions">
+              <%= f.submit "作成", class: "btn_primary" %>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- group -->
+    <div class="card_space">
+      <% @groups.each do |group| %>
+         <%= link_to group_path(group.id), data: { turbo_frame: "main_content" } do %>
+         <div class="card">
+            <div class="card_pic">
+            <% if group.group_img.attached? %>
+                <%= image_tag group.group_img, class: "card_img" %>
+             <% else %>
+                <%= image_tag "sample1.png", class: "card_img" %>
+            <% end %>
+            </div>
+            <div class="gcard_name"><%= group.group_name %></div>
+            <div class="card_mem">
+              <%= image_tag "sample1.png", class: "gmember_img"%>
+              <%= image_tag "sample1.png", class: "gmember_img"%>
+            </div>
+         </div>
+         <% end %>
+      <% end %>
+      
+    </div> 
+
+  </div> 
+</turbo-frame>

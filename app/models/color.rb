@@ -17,4 +17,8 @@ class Color < ActiveHash::Base
 
   include ActiveHash::Associations
   has_many :users
+
+  def hex_code
+    self.name
+  end
 end

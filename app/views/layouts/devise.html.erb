@@ -4,10 +4,31 @@
     <title>WordApp - Login</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "signup&login", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
+
   <body>
-    <%= yield %>
+    <div class="wrapper">
+      <div class="form_wrap">
+        <div class="form_top">       
+          <div class="top_login">
+            <%= link_to "LOGIN", new_user_session_path, data: { turbo_frame: "bottom_form" } %>
+          </div>
+          <div class="top_register">
+            <%= link_to "REGISTER", new_user_registration_path, data: { turbo_frame: "bottom_form" } %>
+          </div>
+        </div>
+
+        <div class="form_bottom">
+          <% if controller_name == "login" && action_name == "new" %>
+            <%= render template: "devise/sessions/new" %>
+           <% else %>
+            <%= yield %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

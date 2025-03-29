@@ -1,0 +1,317 @@
+/************** Laptop & タブレット用 **************/
+@media screen and (min-width: 481px){
+  body {
+    background: #dbdbdb;
+    margin: 0;
+    padding: 0;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+  }
+  .wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .form_wrap {
+    width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+ .form_top {
+    display: flex;
+    width: 100%;
+  }
+ .top_login, .top_register {
+    flex: 1;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-weight: bold;
+    color: white;
+    background: #6a9f96;
+    box-shadow: inset 0px -3px 5px rgba(0, 0, 0, 0.2); /* 内側の影 */
+  }
+  .top_login a, .top_register a{
+    text-decoration: none;
+    color: white;
+    
+  }
+  .top_login {
+    border-radius: 8px 0 0 0;
+  }
+ .top_register {
+    border-radius: 0 8px 0 0;
+    background: #4f8b82; 
+  }
+ .form_bottom {
+    width: 100%;
+    min-height: 350px;
+    background: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+
+  /******* turbo-frame *******/
+  turbo-frame {
+    display: block;
+    width: 100%;
+  }
+
+  /******* Login form *******/
+  .content{
+    padding: 30px;
+  }
+  h2{
+    margin-bottom: 30px;
+  }
+  
+  .form_group{
+    width: 100%;
+    height: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+  }
+  .form_label {
+    width: 35%;
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+    padding-top: 2px;
+  }
+  .form_input{
+    width: 100%;
+    border: none;
+    margin-left: 30px;
+  }
+  .form_group_btn {
+    width: 100%;
+    margin-top: 40px;
+  }
+  .btn{
+    width: 100%;
+    height: 40px;
+    background-color: #78b3a9;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #6a9f96;
+    text-decoration: none;
+  }
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+
+  /***** Register form *****/
+  .color-box {
+    width: 100px;
+    height: 25px;
+    display: inline-block;
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 0;
+  }
+  
+  .color-box option {
+    height: 25px;
+    background-color: transparent;  
+    color: transparent; 
+  }
+  
+  .color-box option[data-color] {
+    background-color: transparent; 
+  }
+  
+  
+  
+  
+
+    
+
+
+
+
+    /*
+    body {
+        background: #FFF;
+        margin: 0;
+        padding: 0;
+        font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;font-weight: light;
+        font-weight: 100;
+      }
+    
+    .loginWrapper {
+      display: block;
+      position: relative;
+      width: 350px;
+      text-align: center; 
+      margin: auto;
+      right: 0;
+      left: 0;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      z-index: 1000;
+      transition: box-shadow 1s;
+    }
+    
+    .logginFormFooter {
+      text-align: center;
+      color: #777;
+      width: 100%;
+      font-size: 12px;
+      position: fixed;
+      bottom: 10px;
+    }
+    
+      .logginFormFooter a       {color: #777; font-weight: 600;}
+      .logginFormFooter a:hover {color: #AAA;}
+    
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    
+    nav {
+      z-index: 9;
+      color: #FFF;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 0;
+      text-align: center;
+    }
+    
+    .tabs {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+      -webkit-transform: translateY(5px);
+      transform: translateY(5px);
+    }
+    
+    .tabs > li {
+      transition-duration: .25s;
+      display: table-cell;
+      list-style: none;
+      text-align: center;
+      padding: 20px 20px 25px 20px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      color: #666;
+      background-color: none;
+    
+    }
+    .tabs > li:before {
+      z-index: -1;
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 120%;
+      color: #FFF;  
+      top: 0;
+      left: 0;
+      background-color: #DDD;
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+      transition-duration: .25s;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .tabs > li:hover:before {
+      -webkit-transform: translateY(70%);
+      transform: translateY(70%);
+    }
+    .tabs > li.active {
+      color: #FFF;
+    }
+    .tabs > li.active:before {
+      transition-duration: .5s;
+      background-color: #444;
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+    
+    .tab__content {
+      background-color: white;
+      position: relative;
+      width: 100%;
+      border-radius: 5px 5px 0px 0px;
+      background-color: #444;
+    -webkit-box-shadow: 0px 12px 34px -8px rgba(0,0,0,0.28);
+    -moz-box-shadow: 0px 12px 34px -8px rgba(0,0,0,0.28);
+    box-shadow: 0px 12px 34px -8px rgba(0,0,0,0.28);
+     
+    }
+    .tab__content > li {
+      width: 100%;
+      position: absolute;
+      border-radius: 5px;
+      color: #FFF;
+      top: 0;
+      left: 0;
+      background-color: #444;
+      display: none;
+      list-style: none;
+    }
+    .tab__content > li .content__wrapper {
+      text-align: center;
+      border-radius: 5px;
+      padding-top: 24px;
+      background-color: #444;
+    }
+    
+    
+      form input {
+        border: none;
+        padding: 12px;
+        background: #EEE;
+        font-size: 16px;
+        margin: 12px 0px;
+        width: 300px;
+        font-weight: 100;
+          outline: none;
+      }
+    
+      form input:first-child {margin-top: 8px;}
+      form input:last-child {margin-top: 16px; margin-bottom: 0px;}
+    
+      form input:focus {background-color: #FFF;}
+      form input:hover {background-color: #FFF;}
+      form input:placeholder {color: blue;}
+    
+      form [type="submit"]:focus,
+      form [type="submit"]:hover {background: #009CEF;}
+    
+      form [type="submit"] {
+        background: #3399DD;
+        color: #FFF;
+        padding: 24px;
+        width: 100%;
+        cursor: pointer;
+      }
+    
+      ::-webkit-input-placeholder {color: #DDD;}
+      :-moz-placeholder           {color: #DDD;}
+      ::-moz-placeholder          {color: #DDD;}
+      :-ms-input-placeholder      {color: #DDD;}
+      */
+}

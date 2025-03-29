@@ -33,9 +33,7 @@ class WordsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-  
-  
+  end  
 
   def edit
     @category = Category.find(params[:category_id])

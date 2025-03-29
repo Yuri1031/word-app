@@ -21,6 +21,12 @@ class CategoriesController < ApplicationController
       render :index, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+    redirect_to categories_path(@category), notice: "Data has been deleted!"
+  end
   
 
   private

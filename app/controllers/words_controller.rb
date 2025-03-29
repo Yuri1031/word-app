@@ -1,4 +1,5 @@
 class WordsController < ApplicationController
+  
   def show
     @word = Word.find(params[:id])
     @category = @word.category
@@ -16,14 +17,25 @@ class WordsController < ApplicationController
                       end
   end
 
+  def new
+    @category = Category.find(params[:category_id])
+    @word = @category.words.new
+  end
+
   def create
-    @word = Word.new(word_params)
+    @category = Category.find(params[:category_id])
+    @word = @category.words.new(word_params)  # @categoryに関連する新しい単語を作成
+  
+    @word.user_id = current_user.id
+    
     if @word.save
-      redirect_to category_path(@word.category_id), notice: "タイトルを作成しました！"
+      redirect_to category_path(@category)
     else
-      render :index, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
+  
+  
 
   def edit
     @category = Category.find(params[:category_id])
@@ -36,7 +48,7 @@ class WordsController < ApplicationController
     if @word.update(word_params)
       redirect_to category_word_path(@category, @word), notice: "Data has been edited!"
       else
-        render :edit, status: :unprocessable_entity
+        render :show, status: :unprocessable_entity
     end
   end
 

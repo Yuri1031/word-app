@@ -11,6 +11,8 @@ class User < ApplicationRecord
          validates :color_id, presence: true
          validates :color_id, numericality: { other_than: 0, message: "を選択してください" }
 
+         has_many :words
+
          extend ActiveHash::Associations::ActiveRecordExtensions
          belongs_to :color
 

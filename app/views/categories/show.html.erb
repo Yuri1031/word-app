@@ -20,30 +20,14 @@
       <% end %>
       
 
-      <!-- add, modal -->
-      <div class="card_show_add" id="openModal">
-        <div class="card_title">+</div>
-      </div>
-      
-      <div class="modal" id="modal">
-          <div class="modal__overlay" id="closeModal"></div>
+      <%= link_to new_category_word_path(@category), data: { turbo_frame: "main_content" } do %>
+        <div class="card_show_add">
+          <div class="card_title">+</div>
+        </div>
+      <% end %>
 
-          <div class="modal__content">
-              <button class="modal__close-btn" id="closeModalBtn">×</button>
-              <h2>タイトルを追加</h2>
               
-              <%= form_with(model: @word, url: category_words_path(@category), data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
-              <div class="form_group">
-                 <%= f.label :category_name, "タイトル", class: "m_form_label" %><br>
-                 <%= f.text_field :category_name, class: "m_form_input" %>
-              </div>
-
-              <div class="form_actions">
-                 <%= f.submit "作成", class: "btn_primary" %>
-              </div>
-              <% end %>
-          </div>
-      </div>    
+                
 
 
 

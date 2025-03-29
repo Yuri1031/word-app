@@ -6,22 +6,23 @@
   <div class="main_bottom_category">
    <div class="card_space">
       <% @categories.each do |category| %>
-         <%= link_to category_path(category.id), data: { turbo_frame: "main_content" } do %>
          <div class="card">
-            <%= link_to category_path(category.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure? Do you want to delete this data?' }, class: 'menu-link' do %>
+            <%= link_to category_path(category.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure? Do you want to delete this data?' }, class: 'catego_del' do %>
                <button class="card_del">×</button>
             <% end %>
 
-            <div class="card_pic">
-            <% if category.category_img.attached? %>
-                <%= image_tag category.category_img, class: "card_img" %>
-             <% else %>
-                <%= image_tag "sample1.png", class: "card_img" %>
+  
+            <%= link_to category_path(category.id), data: { turbo_frame: "main_content" }, class: "card_link" do %>
+               <div class="card_pic">
+                  <% if category.category_img.attached? %>
+                     <%= image_tag category.category_img, class: "card_img" %>
+                   <% else %>
+                     <%= image_tag "sample1.png", class: "card_img" %>
+                  <% end %>
+               </div>
+               <div class="card_name"><%= category.category_name %></div>
             <% end %>
-            </div>
-            <div class="card_name"><%= category.category_name %></div>
          </div>
-         <% end %>
       <% end %>
       
 

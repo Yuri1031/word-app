@@ -4,7 +4,20 @@
   </div>
 
   <div class="main_bottom_study">
-    <div class="main_selector"><div class="study_select task">本日のタスク</div></div>
+    
+      <% if @word.present? %>
+  <%= link_to word_word_marks_path(@word), data: { turbo_frame: "main_content" } do %>
+    <div class="main_selector">
+      <div class="study_select task">本日のタスク</div>
+    </div>
+  <% end %>
+<% else %>
+  <p>単語が見つかりません</p>
+<% end %>
+
+
+
+
     <div class="card_space">
       <% @categories.each do |category| %>
          <%= link_to study_path(category.id), data: { turbo_frame: "main_content" } do %>
@@ -20,39 +33,8 @@
          </div>
          <% end %>
       <% end %>
-      
-
-      <!-- add, modal -->
-      <div class="card_add" id="openModal">
-         <div class="card_pic"><%= image_tag "sample2.png", class: "card_img"%></div>
-         <div class="card_name">+</div>
-      </div>
-
-      <div class="modal" id="modal">
-          <div class="modal__overlay" id="closeModal"></div>
-
-          <div class="modal__content">
-              <button class="modal__close-btn" id="closeModalBtn">×</button>
-              <h2>カテゴリーを追加</h2>
-              
-              <%= form_with(model: @category, url: categories_path, data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
-              <div class="form_group">
-                 <%= f.label :category_name, "カテゴリ名", class: "m_form_label" %><br>
-                 <%= f.text_field :category_name, class: "m_form_input" %>
-              </div>
-              
-              <div class="form_group">
-                 <%= f.label :category_img, "カテゴリ画像", class: "m_form_label" %><br>
-                 <%= f.file_field :category_img, class: "m_form_input" %>
-              </div>
-
-              <div class="form_actions">
-                 <%= f.submit "作成", class: "btn_primary" %>
-              </div>
-              <% end %>
-          </div>
-      </div>    
-  </div>
+    </div>
+   </div>
 
   
 </turbo-frame>

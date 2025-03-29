@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :word_marks do
       collection do
         post :toggle
-     end
+      end
     end
   end
   

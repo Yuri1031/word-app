@@ -1,6 +1,11 @@
 class WordMarksController < ApplicationController
   before_action :set_word
 
+  def index 
+    @word = Word.first 
+    @categories = Category.all
+  end
+
   def toggle
     word_mark = @word.word_marks.first
 
@@ -16,6 +21,9 @@ class WordMarksController < ApplicationController
 
   private
   def set_word
-    @word = Word.find(params[:word_id])
+    @word = Word.find_by(id: params[:word_id])
+    unless @word
+      render json: { error: 'Word not found' }, status: :not_found
+    end
   end
 end

@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    session[:previous_page] = request.fullpath
     @category = Category.find(params[:id])
     @words = @category.words
   end

@@ -4,12 +4,8 @@
   </div>
 
   <div class="back_button_area_word">
-  <% if params[:from] == "study" %>
-    <%= link_to "←", study_path(@study), class: "back_button" %>
-  <% else %>
-    <%= link_to "←", category_path(@category), class: "back_button" %>
-  <% end %>
-</div>
+    <%= link_to "←", @back_path, class: "back_button" %>
+  </div>
 
   <div class="main_bottom_word">
     <!-- < -->

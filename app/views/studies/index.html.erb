@@ -6,14 +6,14 @@
   <div class="main_bottom_study">
     
       <% if @word.present? %>
-  <%= link_to word_word_marks_path(@word), data: { turbo_frame: "main_content" } do %>
-    <div class="main_selector">
-      <div class="study_select task">本日のタスク</div>
-    </div>
-  <% end %>
-<% else %>
-  <p>単語が見つかりません</p>
-<% end %>
+        <%= link_to word_word_marks_path(@word), data: { turbo_frame: "main_content" } do %>
+            <div class="main_selector">
+               <div class="study_select task">本日のタスク</div>
+            </div>
+         <% end %>
+       <% else %>
+         <p>単語が見つかりません</p>
+      <% end %>
 
 
 

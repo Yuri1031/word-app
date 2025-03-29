@@ -6,6 +6,7 @@ class StudiesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @words = @category.words.includes(:word_marks)
+    session[:previous_page] = request.fullpath
   
     if params[:filter] == 'marked'
       @words = @words.joins(:word_marks).where(word_marks: { dif: 1 }).distinct

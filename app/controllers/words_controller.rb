@@ -3,6 +3,7 @@ class WordsController < ApplicationController
   def show
     @word = Word.find(params[:id])
     @category = @word.category
+    @back_path = session[:previous_page]
 
     # >
     words_in_category = @category.words.order(:id)

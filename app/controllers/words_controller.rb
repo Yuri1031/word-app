@@ -58,6 +58,18 @@ class WordsController < ApplicationController
     redirect_to category_path(@category), notice: "Data has been deleted!"
   end
 
+  def marked
+    @category = Category.find(params[:category_id])
+    @words = @category.words.joins(:word_marks).where(word_marks: { dif: 1 }).distinct
+    @word = @words.find_by(id: params[:id]) || @words.first
+
+    if @word
+      word_index = @words.index(@word)
+      @previous_word = word_index.positive? ? @words[word_index - 1] : nil
+      @next_word = (word_index < @words.size - 1) ? @words[word_index + 1] : nil
+    end
+  end
+
 
   private
   def word_params

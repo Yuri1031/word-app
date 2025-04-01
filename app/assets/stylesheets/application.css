@@ -648,6 +648,30 @@ ul,li {
    margin-left: 5px;
  }
 
+ .mark-button{
+   width: 45px;
+   height: 40px;
+   background-color: white;
+   font-size: 1.2rem;
+   border: 1px solid #ccc;
+   border-radius: 8px;
+   cursor: pointer;
+ }
+ .correct{
+   margin-right: 15px;
+ }
+ .correct:hover, .correct-selected{
+   color: #92e9a2; 
+   border-color: #92e9a2;
+  }
+ .wrong{
+   margin-left: 15px;
+  }
+ .wrong:hover, .wrong-selected{
+   color: rgb(245, 133, 133); 
+   border-color: rgb(245, 133, 133);
+  }
+
 
 
  /** group **/

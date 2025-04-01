@@ -1,0 +1,41 @@
+<turbo-frame id="main_content" data-controller="word-mark">
+  <div class="main_header">
+    <%= render "bases/main_header" %>
+  </div>
+
+  <div class="back_button_area_word">
+    <%= link_to "←", word_marks_path, class: "back_button" %>
+  </div>
+
+  <div class="main_bottom_word">
+    <!-- < -->
+    <div class="nav_button nav_button_left">
+      <% if @previous_word %>
+        <%= link_to "＜", category_marked_words_path(@category, id: @previous_word.id), data: { turbo_frame: "main_content" }, class: "nav_button_link" %>
+      <% end %>
+    </div>
+
+    <!-- card -->
+    <div class="main_card">
+      <div class="word_card_top">
+        <div class="word_title"><%= @word.title %></div>
+      </div>
+
+      <div class="word_q"><%= @word.question %></div>
+      <div class="word_a"><%= @word.answer %></div>
+
+      <div class="toggle">
+        <button class="mark-button correct" data-word-id="<%= @word.id %>">⚪︎</button>
+        <button class="mark-button wrong" data-word-id="<%= @word.id %>">×</button>
+      </div>
+    </div>
+
+    <!-- > -->
+    <div class="nav_button nav_button_right">
+      <% if @next_word %>
+        <%= link_to "＞", category_marked_words_path(@category, id: @next_word.id), data: { turbo_frame: "main_content" }, class: "nav_button_link", aria: { label: "次の単語" } %>
+      <% end %>
+    </div>
+  </div>  
+</turbo-frame>
+

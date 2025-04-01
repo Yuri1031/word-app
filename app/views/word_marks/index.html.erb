@@ -4,23 +4,21 @@
   </div>
 
   <div class="main_bottom_study">
-   <div class="card_space">
-      <% @study_words.each do |word| %>
-        <div class="card">
-          <div class="card_pic">
-            <% if word.category.category_img.attached? %>
-              <%= image_tag word.category.category_img, class: "card_img" %>
-            <% else %>
-              <%= image_tag "sample1.png", class: "card_img" %>
-            <% end %>
+    <div class="card_space">
+      <% @categories.each do |category| %>
+        <%= link_to category_marked_words_path(category), data: { turbo_frame: "main_content" } do %>
+          <div class="card">
+            <div class="card_pic">
+              <% if category.category_img.attached? %>
+                <%= image_tag category.category_img, class: "card_img" %>
+              <% else %>
+                <%= image_tag "sample1.png", class: "card_img" %>
+              <% end %>
+            </div>
+            <div class="card_name"><%= category.category_name %></div>
           </div>
-          <div class="card_name"><%= word.title %></div>
-          <!-- ここでカードを解いた後の処理をボタンで表示 -->
-          <%= link_to "解く", solve_word_path(word), method: :post, data: { turbo_frame: "main_content" } %>
-        </div>
+        <% end %>
       <% end %>
-      
     </div>  
   </div>
-  
 </turbo-frame>

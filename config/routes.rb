@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   resource :mypage, only: [:show, :update]
   resources :friends, only: [:create, :destroy]
   
+  resources :word_marks do 
+    patch ':word_id/update_review_date', to: 'word_marks#update_review_date', as: 'update_review_date'
+  end
+  
+  resources :categories do
+    get 'marked_words', to: 'words#marked', as: 'marked_words'
+  end
 
   resources :categories do
     resources :words

@@ -3,6 +3,10 @@
     <%= render "bases/main_header" %>
   </div>
 
+  <div class="back_button_area_word">
+    <%= link_to "←", categories_path, class: "back_button" %>
+  </div>  
+
   <div class="main_bottom_word">
     <div class="main_card"> 
       <%= form_with(model: @word, url: category_words_path(@category), data: { turbo_frame: "main_content" }) do |f| %>

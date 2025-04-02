@@ -5,11 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
          has_one_attached :profile_pic
+         has_many :group_members
+         has_many :groups, through: :group_members
 
          validates :name, presence: true
          validates :nickname, presence: true
          validates :color_id, presence: true
-         validates :color_id, numericality: { other_than: 0, message: "を選択してください" }
+         validates :color_id, numericality: { other_than: 0 }
 
          has_many :words
 
@@ -23,6 +25,11 @@ class User < ApplicationRecord
          has_many :inverse_friends, through: :inverse_friendships, source: :user
          def friends_count
           (friends + inverse_friends).uniq.count
+         end
+
+         # search info
+         def self.ransackable_attributes(auth_object = nil)
+          ["name", "nickname"]
          end
 
 end

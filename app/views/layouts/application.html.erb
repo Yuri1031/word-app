@@ -17,6 +17,10 @@
       </div>
 
       <div class="main">
+          <div class="main_header">
+            <%= render "bases/main_header" %>
+          </div>
+
         <% if controller_name == "categories" && action_name == "index" %>
             <%= render template: "categories/index" %>
           <% else %>

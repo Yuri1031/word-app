@@ -208,10 +208,29 @@ ul,li {
     justify-content: space-between;
  }
  .search{
-   display: flex;
-   justify-content: flex-start;
+   width: 400px;
+   height: 30px;
    align-items: center;
-   margin-left: 65px;
+   background: white; 
+   border: 1px #D9D9D9 solid;
+   border-radius: 5px;
+   padding: 10px;
+   margin-left: 60px;
+ }
+ .search-input{
+   width: 350px;
+   border: none;
+   background: transparent;
+   outline: none;
+   font-size: 16px;
+   color: #333;
+   margin-right: 10px;
+  }
+ .search-button {
+   border: none;
+   background: transparent;
+   cursor: pointer;
+   font-size: 18px;
  }
  .login_out{
    width: 120px;

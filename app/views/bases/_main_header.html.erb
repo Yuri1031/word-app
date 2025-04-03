@@ -1,8 +1,10 @@
 <div class="search">
-    <input class="search-input" type="text" placeholder="キーワードを入力して検索">
-    <button class="search-button">
-        🔍
-    </button>
+    <form action="#" class="search-form-3">
+      <label>
+        <input type="text" placeholder="キーワードを入力">
+      </label>
+      <button type="submit" aria-label="検索"></button>
+</form>
 </div>
 
 <%= link_to destroy_user_session_path, method: :delete, class: "login_out" do %>

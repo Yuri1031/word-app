@@ -7,13 +7,13 @@ class User < ApplicationRecord
          has_one_attached :profile_pic
          has_many :group_members
          has_many :groups, through: :group_members
+         has_many :words
+         has_many :categories, through: :words
 
          validates :name, presence: true
          validates :nickname, presence: true
          validates :color_id, presence: true
          validates :color_id, numericality: { other_than: 0 }
-
-         has_many :words
 
          extend ActiveHash::Associations::ActiveRecordExtensions
          belongs_to :color

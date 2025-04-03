@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       patch ':word_id/update_review_date', to: 'word_marks#update_review_date', as: 'update_review_date'
     end
   end
+  resources :categories do
+    get 'marked_words', to: 'words#marked', as: 'marked_words'
+  end
 
   resources :categories do
     resources :words

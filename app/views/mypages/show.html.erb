@@ -109,17 +109,21 @@
             <% @categories.each do |category| %>  
             <div class="mypage_card_space">   
                 <div class="mypage_card">
-                    <div class="card_pic">
-                        <% if category.category_img.attached? %>
-                            <%= image_tag category.category_img, class: "card_img" %>
-                         <% else %>
-                            <%= image_tag "sample1.png", class: "card_img" %>
-                        <% end %>
+                    <div class="card_pic_chart">
+                        <% understanding = @category_understanding[category.id] || 0 %>
+                        <div class="pie-chart-1" style="background-image: conic-gradient(#2589d0 <%= understanding %>%, #f2f2f2 <%= understanding %>% 100%);">
+                            <span><%= understanding %>%</span>
+                        </div>
                     </div>
-                    <div class="card_name"><%= category.category_name %></div>
+                    <div class="card_text">
+                        <div class="card_chart_name"><%= category.category_name %></div>
+                        <div class="word_chart_count">(total: <%= category.words.count %>)</div>
+                    </div>
+                    
                 </div>
                 <% end %>            
             </div>
         </div>
+    </div>
 </turbo-frame>
 

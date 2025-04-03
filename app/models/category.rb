@@ -1,6 +1,7 @@
 class Category < ApplicationRecord
   has_many :words
   has_one_attached :category_img
+  belongs_to :user
 
   validates :category_name, presence: true
 

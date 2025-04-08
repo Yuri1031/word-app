@@ -1,37 +1,48 @@
 <turbo-frame id="bottom_form">
     <div class="content">
         <%= render "devise/shared/error_messages", resource: resource %>
+        
         <h2>REGISTER</h2>
 
         <%= form_with(model: @user, url: user_registration_path, class: "login_form", data: { turbo: false }) do |f| %>
           <div class="form_group">
-              <%= f.label :name＊, "", class: "form_label" %>
+              <%= f.label :name, "Name*", class: "form_label" %>
               <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form_input" %>
           </div>
 
           <div class="form_group">
-              <%= f.label :nickname＊, "", class: "form_label" %>
-              <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form_input" %>
+              <%= f.label :nickname, "Nickname*", class: "form_label" %>
+              <%= f.text_field :nickname, autofocus: true, autocomplete: "username", class: "form_input" %>
           </div>
 
           <div class="form_group">
-              <%= f.label :profile_picture, "", class: "form_label" %>
-              <%= f.file_field :profile_pic, autofocus: true, autocomplete:"profile_pic", class: "form_input"%>
+            <%= f.label :profile_picture, "Profile_picture", class: "form_label" %>
+            <%= f.file_field :profile_picture, autofocus: true, autocomplete:"photo", class: "form_input"%>
           </div>
-
+          
+          <div class="form_group_color" data-controller="color">
+            <%= f.label :color_id, "Favorite Color*", class: "form_label" %>
+            <%= f.hidden_field :color_id, id: "user_color_id", data: { color_target: "input" } %>
+            <div class="dropdown">
+                <button type="button" class="dropdown__btn" data-action="click->color#toggleMenu" data-color-target="button">select a color</button>
+                <div class="dropdown__menu-layer" data-color-target="layer" >
+                    <div class="dropdown__menu">
+                        <% Color.all.each do |color| %>
+                            <div class="dropdown__item color-option" style="background-color: <%= color.backcolor %>;" data-action="click->color#select" data-color-id="<%= color.id %>" title="<%= color.name %>"></div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+           </div>
+                 
           <div class="form_group">
-            <%= f.label :favorite_color, "", class: "form_label" %>
-            <%= f.select :color_id, options_for_select(Color.all.map { |color| [color.name, color.id, { style: "background-color: #{color.name};" }] }), { prompt: "Select a color" }, { class: "color-box" } %>
-          </div>
-
-          <div class="form_group">
-              <%= f.label :email＊, "", class: "form_label" %>
+              <%= f.label :email, "Email*", class: "form_label" %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_input" %>
           </div>
 
           <div class="form_group">
-              <%= f.label :password＊, "", class: "form_label" %>
-              <%= f.password_field :password, id:"password", class: "form_input", placeholder:"" %>
+              <%= f.label :password, "Password*", class: "form_label" %>
+              <%= f.password_field :password, class: "form_input", placeholder:"" %>
           </div>
 
           <div class="form_group_btn">
@@ -40,64 +51,4 @@
         <% end %>
     </div>
 </turbo-frame>
-
-<!-- 
-<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
-<div class='form-wrap'>
-  <div class='form-header'>
-    <h1 class='form-header-text'>SIGN UP</div>
-     <div class='login-flash-message'></div>
-  </div>
-
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-
-  <div class="form-bottom">
-    <div class='form-text-wrap'>
-      <label class="form-text">name</label>
-      <span class="indispensable">必須</span>
-      <%= f.text_field :name, class:"input-default", id:"name", placeholder:""%>
-    </div>
-
-    <div class='form-text-wrap'>
-      <label class="form-text">nickname</label>
-      <span class="indispensable">必須</span>
-      <%= f.text_field :nickname, class:"input-default", id:"nickname", placeholder:""%>
-    </div>
-
-    <div class='form-text-wrap'>
-      <label class="form-text">profile picture</label>
-      <span class="indispensable"></span>
-      <%= f.file_field :profile_pic, class:"input-default", id:"profile_pic", placeholder:"" %>
-    </div>
-
-    <div class='form-text-wrap'>
-      <label class="form-text">favorite color</label>
-      <span class="indispensable">必須</span>
-      <%= f.collection_select(:color_id, Color.all, :id, :name, {}, {class:"select-box", id:"profile_pic"}) %>
-    </div>
-
-    <div class='form-text-wrap'>
-      <label class="form-text">mail address</label>
-      <span class="indispensable">必須</span>
-      <%= f.email_field :email, class:"input-default", id:"email", placeholder:"", autofocus: true %>
-    </div>
-    
-    <div class='form-text-wrap'>
-      <label class="form-text">password</label>
-      <span class="indispensable">必須</span>
-      <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
-    </div>
-    
-    <div class='login-btn'>
-      <%= f.submit "sign up" ,class:"login-red-btn" %>
-    </div>
-
-  </div>
-</div>
-<% end %>
-<%= render "devise/shared/links" %>
--->
-
-
 

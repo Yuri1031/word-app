@@ -6,7 +6,7 @@ Rails.start();
 
 import "JS"
 
-
-
+import "chartkick"
+import "chart.js"
 
   

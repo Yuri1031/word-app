@@ -9,6 +9,7 @@ class User < ApplicationRecord
          has_many :groups, through: :group_members
          has_many :words
          has_many :categories, through: :words
+         has_many :word_marks, dependent: :destroy
 
          validates :name, presence: true
          validates :nickname, presence: true
@@ -18,14 +19,38 @@ class User < ApplicationRecord
          extend ActiveHash::Associations::ActiveRecordExtensions
          belongs_to :color
 
-         # friends
-         has_many :friendships, class_name: 'Friend', foreign_key: 'user_id'
-         has_many :inverse_friendships, class_name: 'Friend', foreign_key: 'friend_id'
-         has_many :friends, through: :friendships, source: :friend
-         has_many :inverse_friends, through: :inverse_friendships, source: :user
-         def friends_count
-          (friends + inverse_friends).uniq.count
+         # relationship (follower,followed)
+         has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+         has_many :followings, through: :active_relationships, source: :followed
+         has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+         has_many :followers, through: :passive_relationships, source: :follower
+
+         def follow(other_user)
+          active_relationships.create(followed_id: other_user.id)
          end
+
+         def unfollow(other_user)
+          active_relationships.find_by(followed_id: other_user.id).destroy
+         end
+
+         def following?(other_user)
+          active_relationships.exists?(followed_id: other_user.id)
+         end
+
+         def matchers
+          self.followings & self.followers
+         end
+
+         def matchers?(other_user)
+          following?(other_user) && other_user.following?(self)
+         end
+
+         def follow_request_from?(other_user)
+          !matchers?(other_user) && other_user.following?(self)
+         end
+        
+        
+        
 
          # search info
          def self.ransackable_attributes(auth_object = nil)

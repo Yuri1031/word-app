@@ -2,37 +2,40 @@
     <div class="mypage_main">
         <div class="mypage_one">
             <div class="mypage_one_left">
-                <div class="mypage_user_img">
-                    <%# image_tag current_user.profile_pic.attached? ? current_user.profile_pic : 'sample1.png', class: 'mypage_pro_img' %>
+                <div class="mypage_user">
+                    <% if current_user.profile_pic.attached? %>
+                     <%= image_tag current_user.profile_pic, class: "mypage_user_img" %>
+                    <% else %>
+                     <%= image_tag "sample1.png", class: "mypage_user_img" %>
+                    <% end %>
                 </div>
+                
                 <div data-controller="modal">
-                    <div class="friends" data-action="click->modal#open">
+                    <div id="friends" class="friends" data-action="click->modal#open">
                           <%= image_tag 'friends.png', class: 'friends_icon' %>
-                          <span><%= current_user.friends_count %></span>
+                          <span><%= current_user.matchers.count %></span>
                     </div>
                     <!-- modal -->
                     <div class="modal" data-modal-target="modal" style="display: none;">
                         <div class="modal__overlay" data-action="click->modal#close"></div>
                         <div class="modal__content">
                             <button class="modal__close-btn" data-action="click->modal#close">×</button> 
-                            <h2>Friends</h2>
-                            <ul>
-                                <% current_user.friends.each do |friend| %>
-                                <li>
-                                    <%= friend.nickname %>
-                                    <%= button_to "削除", friend_path(friend), method: :delete, class: "btn_delete", data: { turbo_confirm: "本当に削除しますか？" } %>
-                                </li>
-                                <% end %>
-                            </ul>
-                            <%= form_with url: friends_path, method: :post, local: true do |f| %>
-                            <div class="form_group">
-                                <%= f.label :friend_email, "友達のメールアドレス" %>
-                                <%= f.text_field :friend_email, class: "m_form_input" %>
-                            </div>
-                            <div class="form_actions">
-                                <%= f.submit "追加", class: "btn_primary" %>
-                            </div>
+                            <h3>Follow</h3>
+                            <%= form_with url: search_relationships_path, method: :post, id: "friend_search_form", data: { turbo_frame: "search_result" } do |f| %>
+                              <%= f.text_field :email, placeholder: "メールアドレスを入力", class: "m_form_input", autocomplete: "email" %>
+                              <%= f.submit "検索", class: "btn_primary_friend" %>
                             <% end %>
+                            <div id="search_result">
+                                <%= render partial: "relationships/search_result", locals: { searched_user: nil } %>
+                            </div>
+
+
+                            <h3>Waiting list</h3>
+                            <div class="f_list">
+                                <turbo-frame id="waiting_list">
+                                    <%= render partial: "relationships/waiting_list", locals: { users: current_user.followings.reject { |u| current_user.matchers.include?(u) } } %>
+                                </turbo-frame>
+                            </div>
                         </div>
                     </div>   
                 </div>                
@@ -94,7 +97,7 @@
                             </div>
 
                             <div class="form_actions">
-                                <%= f.submit "更新", class: "btn_primary" %>
+                                <%= f.submit "更新", class: "f_btn_primary" %>
                             </div>
                             <% end %> 
                         </div>
@@ -106,24 +109,44 @@
 
 
         <div class="mypage_two">
+            <h3>Friends</h3>
+            <div class="friends_list_box">
+                <ul class="friend-list">
+                    <% current_user.matchers.each do |u| %>
+                        <li>
+                            <%= image_tag u.profile_pic, class: "friend_img" %>
+                            <%= u.nickname %>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="mypage_three">
             <% @categories.each do |category| %>  
             <div class="mypage_card_space">   
                 <div class="mypage_card">
                     <div class="card_pic_chart">
-                        <% understanding = @category_understanding[category.id] || 0 %>
-                        <div class="pie-chart-1" style="background-image: conic-gradient(#2589d0 <%= understanding %>%, #f2f2f2 <%= understanding %>% 100%);">
-                            <span><%= understanding %>%</span>
-                        </div>
+                        <%= pie_chart @chart_data, library: {
+                                backgroundColor: "transparent",
+                                legend: { position: "right" },
+                                colors: Array.new(@chart_data.size, @chart_color)
+                            },
+                            height: "180px",
+                            donut: true
+                        %>
                     </div>
                     <div class="card_text">
                         <div class="card_chart_name"><%= category.category_name %></div>
                         <div class="word_chart_count">(total: <%= category.words.count %>)</div>
                     </div>
-                    
                 </div>
                 <% end %>            
             </div>
-        </div>
+        </div>         
     </div>
 </turbo-frame>
+
+
 

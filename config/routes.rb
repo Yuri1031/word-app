@@ -10,8 +10,7 @@ Rails.application.routes.draw do
   resources :bookshelves, only: [:index, :show]
   resources :studies, only: [:index,:show]
   resource :mypage, only: [:show, :update]
-  resources :friends, only: [:create, :destroy]
-
+  resources :relationships, only: [:create, :destroy]
   
   resources :word_marks do 
     collection do
@@ -39,4 +38,9 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :relationships, only: [:create, :destroy] do
+    collection do
+      post 'search', to: 'relationships#search'
+    end
+  end
 end

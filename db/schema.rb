@@ -96,11 +96,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_08_010450) do
 
   create_table "word_marks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "dif", default: 0, null: false
-    t.datetime "review_date_id", null: false
+    t.datetime "review_date", null: false
     t.bigint "word_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "marked_as"
+    t.index ["user_id"], name: "index_word_marks_on_user_id"
     t.index ["word_id"], name: "index_word_marks_on_word_id"
   end
 
@@ -122,6 +123,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_08_010450) do
   add_foreign_key "group_members", "users"
   add_foreign_key "group_words", "groups"
   add_foreign_key "group_words", "words"
+  add_foreign_key "word_marks", "users"
   add_foreign_key "word_marks", "words"
   add_foreign_key "words", "categories"
   add_foreign_key "words", "users"

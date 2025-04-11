@@ -6,16 +6,7 @@ export default class extends Controller {
   
 
   open() {
-    console.log('modal open!');
     this.modalTarget.style.display = "block"
-
-    console.log('search_result clear!');
-    
-    document.getElementById('search_result').innerHTML = '';
-    const form = document.getElementById('friend_search_form');
-    if (form) {
-        form.reset();
-    }
   }
 
   close() {
@@ -25,6 +16,5 @@ export default class extends Controller {
       form.reset();
       document.getElementById('search_result').innerHTML = ''; 
     }
-    document.getElementById('modal_close_button').addEventListener('click', this.close.bind(this));
   }
 }

@@ -8,14 +8,14 @@ class WordMarksController < ApplicationController
   end
 
   def toggle
-    word_mark = @word.word_marks.first
+    word_mark = @word.word_marks.find_by(user_id: current_user.id)
 
     if word_mark
       new_dif = word_mark.dif == 1 ? 0 : 1
       word_mark.update(dif: new_dif)
       render json: { status: 'updated', dif: new_dif }
     else
-      word_mark = @word.word_marks.create(dif: 1, review_date_id: Time.current)
+      word_mark = @word.word_marks.create(user_id: current_user.id, dif: 1, review_date: Time.current)
       render json: { status: 'created', dif: 1 }
     end
   end

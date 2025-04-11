@@ -124,25 +124,37 @@
 
 
         <div class="mypage_three">
-            <% @categories.each do |category| %>  
-            <div class="mypage_card_space">   
-                <div class="mypage_card">
-                    <div class="card_pic_chart">
-                        <%= pie_chart @chart_data, library: {
-                                backgroundColor: "transparent",
-                                legend: { position: "right" },
-                                colors: Array.new(@chart_data.size, @chart_color)
-                            },
-                            height: "180px",
-                            donut: true
-                        %>
-                    </div>
-                    <div class="card_text">
-                        <div class="card_chart_name"><%= category.category_name %></div>
-                        <div class="word_chart_count">(total: <%= category.words.count %>)</div>
-                    </div>
-                </div>
-                <% end %>            
+            <div class="mypage_card_space">  
+                <% @categories.each do |category| %>  
+                    <div class="mypage_card">
+                        <% if category.words.count == 0 %>
+                            <div class="card_pic_chart">
+                                <p>単語が登録されておりません</p>
+                            </div>
+                         <% else %>
+                            <div class="card_pic_chart">
+                                <%= pie_chart @chart_data[category.id], library: { backgroundColor: "transparent",
+                                                                                   legend: { position: "right" },
+                                                                                   tooltip: {callbacks: {label: "function(tooltipItem, data) { var label = data.labels[tooltipItem.index] || ''; var value = data.datasets[0].data[tooltipItem.index] || 0; return label + ': ' + value + '%'; }"}},
+                                                                                   colors: [@base_color, @faded_color]
+                                                                                 },
+                                height: "180px",
+                                donut: true %>
+                            </div>
+                        <% end %>
+
+                        <div class="card_text">
+                           <div class="card_chart_name"><%= category.category_name %></div>
+                           <% if category.words.count == 0 %>
+                               <div class="word_chart_count">-</div>
+                             <% else %>
+                                <div class="word_chart_count">
+                                   ( total: <%= category.words.count %> )
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>  
+                <% end %>
             </div>
         </div>         
     </div>

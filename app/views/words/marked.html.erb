@@ -1,7 +1,7 @@
-<turbo-frame id="main_content" data-controller="word-mark">
+<div data-controller="word-mark">
   
   <div class="back_button_area_word">
-    <%= link_to "←", word_marks_path, class: "back_button" %>
+    <%= link_to "←", @back_path, class: "back_button" %>
   </div>
 
   <div class="main_bottom_word">
@@ -34,5 +34,5 @@
       <% end %>
     </div>
   </div>  
-</turbo-frame>
+</div>
 

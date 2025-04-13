@@ -1,5 +1,3 @@
-<turbo-frame id="main_content">
-
   <div class="main_bottom_study">      
       <% if @word.present? %>
         <%= link_to word_word_marks_path(word_id: @word.id), data: { turbo_frame: "main_content" } do %>
@@ -32,4 +30,4 @@
    </div>
 
   
-</turbo-frame>
+

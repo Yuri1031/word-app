@@ -62,6 +62,8 @@ class WordsController < ApplicationController
     @category = Category.find(params[:category_id])
     @words = @category.words.joins(:word_marks).where(word_marks: { dif: 1 }).distinct
     @word = @words.find_by(id: params[:id]) || @words.first
+    
+    @back_path = session[:previous_page]
 
     if @word
       word_index = @words.index(@word)

@@ -1,9 +1,13 @@
-<turbo-frame id="main_content">
+
+  
+  <div class="back_button_area">
+    <%= link_to "←", studies_path, class: "back_button" %>
+  </div>
 
   <div class="main_bottom_study">
     <div class="card_space">
       <% @categories.each do |category| %>
-        <%= link_to category_marked_words_path(category), data: { turbo_frame: "main_content" } do %>
+        <%= link_to category_marked_words_path(category), data: { turbo_frame: "_top" } do %>
           <div class="card">
             <div class="card_pic">
               <% if category.category_img.attached? %>
@@ -18,4 +22,4 @@
       <% end %>
     </div>  
   </div>
-</turbo-frame>
+

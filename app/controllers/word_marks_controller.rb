@@ -5,6 +5,7 @@ class WordMarksController < ApplicationController
     @categories = Category.joins(words: :word_marks)
                           .where(word_marks: { dif: 1 }) 
                           .distinct
+    session[:previous_page] = request.fullpath
   end
 
   def toggle

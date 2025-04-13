@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="form_actions">
-                                <%= f.submit "更新", class: "btn_primary" %>
+                                <%= f.submit "更新", class: "f_btn_primary" %>
                             </div>
                             <% end %> 
                         </div>
@@ -122,36 +122,45 @@
 
 
         <div class="mypage_three">
-            <div class="mypage_card_space">  
-                <% @categories.each do |category| %>  
+            <div class="mypage_card_space">
+                <% if @categories.empty? %>
                     <div class="mypage_card">
-                        <% if category.words.count == 0 %>
-                            <div class="card_pic_chart">
-                                <p>単語が登録されておりません</p>
-                            </div>
-                         <% else %>
-                            <div class="card_pic_chart">
-                                <%= pie_chart @chart_data[category.id], colors: [@chart_color, @base_color], library: { backgroundColor: "transparent",
-                                                                                   legend: { position: "right", reverse: true },
-                                                                                   tooltip: {callbacks: {label: "function(tooltipItem, data) { var label = data.labels[tooltipItem.index] || ''; var value = data.datasets[0].data[tooltipItem.index] || 0; return label + ': ' + value + '%'; }"}},
-                                                                                 },
-                                height: "180px",
-                                donut: true %>
-                            </div>
-                        <% end %>
-
-                        <div class="card_text">
-                           <div class="card_chart_name"><%= category.category_name %></div>
-                           <% if category.words.count == 0 %>
-                                <div class="word_chart_count">-</div>
+                        <div class="card_pic_chart">
+                            <p>登録されておりません</p>
+                        </div>
+                    </div>
+                 <% else %>
+                    <% @categories.each do |category| %>  
+                        <div class="mypage_card">
+                            <% if category.words.count == 0 %>
+                                <div class="card_pic_chart">
+                                    <p>単語が登録されておりません</p>
+                                </div>
                              <% else %>
-                                <div class="word_chart_count">
-                                   ( total: <%= category.words.count %> )
+                                <div class="card_pic_chart">
+                                    <%= pie_chart @chart_data[category.id], colors: [@chart_color, @base_color], library: { backgroundColor: "transparent",
+                                                                                       legend: { position: "right" },
+                                                                                       tooltip: {callbacks: {label: "function(tooltipItem, data) { var label = data.labels[tooltipItem.index] || ''; var value = data.datasets[0].data[tooltipItem.index] || 0; return label + ': ' + value + '%'; }"}},
+                                                                                     },
+                                    height: "180px",
+                                    donut: true %>
                                 </div>
                             <% end %>
-                        </div>
-                    </div>  
-                <% end %>
+
+                            <div class="card_text">
+                                <div class="card_chart_name"><%= category.category_name %></div>
+                                <% if category.words.count == 0 %>
+                                    <div class="word_chart_count">-</div>
+                                 <% else %>
+                                    <div class="word_chart_count">
+                                       ( total: <%= category.words.count %> )
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>  
+                    <% end %>
+                <% end %>  
+                
             </div>
         </div>         
     </div>

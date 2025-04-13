@@ -21,21 +21,6 @@ class WordMarksController < ApplicationController
     end
   end
 
-  def update_review_date
-    word_mark = WordMark.find_by(word_id: params[:word_id], user_id: current_user.id)
-
-    if word_mark
-      if params[:wrong] == "true"
-        word_mark.review_date = next_review_date(word_mark.review_date)
-      else
-        word_mark.review_date = nil # ⚪︎を押したら復習日リセット
-      end
-      word_mark.save!
-    end
-
-    render json: { success: true, review_date: word_mark.review_date }
-  end
-
   private
   def set_word
     @word = Word.find_by(id: params[:word_id])

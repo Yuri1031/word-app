@@ -1,26 +1,71 @@
 
-
   <div class="back_button_area">
-    <%= link_to "←", categories_path, class: "back_button" %>
+      <%= link_to "←", groups_path, class: "back_button" %>
   </div>
 
-  <div class="main_bottom">
-    <div class="card_space_category">
-      <div class="card_category_name"><%= @group.group_name%></div>
+  <div class="main_bottom_g">
+    <div class="group_info">
+      <div class="group_info_left">
+        <div class="group_img">
+          <% if @group.group_img.attached? %>
+            <%= image_tag @group.group_img, class: "group_g_img" %>
+           <% else %>
+            <%= image_tag "sample1.png", class: "group_g_img" %>
+          <% end %>
+        </div>
 
+        <div data-controller="modal">
+          <div class="group_member" data-action="click->modal#open">
+            <%= image_tag 'friends.png', class: 'friends_icon' %>
+            <span><%= current_user.matchers.count %></span>
+          </div>
+          <!-- modal -->
+          <div class="modal" data-modal-target="modal" style="display: none;">
+            <div class="modal__overlay" data-action="click->modal#close"></div>
+            <div class="modal__content">
+              <button class="modal__close-btn" data-action="click->modal#close">×</button>
+              <!-- 内容 -->
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="group_info_right">
+        <div class="mypage_name">
+          <h2><%= @group.group_name || "Groupname" %></h2>
+          <table class="mypage_info">
+            <tr>
+                <td class="mypage_value"><%= @group.group_description %></td>
+            </tr>
+          </table>
+        </div>
+
+        <div data-controller="modal">
+          <div class="mypage_settings" data-action="click->modal#open">
+            <%= image_tag 'setting.png', class: 'mypage_settings_icon' %>
+          </div>
+          <!-- modal -->
+          <div class="modal" data-modal-target="modal" style="display: none;">
+            <div class="modal__overlay" data-action="click->modal#close"></div>
+            <div class="modal__content">
+              <button class="modal__close-btn" data-action="click->modal#close">×</button>
+              <!-- 設定フォーム -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card_space_group">
       <% @group_words.each do |group_word| %>
       <%= link_to group_group_word_path(@group, group_word), data: { turbo_frame: "main_content" } do %>
-      <div class="card_show">
+      <div class="card_show_g">
         <div class="card_title"><%= group_word.word.title %></div>
+        <div class="card_title"><%= group_word.user.nickname %></div>
       </div>
       <% end %>
       <% end %>
-      
-
-      
-
-
-
     </div>    
   </div>  
 

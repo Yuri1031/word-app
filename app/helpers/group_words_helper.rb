@@ -1,0 +1,2 @@
+module GroupWordsHelper
+end

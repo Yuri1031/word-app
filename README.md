@@ -11,6 +11,7 @@
 
 - has_many :words
 - has_many :group_members
+- has_many :group_words
 - has_many :groups, through: :group_members
 
 
@@ -38,8 +39,13 @@
 | ------------------ | ---------- | ------------------------------ |
 | category_name      | string     | null: false, unique: true      |
 | category_img       | string     |                                | ← ActiveStorageにより不要。
+| user               | references | null: false, foreign_key: true |
+| word               | references | null: false, foreign_key: true |
 
+- belong_to :user
 - has_many :words
+- has_many :words, dependent: :destroy
+
 
 
 
@@ -61,6 +67,7 @@ enum dif_level: { easy: 0, normal: 1, hard: 2 }
 | ------------------ | ---------- | ------------------------------ |
 | group_name         | string     | null: false                    |
 | group_img          | string     |                                | ← ActiveStorageにより不要。
+| group_description  | text       | null: false                    |
 
 - has_many :users, through: :group_members
 - has_many :group_members, dependent: :destroy
@@ -85,6 +92,8 @@ enum dif_level: { easy: 0, normal: 1, hard: 2 }
 | ------------------ | ---------- | ------------------------------ |
 | word               | references | null: false, foreign_key: true |
 | group              | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 - belongs_to :word
 - belongs_to :group
+- belongs_to :user

@@ -25,7 +25,7 @@ class WordsController < ApplicationController
 
   def create
     @category = Category.find(params[:category_id])
-    @word = @category.words.new(word_params)  # @categoryに関連する新しい単語を作成
+    @word = @category.words.new(word_params) 
   
     @word.user_id = current_user.id
     

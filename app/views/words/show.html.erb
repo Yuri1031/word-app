@@ -6,7 +6,7 @@
   <div class="main_bottom_word">
     <!-- < -->
     <div class="nav_button nav_button_left">
-      <%= link_to "＜", category_word_path(category_id: @category.id, id: @previous_word.id, from_study: params[:from_study]), data: { turbo_frame: "main_content" }, class: "nav_button_link", aria: { label: "前の単語" } %>
+      <%= link_to "＜", category_word_path(category_id: @category.id, id: @previous_word.id, from_study: params[:from_study]), class: "nav_button_link", aria: { label: "前の単語" } %>
     </div>
     
 
@@ -15,11 +15,11 @@
       <div class="word_card_top">
         <div class="word_title"><%= @word.title %></div>
 
-        <div class="word_menu">
+        <div class="word_menu" data-controller="menu">
           <ul>
             <li id="menu1" class="menu-button">
-              <button type="button" class="menu-toggle" aria-label="open the menu">☰</button>
-              <ul id="menu1-pull-down" class="menu1-lists hidden">
+              <button type="button" class="menu-toggle" aria-label="open the menu" data-action="click->menu#toggle">☰</button>
+              <ul id="menu1-pull-down" class="menu1-lists hidden" data-menu-target="menu">
                 <li class="menu-item">
                   <%= link_to edit_category_word_path(@word.category_id, @word.id), class: 'menu-link' do %>
                       <%= image_tag "menu1.png", class: "icon" %>
@@ -50,9 +50,13 @@
       <div class="word_q"><%= @word.question %></div>
       <div class="word_a"><%= @word.answer %></div>
 
-      <div class="toggle">
-        <label class="toggle-button-2" for="mark_toggle">
-          <input type="checkbox" id="mark_toggle" name="mark_toggle" data-word-id="<%= @word.id %>" <%= 'checked' if @word.word_marks.exists?(dif: 1) %> />
+      <div class="toggle" data-controller="toggle">
+        <label class="toggle-button-2" data-toggle-target="label">
+          <input type="checkbox"
+           data-toggle-target="checkbox"
+           data-action="change->toggle#toggle"
+           data-word-id="<%= @word.id %>"
+           <%= 'checked' if @word.word_marks.exists?(dif: 1) %> />
         </label>
       </div>
 
@@ -61,7 +65,7 @@
 
     <!-- > -->
     <div class="nav_button nav_button_right">
-      <%= link_to "＞", category_word_path(category_id: @category.id, id: @next_word.id, from_study: params[:from_study]), data: { turbo_frame: "main_content" }, class: "nav_button_link", aria: { label: "next" } %>
+      <%= link_to "＞", category_word_path(category_id: @category.id, id: @next_word.id, from_study: params[:from_study]), class: "nav_button_link", aria: { label: "next" } %>
     </div>
 
   </div>  

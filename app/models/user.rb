@@ -7,7 +7,9 @@ class User < ApplicationRecord
          has_one_attached :profile_pic
          has_many :group_members
          has_many :groups, through: :group_members
+         has_many :categories, dependent: :destroy
          has_many :words
+         has_many :group_words
          has_many :categories, through: :words
          has_many :word_marks, dependent: :destroy
 

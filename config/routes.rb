@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups do
-    resources :group_words, only: [:index, :show]
+    resources :group_words, only: [:index, :show, :create]
   end
 
   resources :words do

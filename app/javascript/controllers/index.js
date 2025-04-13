@@ -12,3 +12,9 @@ application.register("hello", HelloController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
+
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
+
+import MenuController from "./menu_controller"
+application.register("menu", MenuController)

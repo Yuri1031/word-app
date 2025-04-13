@@ -17,15 +17,18 @@
       </div>
 
       <div class="main">
-          <div class="main_header">
-            <%= render "bases/main_header" %>
-          </div>
+        <div class="main_header">
+          <%= render "bases/main_header" %>
+        </div>
 
-        <% if controller_name == "categories" && action_name == "index" %>
+        <div class="main_content">
+          <% if controller_name == "categories" && action_name == "index" %>
             <%= render template: "categories/index" %>
-          <% else %>
+           <% else %>
             <%= yield %>
-        <% end %>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </body>

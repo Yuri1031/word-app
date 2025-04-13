@@ -1,18 +1,19 @@
-<div class="f_result_contents">
-  <% if searched_user %>
-    <p class="f_result_list"><%= searched_user.nickname %></p>
+<div id="search_result">
+  <div class="f_result_contents">
+    <% if searched_user %>
+      <p class="f_result_list"><%= searched_user.nickname %></p>
 
-    <% if current_user.matchers?(searched_user) %>
-      <p>すでに友達です</p>
-
-    <% elsif current_user.following?(searched_user) %>
-      <%= button_to "申請取消", relationship_path(searched_user), method: :delete, data: { turbo_frame: "_top" }, class: "btn_cancel_friend" %>
+      <% if current_user.matchers?(searched_user) %>
+        <p>すでに友達です</p>
+      <% elsif current_user.following?(searched_user) %>
+        <%= button_to "申請取消", relationship_path(searched_user), method: :delete, data: { turbo_frame: "_top" }, class: "btn_cancel_friend" %>
+      <% else %>
+        <%= button_to "追加", relationships_path(friend_email: searched_user.email), method: :post, data: { turbo_stream: true }, class: "btn_primary_addfriend" %>
+      <% end %>
 
     <% else %>
-     <%= button_to "追加", relationships_path(friend_email: searched_user.email), method: :post, data: { turbo_stream: true }, class: "btn_primary_addfriend" %>
+      <p>ユーザーが見つかりませんでした</p>
     <% end %>
-
-  <% else %>
-    <p>ユーザーが見つかりませんでした</p>
-  <% end %>
+  </div>
 </div>
+

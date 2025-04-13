@@ -1,4 +1,3 @@
-<turbo-frame id="main_content">
 
   <div class="main_bottom_category">
    <div class="card_space">
@@ -9,7 +8,7 @@
             <% end %>
 
   
-            <%= link_to category_path(category.id), data: { turbo_frame: "main_content" }, class: "card_link" do %>
+            <%= link_to category_path(category.id), data: { turbo_frame: "_top" }, class: "card_link" do %>
                <div class="card_pic">
                   <% if category.category_img.attached? %>
                      <%= image_tag category.category_img, class: "card_img" %>
@@ -36,8 +35,8 @@
             <button class="modal__close-btn" data-action="click->modal#close">×</button> 
             <h2>カテゴリーを追加</h2>
               
-              <%= form_with(model: @category, url: categories_path, data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
-              <div class="form_group">
+             <%= form_with(model: @category, url: categories_path, html: { multipart: true }, local: true) do |f| %>
+              <div>
                  <%= f.label :category_name, "カテゴリ名", class: "m_form_label" %><br>
                  <%= f.text_field :category_name, class: "m_form_input" %>
               </div>
@@ -50,11 +49,12 @@
               <div class="form_actions">
                  <%= f.submit "作成", class: "btn_primary" %>
               </div>
-              <% end %>           
+              <% end %>  
+                       
           </div>
         </div>
       </div>
     </div>  
   </div>
   
-</turbo-frame>
+

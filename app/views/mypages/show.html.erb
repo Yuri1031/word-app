@@ -1,4 +1,3 @@
-<turbo-frame id="main_content">
     <div class="mypage_main">
         <div class="mypage_one">
             <div class="mypage_one_left">
@@ -11,7 +10,7 @@
                 </div>
                 
                 <div data-controller="modal">
-                    <div id="friends" class="friends" data-action="click->modal#open">
+                    <div class="friends" data-action="click->modal#open">
                           <%= image_tag 'friends.png', class: 'friends_icon' %>
                           <span><%= current_user.matchers.count %></span>
                     </div>
@@ -22,24 +21,23 @@
                             <button class="modal__close-btn" data-action="click->modal#close">×</button> 
                             <h3>Follow</h3>
                             <%= form_with url: search_relationships_path, method: :post, id: "friend_search_form", data: { turbo_frame: "search_result" } do |f| %>
-                              <%= f.text_field :email, placeholder: "メールアドレスを入力", class: "m_form_input", autocomplete: "email" %>
-                              <%= f.submit "検索", class: "btn_primary_friend" %>
+                                <%= f.text_field :email, placeholder: "メールアドレスを入力", class: "m_form_input", autocomplete: "email" %>
+                                <%= f.submit "検索", class: "btn_primary_friend" %>
                             <% end %>
+
                             <div id="search_result">
                                 <%= render partial: "relationships/search_result", locals: { searched_user: nil } %>
                             </div>
 
-
                             <h3>Waiting list</h3>
-                            <div class="f_list">
-                                <turbo-frame id="waiting_list">
-                                    <%= render partial: "relationships/waiting_list", locals: { users: current_user.followings.reject { |u| current_user.matchers.include?(u) } } %>
-                                </turbo-frame>
-                            </div>
+                            <div id="waiting_list" class="waiting_list">
+                                <%= render partial: "relationships/waiting_list", locals: {users: current_user.followings.reject { |u| current_user.matchers.include?(u) } } %>
+                            </div>                           
                         </div>
                     </div>   
-                </div>                
-            </div>  
+                </div>  
+            </div>           
+                                 
 
             <div class="mypage_one_right">
                 <div class="mypage_name">
@@ -133,10 +131,9 @@
                             </div>
                          <% else %>
                             <div class="card_pic_chart">
-                                <%= pie_chart @chart_data[category.id], library: { backgroundColor: "transparent",
-                                                                                   legend: { position: "right" },
+                                <%= pie_chart @chart_data[category.id], colors: [@chart_color, @base_color], library: { backgroundColor: "transparent",
+                                                                                   legend: { position: "right", reverse: true },
                                                                                    tooltip: {callbacks: {label: "function(tooltipItem, data) { var label = data.labels[tooltipItem.index] || ''; var value = data.datasets[0].data[tooltipItem.index] || 0; return label + ': ' + value + '%'; }"}},
-                                                                                   colors: [@base_color, @faded_color]
                                                                                  },
                                 height: "180px",
                                 donut: true %>
@@ -146,7 +143,7 @@
                         <div class="card_text">
                            <div class="card_chart_name"><%= category.category_name %></div>
                            <% if category.words.count == 0 %>
-                               <div class="word_chart_count">-</div>
+                                <div class="word_chart_count">-</div>
                              <% else %>
                                 <div class="word_chart_count">
                                    ( total: <%= category.words.count %> )
@@ -158,7 +155,7 @@
             </div>
         </div>         
     </div>
-</turbo-frame>
+
 
 
 

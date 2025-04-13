@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_user
   layout :layout_by_resource
 
   def show
@@ -26,6 +27,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def set_user
+    @user = current_user
+  end
+  
   def user_params
     params.require(:user).permit(:name, :nickname, :color_id, :profile_pic)
   end  

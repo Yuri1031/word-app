@@ -16,8 +16,8 @@
 
         <div data-controller="modal">
           <div class="group_member" data-action="click->modal#open">
-            <%= image_tag 'friends.png', class: 'friends_icon' %>
-            <span><%= current_user.matchers.count %></span>
+            <%= image_tag 'friends.png', class: 'friends_icon_g' %>
+            <span><%= @users&.count || 0 %></span>
           </div>
           <!-- modal -->
           <div class="modal" data-modal-target="modal" style="display: none;">
@@ -25,6 +25,23 @@
             <div class="modal__content">
               <button class="modal__close-btn" data-action="click->modal#close">×</button>
               <!-- 内容 -->
+              <%= form_with(model: @group, url: group_path(@group), method: :patch, data: { turbo_frame: "_top" }, html: { multipart: true }) do |f| %>
+                <div class="form_group_g">
+                  <%= f.label :user_ids, "メンバー", class: "m_form_label" %><br>
+                  <%= f.collection_check_boxes :user_ids, @users.presence || [], :id, :nickname do |cb| %>
+                    <% user = @users.find { |u| u.id == cb.value.to_i } %>
+                    <div class="checkbox_item">
+                      <%= cb.check_box %>
+                        <% if user && user.profile_pic.attached? %>
+                          <%= image_tag user.profile_pic, class: "friend_img" %>
+                       <% else %>
+                          <%= image_tag "sample1.png", class: "friend_img" %>
+                        <% end %>
+                      <%= cb.label %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -49,7 +66,23 @@
             <div class="modal__overlay" data-action="click->modal#close"></div>
             <div class="modal__content">
               <button class="modal__close-btn" data-action="click->modal#close">×</button>
-              <!-- 設定フォーム -->
+
+              <h2>Setting</h2>
+              <%= form_with(model: @group, url: group_path(@group), method: :patch, data: { turbo_frame: "_top" }, html: { multipart: true }) do |f| %>
+                <div class="form_group">
+                  <%= f.label :group_name, "グループ名", class: "m_form_label" %><br>
+                  <%= f.text_field :group_name, class: "m_form_input" %>
+                </div>
+
+                <div class="form_group">
+                  <%= f.label :group_description, "説明", class: "m_form_label" %><br>
+                  <%= f.text_field :group_description, class: "m_form_input" %>
+                </div>
+
+                <div class="form_actions">
+                  <%= f.submit "更新", class: "btn_primary" %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
@@ -59,10 +92,10 @@
 
     <div class="card_space_group">
       <% @group_words.each do |group_word| %>
-      <%= link_to group_group_word_path(@group, group_word), data: { turbo_frame: "main_content" } do %>
+      <%= link_to group_group_word_path(@group, group_word) do %>
       <div class="card_show_g">
         <div class="card_title"><%= group_word.word.title %></div>
-        <div class="card_title"><%= group_word.user.nickname %></div>
+        <div class="card_title"><%= group_word.user.nickname || "Unknown" %></div>
       </div>
       <% end %>
       <% end %>

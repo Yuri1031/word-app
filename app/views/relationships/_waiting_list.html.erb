@@ -1,16 +1,19 @@
 <div id="waiting_list">
   <ul class="f_waiting_list">
-  <% users.each do |user| %>
-    <li class="f_waiting_list li">
-      <%= user.nickname %>
+    <% @incoming_requests.each do |user| %>
+      <li class="f_waiting_list li">
+        <%= user.nickname %>（申請あり）
+        <%= button_to "承認", relationships_path(friend_email: user.email), method: :post, class: "btn_primary_addfriend" %>
+        <%= button_to "×", relationship_path(user), method: :delete, class: "btn_cancel_follow" %>
+      </li>
+    <% end %>
 
-      <% if user.following?(current_user) && !current_user.following?(user) %>
-         <%= button_to "follow", relationships_path(friend_email: user.email), method: :post, data: { turbo_stream: true }, class: "btn_primary_addfriend" %>
-         <%= button_to "×", relationship_path(user), method: :delete, data: { turbo_stream: true }, class: "btn_cancel_follow" %>
-       <% else %>
-         <%= button_to "×", relationship_path(user), method: :delete, data: { turbo_stream: true }, class: "btn_cancel_follow" %>
-      <% end %>
-    </li>
-  <% end %>
+    <% users.each do |user| %>
+      <li class="f_waiting_list li">
+        <%= user.nickname %>（申請中）
+        <%= button_to "×", relationship_path(user), method: :delete, class: "btn_cancel_follow" %>
+      </li>
+    <% end %>
+  
   </ul>
 </div>

@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   end
 
   resources :categories do
-    resources :words
+    resources :words do 
+      post :share, on: :member
+    end
     resources :word_marks, only: [:index]
   end
 

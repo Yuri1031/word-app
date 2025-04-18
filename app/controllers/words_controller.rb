@@ -4,6 +4,7 @@ class WordsController < ApplicationController
     @word = Word.find(params[:id])
     @category = @word.category
     @back_path = session[:previous_page]
+    @groups = (current_user.groups + current_user.owned_groups).uniq
 
     # >
     words_in_category = @category.words.order(:id)
@@ -70,6 +71,24 @@ class WordsController < ApplicationController
       @previous_word = word_index.positive? ? @words[word_index - 1] : nil
       @next_word = (word_index < @words.size - 1) ? @words[word_index + 1] : nil
     end
+  end
+
+  def share
+    @word = Word.find(params[:id])
+    group_ids = params[:group_ids] || []
+  
+    # 現在の共有状態をリセット
+    @word.group_words.where.not(group_id: group_ids).destroy_all
+  
+    # 新しい共有を作成（重複防止）
+    group_ids.each do |gid|
+      gw = GroupWord.find_or_initialize_by(group_id: gid, word_id: @word.id)
+      gw.user_id = current_user.id
+      gw.save!
+    end
+    
+  
+    redirect_to category_word_path(@word.category, @word), notice: "共有が完了しました。"
   end
 
 

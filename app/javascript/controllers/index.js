@@ -18,3 +18,6 @@ application.register("toggle", ToggleController)
 
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
+
+import ShareController from "./share_controller"
+application.register("share", ShareController)

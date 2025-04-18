@@ -13,7 +13,7 @@
         <div class="modal__content">
           <button class="modal__close-btn" data-action="click->modal#close">×</button>
           <h2>グループを作成</h2>
-          <%= form_with(model: @group, url: groups_path, data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
+          <%= form_with(model: @group, url: groups_path) do |f| %>
             <div class="form_group">
               <%= f.label :group_name, "グループ名", class: "m_form_label" %><br>
               <%= f.text_field :group_name, class: "m_form_input" %>
@@ -25,8 +25,24 @@
             </div>
 
             <div class="form_group">
-              <%= f.label :user_ids, "グループメンバー", class: "m_form_label" %><br>
-              <%= f.collection_check_boxes :user_ids, @users.presence || [], :id, :name, { multiple: true }, class: "m_form_input" %>
+              <%= f.label :group_description, "説明", class: "m_form_label" %><br>
+              <%= f.text_field :group_description, class: "m_form_input" %>
+            </div>
+
+            <div class="form_group_g">
+              <%= f.label :user_ids, "メンバー", class: "m_form_label" %><br>
+                <%= f.collection_check_boxes :user_ids, @users.presence || [], :id, :nickname do |cb| %>
+                  <% user = @users.find { |u| u.id == cb.value.to_i } %>
+                  <div class="checkbox_item">
+                    <%= cb.check_box %>
+                      <% if user && user.profile_pic.attached? %>
+                        <%= image_tag user.profile_pic, class: "friend_img" %>
+                       <% else %>
+                        <%= image_tag "sample1.png", class: "friend_img" %>
+                      <% end %>
+                    <%= cb.label %>
+                  </div>
+                <% end %>
             </div>
 
             <div class="form_actions">
@@ -42,7 +58,7 @@
     <!-- group -->
     <div class="card_space">
       <% @groups.each do |group| %>
-         <%= link_to group_path(group.id), data: { turbo_frame: "main_content" } do %>
+        <%= link_to group_path(group), data: { turbo_frame: "_top" }, class: "card_link" do %>
          <div class="card">
             <div class="card_pic">
             <% if group.group_img.attached? %>
@@ -57,7 +73,7 @@
               <%= image_tag "sample1.png", class: "gmember_img"%>
             </div>
          </div>
-         <% end %>
+        <% end %>
       <% end %>
       
     </div> 

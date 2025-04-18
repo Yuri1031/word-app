@@ -34,11 +34,31 @@
                   <% end %>
                 </li>
 
-                <li class="menu-item">
-                  <%= link_to '#', class: 'menu-link' do %>
-                      <%= image_tag "menu3.png", class: "icon" %>
-                      <span class="menu-text">share</span>
-                  <% end %>
+                <li class="menu-item_share" data-controller="share" data-share-word-id="<%= @word.id %>">
+                  <button type="button" class="menu-link" data-action="click->share#toggle">
+                    <%= image_tag "menu3.png", class: "icon" %>
+                    <span class="menu-text">share</span>
+                  </button>
+
+                  <div class="share-dropdown hidden" data-share-target="dropdown">
+                    <h4>share to ...</h4>
+                    <%= form_with url: share_category_word_path(@category, @word), method: :post, data: { turbo_frame: "_top" } do |f| %>
+                      <% @groups.each do |group| %>
+                        <label class="checkbox_item_menu">
+                          <%= check_box_tag "group_ids[]", group.id, @word.groups.include?(group) %>
+                            <% if group.group_img.attached? %>
+                              <%= image_tag group.group_img, class: "group_share_img" %>
+                             <% else %>
+                              <%= image_tag "sample1.png", class: "group_share_img" %>
+                            <% end %>
+                            <%= group.group_name %>
+                        </label>
+                      <% end %>
+                      <div class="form_actions">
+                        <%= f.submit "share", class: "btn_primary" %>
+                      </div>
+                    <% end %>
+                  </div>
                 </li>
               </ul>
             </li>

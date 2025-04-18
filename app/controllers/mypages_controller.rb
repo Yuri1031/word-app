@@ -9,6 +9,7 @@ class MypagesController < ApplicationController
     @user = current_user
     @matchers = current_user.matchers
     @friends = current_user.matchers
+    @incoming_requests = current_user.followers.reject { |u| current_user.following?(u) }
     @chart_data = {}
   
     @categories.each do |category|

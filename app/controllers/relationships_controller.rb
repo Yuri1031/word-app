@@ -17,10 +17,12 @@ class RelationshipsController < ApplicationController
     end
     @searched_user = friend
     @waiting_users = current_user.followings.reject { |u| current_user.matchers.include?(u) }
+    @incoming_requests = current_user.followers.reject { |u| current_user.following?(u) }
 
     render turbo_stream: [
       turbo_stream.replace("search_result", partial: "relationships/search_result", locals: { searched_user: @searched_user }),
-      turbo_stream.replace("waiting_list", partial: "relationships/waiting_list", locals: { users: @waiting_users })
+      turbo_stream.replace("waiting_list", partial: "relationships/waiting_list", locals: { users: @waiting_users }),
+      turbo_stream.replace("friend_alert", partial: "relationships/friend_alert", locals: { count: @incoming_requests.count })
     ]
   end
 
@@ -30,10 +32,12 @@ class RelationshipsController < ApplicationController
 
     @waiting_users = current_user.followings.reject { |u| current_user.matchers.include?(u) }
     @matchers = current_user.matchers
+    @incoming_requests = current_user.followers.reject { |u| current_user.following?(u) }
   
     render turbo_stream: [
       turbo_stream.replace("waiting_list", partial: "relationships/waiting_list", locals: { users: @waiting_users }),
-      turbo_stream.replace("friend_list", partial: "relationships/friend_list", locals: { users: @matchers })
+      turbo_stream.replace("friend_list", partial: "relationships/friend_list", locals: { users: @matchers }),
+      turbo_stream.replace("friend_alert", partial: "relationships/friend_alert", locals: { count: @incoming_requests.count })      
     ]
 
   end

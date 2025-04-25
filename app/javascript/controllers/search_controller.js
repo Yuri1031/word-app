@@ -10,18 +10,31 @@ export default class extends Controller {
 
   connect() {
     console.log("search controller connected");
-
+  
+    this.handleOutsideClick = this.handleOutsideClick.bind(this)
+    document.addEventListener("click", this.handleOutsideClick)
+  
     this.inputTarget.addEventListener("input", () => {
       clearTimeout(this.timeout)
       this.timeout = setTimeout(() => {
         this.fetchSuggestions()
       }, 300)
     })
-
+  
     this.element.querySelector("form").addEventListener("submit", (event) => {
       event.preventDefault()
       this.fetchResults()
     })
+  }
+  
+  disconnect() {
+    document.removeEventListener("click", this.handleOutsideClick)
+  }
+  
+  handleOutsideClick(event) {
+    if (!this.element.contains(event.target)) {
+      this.resultsTarget.classList.add("hidden")
+    }
   }
 
   fetchSuggestions() {

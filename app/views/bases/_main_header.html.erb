@@ -1,12 +1,19 @@
-<div class="search">
-    <form action="#" class="search-form-3">
+
+  <!-- search --> 
+  <div class="search" data-controller="search">
+    <form method="get" class="search-form-3">
       <label>
-        <input type="text" placeholder="キーワードを入力">
+        <input type="text" name="q[keyword]" placeholder="キーワードを入力" data-search-target="input">
       </label>
+      <ul data-search-target="suggestions" class="suggestions"></ul>
       <button type="submit" aria-label="検索"></button>
-</form>
+    </form>
+
+    <div data-search-target="results" class="search-results scrollable hidden"></div>
 </div>
 
-<%= link_to destroy_user_session_path, method: :delete, class: "login_out" do %>
-  <p>logout</p>
-<% end %>
+  <!-- logout -->
+  <%= link_to destroy_user_session_path, method: :delete, class: "login_out" do %>
+    <p>logout</p>
+  <% end %>
+

@@ -16,7 +16,7 @@
                 <%= image_tag "sample1.png", class: "card_img" %>
               <% end %>
             </div>
-            <div class="card_name"><%= category.category_name %></div>
+            <div class="card_name"><%= category.category_name %>（<%= @task_counts[category.id] || 0 %>問）</div>
           </div>
         <% end %>
       <% end %>

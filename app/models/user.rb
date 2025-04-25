@@ -51,13 +51,28 @@ class User < ApplicationRecord
          def follow_request_from?(other_user)
           !matchers?(other_user) && other_user.following?(self)
          end
-        
-        
-        
 
-         # search info
-         def self.ransackable_attributes(auth_object = nil)
-          ["name", "nickname"]
+         def matcher_users_relation
+          User.where(id: matchers.map(&:id))
          end
 
+        
+        
+        
+
+         # search
+         def self.ransackable_associations(auth_object = nil)
+          [
+            "active_relationships", "categories", "color", "followers", "followings",
+            "group_members", "group_words", "groups", "owned_groups",
+            "passive_relationships", "profile_pic_attachment", "profile_pic_blob",
+            "word_marks", "words"
+          ]
+        end
+      
+        def self.ransackable_attributes(auth_object = nil)
+          [
+            "id", "nickname", "created_at", "updated_at"
+          ]         
+        end
 end

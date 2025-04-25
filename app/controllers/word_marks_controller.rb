@@ -3,23 +3,69 @@ class WordMarksController < ApplicationController
 
   def index
     @categories = Category.joins(words: :word_marks)
-                          .where(word_marks: { dif: 1 }) 
+                          .where(word_marks: { user_id: current_user.id })
+                          .where.not(word_marks: { review_date: nil })
+                          .where('word_marks.review_date <= ?', Date.today)
                           .distinct
+  
     session[:previous_page] = request.fullpath
+  
+    @today_words = WordMark.includes(:word)
+                           .where(user: current_user)
+                           .where("review_date IS NULL OR review_date <= ?", Date.today)
+                           .unmarked_first
+                           .map(&:word)
+
+  
+    @task_counts = {}
+    @categories.each do |category|
+      words = category.words
+      task_count = WordMark.where(word: words, user: current_user)
+                           .due_today
+                           .count
+      @task_counts[category.id] = WordMark.where(word: words, user: current_user)
+                                          .where("review_date IS NULL OR review_date <= ?", Date.today)
+                                          .count
+
+
+    end
   end
+  
 
   def toggle
     word_mark = @word.word_marks.find_by(user_id: current_user.id)
-
+  
     if word_mark
-      new_dif = word_mark.dif == 1 ? 0 : 1
-      word_mark.update(dif: new_dif)
-      render json: { status: 'updated', dif: new_dif }
+      word_mark.destroy
+      render json: { status: 'deleted' }
     else
-      word_mark = @word.word_marks.create(user_id: current_user.id, dif: 1, review_date: Time.current)
-      render json: { status: 'created', dif: 1 }
+      WordMark.create!(
+        word: @word,
+        user: current_user,
+        review_date: nil,
+        last_marked_at: Time.current
+      )
+      render json: { status: 'created' }
     end
   end
+
+  def update_review_date
+    word_mark = WordMark.find_or_initialize_by(word_id: params[:word_id], user_id: current_user.id)
+  
+    if params[:wrong].to_s == "true"
+      word_mark.review_date = Date.today + 3.days
+      word_mark.mark_type = :wrong
+     else
+      word_mark.mark_type = :correct
+      word_mark.destroy and return render(json: { success: true })
+    end
+  
+    word_mark.last_marked_at = Time.current
+    word_mark.save!
+  
+    render json: { success: true }
+  end
+  
 
   private
   def set_word
@@ -29,28 +75,8 @@ class WordMarksController < ApplicationController
     end
   end
 
-  def update_review_date
-    word_mark = WordMark.find_or_initialize_by(word_id: params[:word_id], user_id: current_user.id)
-
-    if params[:wrong] == "true"
-      word_mark.review_date = next_review_date(word_mark.review_date)
-    else
-      word_mark.review_date = nil # ⚪︎を押したら復習日リセット
-    end
-    word_mark.save!
-
-    render json: { success: true, review_date: word_mark.review_date }
-  end
-
-  private
-
-  def next_review_date(current_date)
-    return Date.today + 3.days if current_date.nil?
-    case current_date - Date.today
-    when 3 then Date.today + 5.days
-    when 5 then Date.today + 7.days
-    else Date.today + 3.days
-    end
+  def next_review_date(_current_date)
+    Date.today + 3.days
   end
 
 end

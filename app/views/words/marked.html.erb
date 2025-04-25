@@ -1,5 +1,3 @@
-<div data-controller="word-mark">
-  
   <div class="back_button_area_word">
     <%= link_to "←", @back_path, class: "back_button" %>
   </div>
@@ -13,17 +11,21 @@
     </div>
 
     <!-- card -->
-    <div class="main_card">
+    <div class="main_card" data-controller="word-mark" data-mark-type="<%= @word.word_marks.find_by(user: current_user)&.mark_type %>">
       <div class="word_card_top">
         <div class="word_title"><%= @word.title %></div>
       </div>
 
-      <div class="word_q"><%= @word.question %></div>
-      <div class="word_a"><%= @word.answer %></div>
+      <div class="word_q" data-action="click->word-mark#toggleAnswer" data-word-id="<%= @word.id %>">
+        <%= @word.question %>
+      </div>
+      <div class="word_a" data-word-mark-target="answer" data-word-id="<%= @word.id %>" style="display: none;">
+        <%= @word.answer %>
+      </div>
 
       <div class="toggle">
-        <button class="mark-button correct" data-word-id="<%= @word.id %>">⚪︎</button>
-        <button class="mark-button wrong" data-word-id="<%= @word.id %>">×</button>
+        <button class="mark-button correct" data-word-id="<%= @word.id %>" data-word-mark-target="correct">⚪︎</button>
+        <button class="mark-button wrong" data-word-id="<%= @word.id %>" data-word-mark-target="wrong">×</button>
       </div>
     </div>
 
@@ -34,5 +36,5 @@
       <% end %>
     </div>
   </div>  
-</div>
+
 

@@ -61,7 +61,7 @@ class WordsController < ApplicationController
 
   def marked
     @category = Category.find(params[:category_id])
-    @words = @category.words.joins(:word_marks).where(word_marks: { dif: 1 }).distinct
+    @words = @category.words.joins(:word_marks).where(word_marks: { user_id: current_user.id }).distinct
     @word = @words.find_by(id: params[:id]) || @words.first
     
     @back_path = session[:previous_page]

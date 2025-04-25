@@ -287,54 +287,114 @@ ul,li {
 
  
  /***** main_header *****/
-  .main_header{
-    height: 90px;
-    width: 100%;
-    background-color: antiquewhite; 
-    padding-top: 40px;
-    display: flex;
-    justify-content: space-between;
- }
- .search{
-   margin-left: 60px;
- }
- .search-form-3 {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   overflow: hidden;
-   border: 1px #D9D9D9 solid;
-   border-radius: 3px;
- }
- .search-form-3 input {
-   width: 250px;
-   height: 45px;
-   padding: 5px 15px;
-   border: none;
-   box-sizing: border-box;
-   font-size: 1em;
-   outline: none;
- }
- .search-form-3 input::placeholder{
-   color: #777777;
- }
- .search-form-3 button {
-   width: 50px;
-   height: 45px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border: none;
-   background-color: #FFFFFF;
-   cursor: pointer;
- }
- .search-form-3 button::after {
-   width: 24px;
-   height: 24px;
-   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z' fill='%23777777'%3E%3C/path%3E%3C/svg%3E");
-   background-repeat: no-repeat;
-   content: '';
- }
+.main_header {
+  height: 90px;
+  width: 100%;
+  background-color: antiquewhite; 
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/*** search ***/
+.search {
+  margin-left: 60px;
+  position: relative;
+}
+
+.search-form-3 {
+  display: flex;
+  align-items: center;
+  border: 1px solid #D9D9D9;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  position: relative;
+}
+
+.search-form-3 input {
+  width: 300px;
+  height: 45px;
+  padding: 5px 15px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 1em;
+  outline: none;
+}
+
+.search-form-3 input::placeholder {
+  color: #777777;
+}
+
+.search-form-3 button {
+  width: 50px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.search-form-3 button::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z' fill='%23777777'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.suggestions {
+  position: absolute;
+  top: 47px;
+  width: 250px;
+  background-color: #fff;
+  z-index: 10;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  z-index: 1000;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-results li {
+  padding: 5px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.search-results li:hover {
+  background-color: #f0f0f0;
+}
+
+.search-results.scrollable {
+  width: 330px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  background: #fdfdfd;
+  border-radius: 5px;
+}
+
+ /*** logout ***/
  .login_out{
    width: 120px;
    height: 55px;
@@ -349,9 +409,7 @@ ul,li {
  .login_out p{
   font-size: 1.2rem;
   color: black;
-}
- 
-
+ }
  .text{
    width: 500px;
    height: 30px;

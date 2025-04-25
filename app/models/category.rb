@@ -12,7 +12,11 @@ class Category < ApplicationRecord
   end
 
   # search info
+  def self.ransackable_associations(auth_object = nil)
+    ["words", "user"]
+  end
+
   def self.ransackable_attributes(auth_object = nil)
-    ["category_name"]
+    ["category_name", "created_at", "updated_at", "id", "user_id"]
   end
 end

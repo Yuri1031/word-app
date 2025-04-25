@@ -6,27 +6,24 @@ Rails.application.routes.draw do
   root to: "categories#index"
 
   resources :bases, only: [:index]
-  resources :searches, only: [:index]
   resources :bookshelves, only: [:index, :show]
   resources :studies, only: [:index,:show]
   resource :mypage, only: [:show, :update]
-  resources :relationships, only: [:create, :destroy]
   
   resources :word_marks do 
     collection do
-      patch ':word_id/update_review_date', to: 'word_marks#update_review_date', as: 'update_review_date'
+      post :update_review_date
     end
   end
+  
   resources :categories do
     get 'marked_words', to: 'words#marked', as: 'marked_words'
-  end
-
-  resources :categories do
     resources :words do 
       post :share, on: :member
     end
     resources :word_marks, only: [:index]
   end
+  
 
   resources :groups do
     resources :group_words, only: [:index, :show, :create]
@@ -42,7 +39,15 @@ Rails.application.routes.draw do
   
   resources :relationships, only: [:create, :destroy] do
     collection do
-      post 'search', to: 'relationships#search'
+      post 'search'
     end
   end
+
+  resources :searches, only: [:index] do
+    collection do
+      get :suggestions
+      get :search
+    end
+  end
+  
 end

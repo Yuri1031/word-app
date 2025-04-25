@@ -1,7 +1,7 @@
 class StudiesController < ApplicationController
   def index
     @categories = Category.all.includes(:words)
-    @word = Word.first
+    @word = Word.first   
   end
   
   def show

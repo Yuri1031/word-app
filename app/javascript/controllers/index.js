@@ -4,11 +4,11 @@
 
 import { application } from "./application"
 
-import ColorController from "./color_controller"
-application.register("color", ColorController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ColorController from "./color_controller"
+application.register("color", ColorController)
 
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
@@ -21,3 +21,9 @@ application.register("menu", MenuController)
 
 import ShareController from "./share_controller"
 application.register("share", ShareController)
+
+import WordMarkController from "./word_mark_controller"
+application.register("word-mark", WordMarkController)
+
+import SearchController from "./search_controller"
+application.register("search", SearchController)

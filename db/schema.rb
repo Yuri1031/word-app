@@ -102,8 +102,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_08_010450) do
   end
 
   create_table "word_marks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "dif", default: 0, null: false
-    t.datetime "review_date", null: false
+    t.datetime "review_date"
+    t.datetime "last_marked_at"
+    t.integer "mark_type"
     t.bigint "word_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

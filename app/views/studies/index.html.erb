@@ -13,7 +13,7 @@
        
     <div class="card_space">
       <% @categories.each do |category| %>
-         <%= link_to study_path(category.id), data: { turbo_frame: "main_content" } do %>
+         <%= link_to study_path(category.id), data: { turbo_frame: "_top" } do %>
          <div class="card">
             <div class="card_pic">
             <% if category.category_img.attached? %>

@@ -52,8 +52,7 @@
 ## word_marks テーブル -------------------------------------------
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| dif                | integer    | null: false, default: 0        |
-| review_date_id     | datetime   | null: false                    |
+| review_date_id     | datetime   |                                |
 | word               | references | null: false, foreign_key: true |
 
 enum dif_level: { easy: 0, normal: 1, hard: 2 }

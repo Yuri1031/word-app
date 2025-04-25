@@ -16,7 +16,7 @@ class MypagesController < ApplicationController
       total_words = category.words.count
   
       marked_words = category.words.joins(:word_marks)
-                             .where(word_marks: { dif: 1, user_id: current_user.id })
+                             .where(word_marks: { user_id: current_user.id })
                              .distinct.count
       unmarked_words = total_words - marked_words
   

@@ -1,6 +1,6 @@
 class StudiesController < ApplicationController
   def index
-    @categories = Category.all.includes(:words)
+    @categories = current_user.categories.includes(:words)
     @word = Word.first   
   end
   

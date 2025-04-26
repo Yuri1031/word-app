@@ -2,14 +2,12 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @group = Group.new
-    #表示確認用 @users = User.all 
     @users = current_user.matchers
   end
   
   def show
     @group = Group.find(params[:id])
     @group_words = @group.group_words.includes(:word, :user)
-    #表示確認用 @users = User.all
     @users = current_user.matchers
 
     @friends = current_user.matchers

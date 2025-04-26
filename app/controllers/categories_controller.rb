@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_categories, only: [:index, :create, :show]
 
   def index
@@ -41,7 +42,7 @@ class CategoriesController < ApplicationController
   end
   
   def set_categories
-    @categories = Category.all
+    @categories = current_user.categories
   end
 
 end

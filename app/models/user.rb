@@ -9,9 +9,9 @@ class User < ApplicationRecord
          has_many :groups, through: :group_members
          has_many :owned_groups, class_name: 'Group', foreign_key: 'user_id'
          has_many :categories, dependent: :destroy
+         has_many :word_categories, through: :words, source: :category
          has_many :words
          has_many :group_words
-         has_many :categories, through: :words
          has_many :word_marks, dependent: :destroy
 
          validates :name, presence: true

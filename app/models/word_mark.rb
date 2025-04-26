@@ -4,8 +4,8 @@ class WordMark < ApplicationRecord
 
   before_validation :set_default_review_date, on: :create
 
-  enum mark_type: { unmarked: 0, correct: 1, wrong: 2 }
-
+  enum mark_type: { correct: 1, wrong: 0 }
+  
   scope :due_today, -> {
     where.not(review_date: nil)
       .where('review_date <= ?', Date.today)

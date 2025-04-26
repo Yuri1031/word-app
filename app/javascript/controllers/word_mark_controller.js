@@ -59,12 +59,24 @@ export default class extends Controller {
             ? "3日後に復習として再表示されます。"
             : "この単語は復習対象から外されました。"
           alert(msg)
-  
-          // DOMからこのカードを削除（表示を即時反映）
-          const card = this.element
-          card?.remove()
+      
+          const nextUrl = this.element.dataset.wordMarkNextUrl 
+          if (nextUrl) {
+            Turbo.visit(nextUrl)
+          } else {
+            alert("すべての単語の復習が完了しました！")
+            Turbo.visit("/word_marks")
+
+          }
         }
       })
   }
+  toggleAnswer(event) {
+    const answer = this.answerTargets.find(ans => ans.dataset.wordId === event.currentTarget.dataset.wordId)
+    if (answer) {
+      answer.style.display = answer.style.display === "none" ? "block" : "none"
+    }
+  }
+  
   
 }

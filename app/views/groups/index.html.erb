@@ -69,9 +69,20 @@
             </div>
             <div class="gcard_name"><%= group.group_name %></div>
             <div class="card_mem">
-              <%= image_tag "sample1.png", class: "gmember_img"%>
-              <%= image_tag "sample1.png", class: "gmember_img"%>
+              <% members = group.group_members.includes(:user).map(&:user) %>
+              <% displayed_members = members.first(5) %>
+              <% displayed_members.each do |member| %>
+                <% if member.profile_pic.attached? %>
+                  <%= image_tag member.profile_pic, class: "gmember_img" %>
+                <% else %>
+                  <%= image_tag "sample1.png", class: "gmember_img" %>
+                <% end %>
+              <% end %>
+              <% if members.size > 5 %>
+                <div class="gmember_more">+<%= members.size - 5 %></div>
+              <% end %>
             </div>
+
          </div>
         <% end %>
       <% end %>

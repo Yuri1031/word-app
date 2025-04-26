@@ -1,5 +1,5 @@
 class WordMarksController < ApplicationController
-  before_action :set_word
+  before_action :set_word, except: [:index, :update_review_date]
 
   def index
     @categories = Category.joins(words: :word_marks)
@@ -12,7 +12,7 @@ class WordMarksController < ApplicationController
   
     @today_words = WordMark.includes(:word)
                            .where(user: current_user)
-                           .where("review_date IS NULL OR review_date <= ?", Date.today)
+                           .where('word_marks.review_date <= ?', Time.zone.today)
                            .unmarked_first
                            .map(&:word)
 
@@ -33,19 +33,20 @@ class WordMarksController < ApplicationController
   
 
   def toggle
+    @word = Word.find(params[:word_id])
     word_mark = @word.word_marks.find_by(user_id: current_user.id)
   
     if word_mark
       word_mark.destroy
-      render json: { status: 'deleted' }
+      render json: { status: 'deleted', mark_type: nil }
     else
       WordMark.create!(
         word: @word,
         user: current_user,
-        review_date: nil,
+        review_date: Date.today,
         last_marked_at: Time.current
       )
-      render json: { status: 'created' }
+      render json: { status: 'created', mark_type: 1 }
     end
   end
 
@@ -53,10 +54,9 @@ class WordMarksController < ApplicationController
     word_mark = WordMark.find_or_initialize_by(word_id: params[:word_id], user_id: current_user.id)
   
     if params[:wrong].to_s == "true"
-      word_mark.review_date = Date.today + 3.days
+      word_mark.review_date = Time.zone.today + 3.days
       word_mark.mark_type = :wrong
      else
-      word_mark.mark_type = :correct
       word_mark.destroy and return render(json: { success: true })
     end
   

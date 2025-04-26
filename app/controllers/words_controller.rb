@@ -5,18 +5,16 @@ class WordsController < ApplicationController
     @category = @word.category
     @back_path = session[:previous_page]
     @groups = (current_user.groups + current_user.owned_groups).uniq
-
-    # >
+  
+    word_mark = @word.word_marks.find_by(user_id: current_user.id)
+    if word_mark && word_mark.mark_type.present?
+      word_mark.update(mark_type: nil)
+    end
+  
     words_in_category = @category.words.order(:id)
     current_index = words_in_category.index(@word)
     @next_word = words_in_category[current_index + 1] || words_in_category.first
-
-    # <
-    @previous_word = if current_index.zero?
-                       words_in_category.last
-                      else
-                       words_in_category[current_index - 1]
-                      end
+    @previous_word = current_index.zero? ? words_in_category.last : words_in_category[current_index - 1]
   end
 
   def new
@@ -61,16 +59,23 @@ class WordsController < ApplicationController
 
   def marked
     @category = Category.find(params[:category_id])
-    @words = @category.words.joins(:word_marks).where(word_marks: { user_id: current_user.id }).distinct
-    @word = @words.find_by(id: params[:id]) || @words.first
+    @words = @category.words
+                      .joins(:word_marks)
+                      .where(word_marks: { user_id: current_user.id })
+                      .where("word_marks.review_date IS NULL OR word_marks.review_date <= ?", Date.today)
+                      .distinct
     
+    if @words.empty?
+      redirect_to category_path(@category), alert: "マークされた単語がありません。"
+      return
+    end
+
+    @word = @words.find_by(id: params[:id]) || @words.first
     @back_path = session[:previous_page]
 
-    if @word
-      word_index = @words.index(@word)
-      @previous_word = word_index.positive? ? @words[word_index - 1] : nil
-      @next_word = (word_index < @words.size - 1) ? @words[word_index + 1] : nil
-    end
+    word_index = @words.index(@word)
+    @previous_word = word_index.positive? ? @words[word_index - 1] : nil
+    @next_word = (word_index < @words.size - 1) ? @words[word_index + 1] : nil
   end
 
   def share

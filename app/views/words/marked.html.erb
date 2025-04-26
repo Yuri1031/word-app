@@ -11,7 +11,10 @@
     </div>
 
     <!-- card -->
-    <div class="main_card" data-controller="word-mark" data-mark-type="<%= @word.word_marks.find_by(user: current_user)&.mark_type %>">
+    <div class="main_card"
+      data-controller="word-mark"
+      data-mark-type="<%= @word.word_marks.find_by(user: current_user)&.mark_type %>"
+      data-word-mark-next-url="<%= @next_word ? category_marked_words_path(@category, id: @next_word.id) : word_marks_path %>">
       <div class="word_card_top">
         <div class="word_title"><%= @word.title %></div>
       </div>
@@ -32,7 +35,7 @@
     <!-- > -->
     <div class="nav_button nav_button_right">
       <% if @next_word %>
-        <%= link_to "＞", category_marked_words_path(@category, id: @next_word.id), data: { turbo_frame: "main_content" }, class: "nav_button_link", aria: { label: "次の単語" } %>
+        <%= link_to "＞", category_marked_words_path(@category, id: @next_word.id), data: { turbo_frame: "" }, class: "nav_button_link", aria: { label: "次の単語" } %>
       <% end %>
     </div>
   </div>  

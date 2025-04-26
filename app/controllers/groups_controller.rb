@@ -22,6 +22,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.user = current_user 
     @groups = (current_user.groups + current_user.owned_groups).uniq
 
     if @group.save
@@ -33,7 +34,9 @@ class GroupsController < ApplicationController
       end
       redirect_to @group, notice: 'グループが作成されました'
      else
-      render :new
+      @groups = (current_user.groups + current_user.owned_groups).uniq
+      @users = current_user.matchers
+      render :index, status: :unprocessable_entity
     end
   end
 

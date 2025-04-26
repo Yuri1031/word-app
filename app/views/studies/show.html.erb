@@ -10,7 +10,7 @@
       <div class="card_category_name"><%= @category.category_name%></div>
 
 
-      <%= form_with url: study_path(@category), method: :get, data: { turbo_frame: "main_content" }, class:"study_select_form", local: true do |f| %>
+      <%= form_with url: study_path(@category), method: :get, class:"study_select_form", local: true do |f| %>
       <div class="main_selector">
         <div class="study_select">
           <label class="study_selector"><%= radio_button_tag 'filter', 'all', params[:filter] != 'marked', class: 'radi' %>全て</label>
@@ -26,44 +26,12 @@
       <div class="main_selector_btn"><%= f.submit "OK", class: "btn_filter"%></div>
       <% end %>
 
-
-
       <% @words.each do |word| %>
-      <%= link_to category_word_path(word.category_id, word.id), data: { turbo_frame: "main_content" } do %>
+      <%= link_to category_word_path(@category.id, word.id) do %>
       <div class="card_show">
         <div class="card_title"><%= word.title %></div>
       </div>
       <% end %>
       <% end %>
-      
-
-      <!-- add, modal -->
-      <div class="card_show_add" id="openModal">
-        <div class="card_title">+</div>
-      </div>
-      
-      <div class="modal" id="modal">
-          <div class="modal__overlay" id="closeModal"></div>
-
-          <div class="modal__content">
-              <button class="modal__close-btn" id="closeModalBtn">×</button>
-              <h2>タイトルを追加</h2>
-              
-              <%= form_with(model: @word, url: category_words_path(@category), data: { turbo_frame: "main_content" }, html: { multipart: true }) do |f| %>
-              <div class="form_group">
-                 <%= f.label :category_name, "タイトル", class: "m_form_label" %><br>
-                 <%= f.text_field :category_name, class: "m_form_input" %>
-              </div>
-
-              <div class="form_actions">
-                 <%= f.submit "作成", class: "btn_primary" %>
-              </div>
-              <% end %>
-          </div>
-      </div>    
-
-
-
-    </div>    
   </div>  
 

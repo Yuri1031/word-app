@@ -27,9 +27,6 @@ class CategoriesController < ApplicationController
       render :index, status: :unprocessable_entity
     end
   end
-  
-  
-  
 
   def destroy
     @category = Category.find(params[:id])

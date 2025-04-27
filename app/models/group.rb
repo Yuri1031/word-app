@@ -6,6 +6,9 @@ class Group < ApplicationRecord
   has_many :words, through: :group_words
   has_one_attached :group_img
   
+  validates :group_name, presence: true
+  validates :group_description, presence: true
+
   # search info
   def self.ransackable_associations(auth_object = nil)
     ["group_members", "group_words", "user", "users", "words", "group_img_attachment", "group_img_blob"]

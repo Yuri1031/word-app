@@ -5,6 +5,6 @@ FactoryBot.define do
     color_id { rand(1..10) }
     email {Faker::Internet.email}
     password { 'password123' }
-    password_confirmation {password}
+    password_confirmation { 'password123' }
   end
 end

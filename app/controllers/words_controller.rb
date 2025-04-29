@@ -45,8 +45,15 @@ class WordsController < ApplicationController
     @word = @category.words.find(params[:id])
     if @word.update(word_params)
       redirect_to category_word_path(@category, @word), notice: "Data has been edited!"
-      else
-        render :show, status: :unprocessable_entity
+    else
+      @groups = (current_user.groups + current_user.owned_groups).uniq
+  
+      words_in_category = @category.words.order(:id)
+      current_index = words_in_category.index(@word)
+      @next_word = words_in_category[current_index + 1] || words_in_category.first
+      @previous_word = current_index.zero? ? words_in_category.last : words_in_category[current_index - 1]
+  
+      render :show, status: :unprocessable_entity
     end
   end
 
@@ -91,8 +98,6 @@ class WordsController < ApplicationController
       gw.user_id = current_user.id
       gw.save!
     end
-    
-  
     redirect_to category_word_path(@word.category, @word), notice: "共有が完了しました。"
   end
 

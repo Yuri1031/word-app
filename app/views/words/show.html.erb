@@ -5,9 +5,11 @@
 
   <div class="main_bottom_word">
     <!-- < -->
+    <% if @previous_word %>
     <div class="nav_button nav_button_left">
-      <%= link_to "＜", category_word_path(category_id: @category.id, id: @previous_word.id, from_study: params[:from_study]), class: "nav_button_link", aria: { label: "前の単語" } %>
+      <%= link_to "＜", category_word_path(category_id: @category.id, id: @previous_word.id, from_study: params[:from_study]), class: "nav_button_link", aria: { label: "forward" } %>
     </div>
+    <% end %>
     
 
     <!-- card -->
@@ -87,9 +89,11 @@
     </div>
 
     <!-- > -->
+    <% if @next_word %>
     <div class="nav_button nav_button_right">
       <%= link_to "＞", category_word_path(category_id: @category.id, id: @next_word.id, from_study: params[:from_study]), class: "nav_button_link", aria: { label: "next" } %>
     </div>
+    <% end %>
 
   </div>  
 

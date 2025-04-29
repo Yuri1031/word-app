@@ -9,7 +9,6 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @group_words = @group.group_words.includes(:word, :user)
     @users = current_user.matchers
-
     @friends = current_user.matchers
   end
 
@@ -44,9 +43,12 @@ class GroupsController < ApplicationController
       @group.group_members.destroy_all 
       (params[:group][:user_ids] || []).each do |user_id|
         @group.group_members.create(user_id: user_id)
-      end
+     end
       redirect_to @group, notice: 'グループ情報を更新しました'
     else
+      @group_words = @group.group_words.includes(:word, :user)
+      @users = current_user.matchers  
+      @friends = current_user.matchers
       render :show, status: :unprocessable_entity
     end
   end

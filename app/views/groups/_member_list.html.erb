@@ -1,0 +1,11 @@
+
+    <% @group.users.each do |user| %>
+        <div class="member_list_item">
+            <% if user.profile_pic.attached? %>
+                <%= image_tag user.profile_pic, class: "member_icon" %>
+            <% else %>
+                <%= image_tag "sample1.png", class: "member_icon" %>
+            <% end %>
+            <span class="member_name"><%= user.nickname || "Unknown" %></span>
+        </div>
+    <% end %>

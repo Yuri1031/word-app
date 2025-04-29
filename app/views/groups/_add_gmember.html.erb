@@ -1,0 +1,21 @@
+
+    <%= form_with(model: @group, url: group_path(@group), method: :patch, data: { turbo_frame: "_top" }, html: { multipart: true }) do |f| %>
+        <div class="form_group_g">
+            <%= f.label :user_ids, "メンバー", class: "m_form_label" %><br>
+            <%= f.collection_check_boxes :user_ids, @users.presence || [], :id, :nickname do |cb| %>
+                <% user = @users.find { |u| u.id == cb.value.to_i } %>
+                <div class="checkbox_item">
+                    <%= cb.check_box(checked: @group.users.exists?(id: cb.value)) %>
+                    <% if user && user.profile_pic.attached? %>
+                        <%= image_tag user.profile_pic, class: "friend_img" %>
+                     <% else %>
+                        <%= image_tag "sample1.png", class: "friend_img" %>
+                    <% end %>
+                    <%= cb.label %>
+                </div>
+            <% end %>
+        </div>
+        <div class="form_actions">
+            <%= f.submit "更新", class: "btn_primary" %>
+        </div>
+    <% end %>

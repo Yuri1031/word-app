@@ -4,8 +4,8 @@ class MypagesController < ApplicationController
     @users = User.all
   end
 
-  def show
-    @categories = Category.includes(words: :word_marks)
+  def show 
+    @categories = Category.where(user_id: current_user.id).includes(words: :word_marks)
     @user = current_user
     @matchers = current_user.matchers
     @friends = current_user.matchers
@@ -33,18 +33,16 @@ class MypagesController < ApplicationController
       end
     end
   
-    @chart_color = current_user.color.name
-
-    def adjust_color(hex, r_add, g_add, b_add)
-      hex = hex.delete("#")
-      r = [hex[0..1].to_i(16) + r_add, 255].min
-      g = [hex[2..3].to_i(16) + g_add, 255].min
-      b = [hex[4..5].to_i(16) + b_add, 255].min
-      format("#%02X%02X%02X", r, g, b)
-    end
-    
+    @chart_color = current_user.color.name   
     @base_color = adjust_color(@chart_color, 93, 36, 44)
   end
-  
-  
+
+  private
+  def adjust_color(hex, r_add, g_add, b_add)
+    hex = hex.delete("#")
+    r = [hex[0..1].to_i(16) + r_add, 255].min
+    g = [hex[2..3].to_i(16) + g_add, 255].min
+    b = [hex[4..5].to_i(16) + b_add, 255].min
+    format("#%02X%02X%02X", r, g, b)
+  end
 end

@@ -15,7 +15,7 @@
                             <%= image_tag 'friends.png', class: 'friends_icon' %>
                             <%= render "relationships/friend_alert", count: @incoming_requests&.count || 0 %>
                         </div>
-                        <span><%= current_user.matchers.count %></span>
+                        <span id="friend_count"><%= render partial: "relationships/friend_count"%></span>
                     </div>
                     <!-- modal -->
                     <div class="modal" data-modal-target="modal" style="display: none;">
@@ -98,7 +98,7 @@
                             </div>
 
                             <div class="form_actions">
-                                <%= f.submit "更新", class: "f_btn_primary" %>
+                                <%= f.submit "更新", class: "btn_primary" %>
                             </div>
                             <% end %> 
                         </div>
@@ -111,20 +111,8 @@
 
         <div class="mypage_two">
             <h3>Friends</h3>
-            <div class="friends_list_box">
-                <ul class="friend-list">
-                    <% current_user.matchers.each do |friend| %>
-                        <li class="friend_item">
-                            <% if friend.profile_pic.attached? %>
-                                <%= image_tag friend.profile_pic, class: "friend_img" %>
-                             <% else %>
-                                <%= image_tag "sample1.png", class: "friend_img" %>
-                            <% end %>
-                            <%= friend.nickname %>
-                            <%= link_to relationship_path(friend), data: { turbo_method: :delete, turbo_confirm: "Are you sure? Do you want to delete this data?" }, class: "friend_remove_link" do %>×<% end %>
-                        </li>
-                    <% end %>
-                </ul>
+            <div id="friend_list" class="friends_list_box">
+                <%= render partial: "relationships/friend_list", locals: { users: current_user.matchers } %>
             </div>
         </div>
 

@@ -17,7 +17,7 @@
         <div data-controller="modal">
           <div class="group_member" data-action="click->modal#open">
             <%= image_tag 'friends.png', class: 'friends_icon_g' %>
-            <span><%= @users&.count || 0 %></span>
+            <span><%=  @group.users.count || 0 %></span>
           </div>
           <!-- modal -->
           <div class="modal" data-modal-target="modal" style="display: none;">
@@ -25,23 +25,13 @@
             <div class="modal__content">
               <button class="modal__close-btn" data-action="click->modal#close">×</button>
               <!-- 内容 -->
-              <%= form_with(model: @group, url: group_path(@group), method: :patch, data: { turbo_frame: "_top" }, html: { multipart: true }) do |f| %>
-                <div class="form_group_g">
-                  <%= f.label :user_ids, "メンバー", class: "m_form_label" %><br>
-                  <%= f.collection_check_boxes :user_ids, @users.presence || [], :id, :nickname do |cb| %>
-                    <% user = @users.find { |u| u.id == cb.value.to_i } %>
-                    <div class="checkbox_item">
-                      <%= cb.check_box %>
-                        <% if user && user.profile_pic.attached? %>
-                          <%= image_tag user.profile_pic, class: "friend_img" %>
-                       <% else %>
-                          <%= image_tag "sample1.png", class: "friend_img" %>
-                        <% end %>
-                      <%= cb.label %>
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
+              <div class="add_gmember">
+                <%= render partial: "groups/add_gmember"%>
+              </div>
+              <div class="member_list">
+                <%= render partial: "groups/member_list"%>
+              </div>
+              
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ class GroupWordsController < ApplicationController
     @group = Group.find(params[:group_id])
     @group_word = @group.group_words.find(params[:id])
     @word = @group_word.word
-
     @back_path = request.referer || group_path(@group)
   end
   def create

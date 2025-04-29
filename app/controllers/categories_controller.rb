@@ -16,15 +16,13 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    Rails.logger.debug "👤 current_user: #{current_user.inspect}"
     @category = current_user&.categories&.build(category_params) || Category.new(category_params)
     @category.user ||= current_user
   
     if @category.save
       redirect_to categories_path, notice: "カテゴリを作成しました！"
     else
-      Rails.logger.debug "💥 エラー内容: #{@category.errors.full_messages}"
-      @categories = Category.all
+      @categories = current_user.categories
       render :index, status: :unprocessable_entity
     end
   end
@@ -32,7 +30,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    redirect_to categories_path(@category), notice: "Data has been deleted!"
+    redirect_to categories_path, notice: "Data has been deleted!"
   end
   
 

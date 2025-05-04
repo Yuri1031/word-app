@@ -10,6 +10,9 @@ export default class extends Controller {
   }
 
   toggle() {
+    console.log("✅ toggle called");
+    const tokenTag = document.querySelector('meta[name="csrf-token"]');
+    console.log("🔒 token:", tokenTag?.content);
     const wordId = this.checkboxTarget.dataset.wordId;
     const markType = this.checkboxTarget.checked ? 1 : null;  
     

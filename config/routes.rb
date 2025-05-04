@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   resources :groups do
     resources :group_words, only: [:index, :show, :create]
+    delete 'members/:id', to: 'groups#destroy_member', as: 'member'
   end
 
   resources :words do

@@ -17,7 +17,7 @@
 
           <div class="form_group">
             <%= f.label :profile_picture, "Profile_picture", class: "form_label" %>
-            <%= f.file_field :profile_picture, autofocus: true, autocomplete:"photo", class: "form_input"%>
+            <%= f.file_field :profile_pic, autofocus: true, autocomplete:"photo", class: "form_input"%>
           </div>
           
           <div class="form_group_color" data-controller="color">
@@ -43,6 +43,11 @@
           <div class="form_group">
               <%= f.label :password, "Password*", class: "form_label" %>
               <%= f.password_field :password, class: "form_input", placeholder:"" %>
+          </div>
+
+          <div class="form_group">
+              <%= f.label :password_confirmation, "Password confirmation*", class: "form_label" %>
+              <%= f.password_field :password_confirmation, class: "form_input", placeholder: "" %>
           </div>
 
           <div class="form_group_btn">

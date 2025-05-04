@@ -1,7 +1,4 @@
-
-
-  <div class="main_bottom_group">
-
+<div class="main_bottom_group">
     <!-- add, modal -->
     <div data-controller="modal">
       <div class="group_create" data-action="click->modal#open">
@@ -13,9 +10,9 @@
         <div class="modal__content">
           <button class="modal__close-btn" data-action="click->modal#close">×</button>
           <h2>グループを作成</h2>
-          <%= form_with(model: @group, url: groups_path) do |f| %>
+          <%= form_with(model: @group, url: groups_path, html: { multipart: true }, local: true) do |f| %>
             <div class="form_group">
-              <%= f.label :group_name, "グループ名", class: "m_form_label" %><br>
+              <%= f.label :group_name, "グループ名＊", class: "m_form_label", required: true %><br>
               <%= f.text_field :group_name, class: "m_form_input" %>
             </div>
 
@@ -25,7 +22,7 @@
             </div>
 
             <div class="form_group">
-              <%= f.label :group_description, "説明", class: "m_form_label" %><br>
+              <%= f.label :group_description, "説明＊", class: "m_form_label", required: true %><br>
               <%= f.text_field :group_description, class: "m_form_input" %>
             </div>
 
@@ -57,15 +54,19 @@
 
     <!-- group -->
     <div class="card_space">
-      <% @groups.each do |group| %>
-        <%= link_to group_path(group), data: { turbo_frame: "_top" }, class: "card_link" do %>
-         <div class="card">
+      <% @groups.each do |group| %>        
+        <div class="card">
+          <%= button_to group_member_path(group, current_user), method: :delete, data: { turbo_confirm: 'Are you sure? Do you want to leave this group?' }, class: 'card_del' do %>
+            ×
+          <% end %>
+
+          <%= link_to group_path(group), data: { turbo_frame: "_top" }, class: "card_link" do %>
             <div class="card_pic">
-            <% if group.group_img.attached? %>
-                <%= image_tag group.group_img, class: "card_img" %>
-             <% else %>
-                <%= image_tag "sample1.png", class: "card_img" %>
-            <% end %>
+              <% if group.group_img.attached? %>
+                  <%= image_tag group.group_img, class: "card_img" %>
+               <% else %>
+                  <%= image_tag "sample1.png", class: "card_img" %>
+              <% end %>
             </div>
             <div class="gcard_name"><%= group.group_name %></div>
             <div class="card_mem">
@@ -74,7 +75,7 @@
               <% displayed_members.each do |member| %>
                 <% if member.profile_pic.attached? %>
                   <%= image_tag member.profile_pic, class: "gmember_img" %>
-                <% else %>
+                 <% else %>
                   <%= image_tag "sample1.png", class: "gmember_img" %>
                 <% end %>
               <% end %>
@@ -82,11 +83,8 @@
                 <div class="gmember_more">+<%= members.size - 5 %></div>
               <% end %>
             </div>
-
-         </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
-      
     </div> 
-
-  </div> 
+</div>

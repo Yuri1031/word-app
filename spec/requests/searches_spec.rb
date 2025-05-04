@@ -25,8 +25,7 @@ RSpec.describe "Searches", type: :request do
     
         expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body)
-    
-        expect(json["users"]).to be_an(Array)
+
         expect(json["words"]).to include(a_hash_including("title" => "TestTitle"))
         expect(json["categories"]).to include(a_hash_including("category_name" => "TestCategory"))
         expect(json["groups"]).to include(a_hash_including("group_name" => "TestGroup"))
@@ -40,7 +39,6 @@ RSpec.describe "Searches", type: :request do
         expect(response).to have_http_status(:ok)
         json = JSON.parse(response.body)
 
-        expect(json["users"]).to eq([])
         expect(json["words"]).to eq([])
         expect(json["categories"]).to eq([])
         expect(json["groups"]).to eq([])

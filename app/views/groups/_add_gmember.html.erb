@@ -1,7 +1,7 @@
 
     <%= form_with(model: @group, url: group_path(@group), method: :patch, data: { turbo_frame: "_top" }, html: { multipart: true }) do |f| %>
         <div class="form_group_g">
-            <%= f.label :user_ids, "メンバー", class: "m_form_label" %><br>
+            <%= f.label :user_ids, "メンバーを追加", class: "m_form_label" %><br>
             <%= f.collection_check_boxes :user_ids, @users.presence || [], :id, :nickname do |cb| %>
                 <% user = @users.find { |u| u.id == cb.value.to_i } %>
                 <div class="checkbox_item">

@@ -72,4 +72,8 @@ RSpec.configure do |config|
     end
   end
   
+  RSpec.configure do |config|
+    config.include ActiveSupport::Testing::TimeHelpers
+  end
+  
 end

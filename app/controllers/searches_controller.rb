@@ -3,9 +3,8 @@ class SearchesController < ApplicationController
     if params[:q].present?
       keyword = params[:q][:keyword] 
   
-      @users = current_user.matcher_users_relation
-                .where("nickname LIKE ?", "%#{keyword}%")
-  
+      @users = []
+      
       gids = current_user.groups.ids
   
       base_words = if gids.any?

@@ -3,7 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
 
   def after_sign_in_path_for(resource)
-    categories_path
+    root_path
   end
 
   def respond_to_on_destroy

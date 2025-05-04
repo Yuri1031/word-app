@@ -29,6 +29,7 @@
                 <%= render partial: "groups/add_gmember"%>
               </div>
               <div class="member_list">
+                <p class="m_form_label">メンバー</p>
                 <%= render partial: "groups/member_list"%>
               </div>
               
@@ -67,6 +68,11 @@
                 <div class="form_group">
                   <%= f.label :group_description, "説明", class: "m_form_label" %><br>
                   <%= f.text_field :group_description, class: "m_form_input" %>
+                </div>
+
+                <div class="form_group">
+                  <%= f.label :group_img, "グループ画像", class: "m_form_label" %><br>
+                  <%= f.file_field :group_img, class: "m_form_input" %>
                 </div>
 
                 <div class="form_actions">

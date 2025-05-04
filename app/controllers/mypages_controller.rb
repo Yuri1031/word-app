@@ -39,6 +39,7 @@ class MypagesController < ApplicationController
 
   private
   def adjust_color(hex, r_add, g_add, b_add)
+    return "#CCCCCC" if hex.nil?|| hex.delete("#").size != 6
     hex = hex.delete("#")
     r = [hex[0..1].to_i(16) + r_add, 255].min
     g = [hex[2..3].to_i(16) + g_add, 255].min

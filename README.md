@@ -26,29 +26,71 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 <br>
 
 ### ⚪︎機能一覧
-| ログイン画面 | サインイン画面 |
-| ------------ | -------------- |
-| <img src="https://github.com/user-attachments/assets/c4430d06-5508-4bc8-83ae-9e98b06103f3" width="400" />| <img src="https://github.com/user-attachments/assets/b64d22a3-b9b8-4294-af12-0c7bffca7ba2" width="400"/> |
-| ログイン後サイトの所定の画面に遷移できる様になっています。                                    | 情報を登録後、所定の画面に遷移できる様になっています。       |
+<h3>⚪︎機能一覧</h3>
 
-| My page画面 | Bookshelf画面 |
-| ------------ | -------------- |
-| <img src="https://github.com/user-attachments/assets/76553a0b-3c3f-4a20-bcb7-67ddc5c13f4f" width="400"/> | <img src="https://github.com/user-attachments/assets/f0c73909-f5a8-4005-9c0b-2e8b9f4fe5d4" width="400"/> |
-| 自分のアカウント情報の編集やフォロー申請、フレンド一覧、学習記録が確認できる様になっています。      | 「＋」ボタンでカテゴリーを作成し、単語一覧に遷移できる様になっています。|
-
-| Bookshelf 単語一覧画面  | Bookshelf 単語詳細画 |
-| ------------ | -------------- |
-| <img src="https://github.com/user-attachments/assets/285886f9-01b8-4933-ba7e-5bc727eab252" width="400"/> | <img src="https://github.com/user-attachments/assets/010ba713-4cdc-4568-ac13-66a7e4c3e781" width="400"/> |
-| 「＋」ボタンで単語を作成、その後単語詳細に遷移できる様になっています。                          | ハンバーガーメニュー内で単語カードの編集・削除・グループへ共有ができるようになっています。また、下部のトグルボタンをONにすると苦手と感じたカードとしてマークでき、Studyの本日のタスクで復習することが可能です。|
-
-| Study画面 | Study詳細画面 |
-| <img src="https://github.com/user-attachments/assets/b72ba954-2a6f-4867-a1da-10a470def8b0" width="400" /> | <img src="https://github.com/user-attachments/assets/8d16fffa-57f1-4d06-845e-e8c88c6d596b" width="400" /> |
-| 単語の見返しを目的にした仕様になっています。画面内には、「本日のタスク」と各「カテゴリー一覧」が表示されています。「本日のタスク」は間違えた単語を再度学習し、再び間違えたものに関しては3日後に表示されるようになっています。「カテゴリー一覧」は詳細表示に遷移すできるようになっています。| 「すべて or マークのみ」「順番 or ランダム」のフィルターを設定し、自由に単語の学習が行える様になっています。|
-
-| Group画面 | Group詳細画面 |
-| <img src="https://github.com/user-attachments/assets/c3ea1a26-9b8a-4676-a9ab-89c0c2318b77" width="400" /> | <img src="https://github.com/user-attachments/assets/8ad842c8-d733-44f4-b643-96073cdff0e5" width="400" /> |
-| 「＋」ボタンのグループ作成や、グループの一覧を表示し、グループ詳細画面に遷移できる様になっています。 | グループアカウント情報の変更や単語の一覧表示ができる様になっています。単語一覧では、共有した単語カードが共有者の名前とともに表示され、単語詳細画面に遷移できる様になっています。|
-<br>
+<table width="100%" cellspacing="10">
+  <tr>
+    <td width="50%">
+      <strong>ログイン画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/c4430d06-5508-4bc8-83ae-9e98b06103f3" width="100%"><br/>
+      ログイン後、所定の画面に遷移できます。
+    </td>
+    <td width="50%">
+      <strong>サインイン画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/b64d22a3-b9b8-4294-af12-0c7bffca7ba2" width="100%"><br/>
+      情報を登録後、所定の画面に遷移できます。
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>My page画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/76553a0b-3c3f-4a20-bcb7-67ddc5c13f4f" width="100%"><br/>
+      アカウント情報の編集、フォロー申請、学習記録の確認が可能です。
+    </td>
+    <td>
+      <strong>Bookshelf画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/f0c73909-f5a8-4005-9c0b-2e8b9f4fe5d4" width="100%"><br/>
+      「＋」でカテゴリーを作成し、単語一覧に遷移できます。
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>単語一覧画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/285886f9-01b8-4933-ba7e-5bc727eab252" width="100%"><br/>
+      「＋」で単語を作成後、単語詳細に遷移できます。
+    </td>
+    <td>
+      <strong>単語詳細画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/010ba713-4cdc-4568-ac13-66a7e4c3e781" width="100%"><br/>
+      編集・削除・共有・マークで復習可能です。
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Study画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/b72ba954-2a6f-4867-a1da-10a470def8b0" width="100%"><br/>
+      「本日のタスク」とカテゴリーから単語復習が行えます。
+    </td>
+    <td>
+      <strong>Study詳細画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/8d16fffa-57f1-4d06-845e-e8c88c6d596b" width="100%"><br/>
+      「マークのみ」「ランダム」などの条件で学習が可能です。
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Group画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/c3ea1a26-9b8a-4676-a9ab-89c0c2318b77" width="100%"><br/>
+      グループ作成と一覧から詳細画面へ遷移できます。
+    </td>
+    <td>
+      <strong>Group詳細画面</strong><br/>
+      <img src="https://github.com/user-attachments/assets/8ad842c8-d733-44f4-b643-96073cdff0e5" width="100%"><br/>
+      単語の共有表示と詳細確認が可能です。
+    </td>
+  </tr>
+</table>
+<br/>
 
 ### ⚪︎**ER図
 <img width="489" alt="Image" src="https://github.com/user-attachments/assets/c3725b72-ac6e-42b7-a1fd-946acbe24a48" />

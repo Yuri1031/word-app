@@ -5,6 +5,7 @@ class StudiesController < ApplicationController
   end
   
   def show
+    session[:previous_page] = request.fullpath
     @category = Category.find(params[:id])
     @words = Word.includes(:word_marks)
                  .where(category_id: @category.id) 

@@ -77,6 +77,4 @@ export default class extends Controller {
       answer.style.display = answer.style.display === "none" ? "block" : "none"
     }
   }
-  
-  
 }

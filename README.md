@@ -28,8 +28,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 ### ⚪︎機能一覧
 <table width="100%" cellspacing="10">
   <tr>
-    <td width="50%" align-items: center><b>ログイン画面</b></td>
-    <td width="50%" align-items: center><b>サインイン画面</b></td>
+    <td width="50%" align="center"><b>ログイン画面</b></td>
+    <td width="50%" align="center"><b>サインイン画面</b></td>
   </tr>
   <tr>
     <td width="50%"><img src="https://github.com/user-attachments/assets/c4430d06-5508-4bc8-83ae-9e98b06103f3" width="100%"></td>
@@ -43,8 +43,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 <table width="100%" cellspacing="10">
   <tr>
-    <td width="50%" align-items: center><b>My page画面<</b>/td>
-    <td width="50%" align-items: center><b>Bookshelf画面</b></td>
+    <td width="50%" align="center"><b>My page画面<</b></td>
+    <td width="50%" align="center"><b>Bookshelf画面</b></td>
   </tr>
   <tr>
     <td width="50%"><img src="https://github.com/user-attachments/assets/76553a0b-3c3f-4a20-bcb7-67ddc5c13f4f" width="100%"></td>
@@ -58,8 +58,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 <table width="100%" cellspacing="10">
   <tr>
-    <td width="50%" align-items: center><b>単語一覧画面</b></td>
-    <td width="50%" align-items: center><b>単語詳細画面</b></td>
+    <td width="50%" align="center"><b>単語一覧画面</b></td>
+    <td width="50%" align="center"><b>単語詳細画面</b></td>
   </tr>
   <tr>
     <td width="50%"><img src="https://github.com/user-attachments/assets/285886f9-01b8-4933-ba7e-5bc727eab252" width="100%"></td>
@@ -73,7 +73,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 <table width="100%" cellspacing="10">
   <tr>
-    <td width="50%" ,align="center"><b>Study画面</b></td>
+    <td width="50%" align="center"><b>Study画面</b></td>
     <td width="50%" align="center"><b>Study詳細画面</b></td>
   </tr>
   <tr>
@@ -88,8 +88,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 <table width="100%" cellspacing="10">
   <tr>
-    <td width="50%" align-items: center><b>Group画面</b></td>
-    <td width="50%" align-items: center><b>Group詳細画面</b></td>
+    <td width="50%" align="center"><b>Group画面</b></td>
+    <td width="50%" align="center"><b>Group詳細画面</b></td>
   </tr>
   <tr>
     <td width="50%"><img src="https://github.com/user-attachments/assets/c3ea1a26-9b8a-4676-a9ab-89c0c2318b77" width="100%"></td>

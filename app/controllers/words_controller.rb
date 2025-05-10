@@ -5,6 +5,7 @@ class WordsController < ApplicationController
     @category = @word.category
     @back_path = session[:previous_page]
     @groups = (current_user.groups + current_user.owned_groups).uniq
+    @from_study = params[:from_study] == "true"
   
     word_mark = @word.word_marks.find_by(user_id: current_user.id)
     if word_mark && word_mark.mark_type.present?

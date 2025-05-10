@@ -27,3 +27,6 @@ application.register("word-mark", WordMarkController)
 
 import SearchController from "./search_controller"
 application.register("search", SearchController)
+
+import ClickAnswerController from "./click_answer_controller"
+application.register("click-answer", ClickAnswerController)

@@ -27,7 +27,7 @@
       <% end %>
 
       <% @words.each do |word| %>
-      <%= link_to category_word_path(@category.id, word.id) do %>
+      <%= link_to category_word_path(@category.id, word.id, from_study: true) do %>
       <div class="card_show">
         <div class="card_title"><%= word.title %></div>
       </div>

@@ -3,7 +3,7 @@
 
 ## ⚪︎アプリケーション概要
 単語をカテゴリーごとに管理できるアプリです。本棚のように「並べる・選ぶ・振り返る」ことが可能です。
-<br/>
+<br>
 
 ## ⚪︎URL
 ※ (デプロイが完了後記載予定)
@@ -12,24 +12,24 @@
 ## テスト用アカウント
 Mail address: test@000.com
 Passwprd: testtest
-<br/>
+<br>
 
 ## ⚪︎開発のきっかけ
 学生時代の経験から「単語を効率よく覚える方法」を見つけることに苦労していました。特に感じていた課題は、単語を覚えるだけで、後から見返すさないというものです。また、学んだ単語が増えるにつれて整理ができなくなり、単語帳使用が疎遠になることが多々ありました。そのため、自分だけの“語彙の本棚”のようなものがあればと考えるようになりました。
 そんなとき、ある友人が「勉強した単語をグループで共有したい」と話していたのがきっかけで、単語を自分で管理でき、かつ必要に応じてグループ内でシェアできるアプリの必要性を実感しました。そこで、自分の学習体験とニーズをもとに、「並べる・選ぶ・振り返る」をキーワードにwordshelfを開発することを決意しました。
 wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を並べるように単語を可視化することで、記憶の定着と復習のしやすさをサポートします。また、シェア機能を通じて、他の学習者と知識を共有する場も提供します。
-<br/>
+<br>
 
 ## ⚪︎アプリ詳細
 ### ⚪︎開発環境
 ※※※※※ 確認してかく
-<br/>
+<br>
 
 ### ⚪︎機能一覧
 <table width="100%" cellspacing="10">
   <tr>
-    <td width="50%" align-items: center>ログイン画面</td>
-    <td width="50%" align-items: center>サインイン画面</td>
+    <td width="50%" align-items: center><b>ログイン画面</b></td>
+    <td width="50%" align-items: center><b>サインイン画面</b></td>
   </tr>
   <tr>
     <td width="50%"><img src="https://github.com/user-attachments/assets/c4430d06-5508-4bc8-83ae-9e98b06103f3" width="100%"></td>
@@ -40,73 +40,71 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
     <td width="50%">情報を登録後、所定の画面に遷移できます。</td>
   </tr>
 </table>
+
 <table width="100%" cellspacing="10">
   <tr>
-    <td width="50%">
-      <strong>ログイン画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/c4430d06-5508-4bc8-83ae-9e98b06103f3" width="100%"><br/>
-      ログイン後、所定の画面に遷移できます。
-    </td>
-    <td width="50%">
-      <strong>サインイン画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/b64d22a3-b9b8-4294-af12-0c7bffca7ba2" width="100%"><br/>
-      情報を登録後、所定の画面に遷移できます。
-    </td>
+    <td width="50%" align-items: center><b>My page画面<</b>/td>
+    <td width="50%" align-items: center><b>Bookshelf画面</b></td>
   </tr>
   <tr>
-    <td>
-      <strong>My page画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/76553a0b-3c3f-4a20-bcb7-67ddc5c13f4f" width="100%"><br/>
-      アカウント情報の編集、フォロー申請、学習記録の確認が可能です。
-    </td>
-    <td>
-      <strong>Bookshelf画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/f0c73909-f5a8-4005-9c0b-2e8b9f4fe5d4" width="100%"><br/>
-      「＋」でカテゴリーを作成し、単語一覧に遷移できます。
-    </td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/76553a0b-3c3f-4a20-bcb7-67ddc5c13f4f" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/f0c73909-f5a8-4005-9c0b-2e8b9f4fe5d4" width="100%"></td>
   </tr>
   <tr>
-    <td>
-      <strong>単語一覧画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/285886f9-01b8-4933-ba7e-5bc727eab252" width="100%"><br/>
-      「＋」で単語を作成後、単語詳細に遷移できます。
-    </td>
-    <td>
-      <strong>単語詳細画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/010ba713-4cdc-4568-ac13-66a7e4c3e781" width="100%"><br/>
-      編集・削除・共有・マークで復習可能です。
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Study画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/b72ba954-2a6f-4867-a1da-10a470def8b0" width="100%"><br/>
-      「本日のタスク」とカテゴリーから単語復習が行えます。
-    </td>
-    <td>
-      <strong>Study詳細画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/8d16fffa-57f1-4d06-845e-e8c88c6d596b" width="100%"><br/>
-      「マークのみ」「ランダム」などの条件で学習が可能です。
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <strong>Group画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/c3ea1a26-9b8a-4676-a9ab-89c0c2318b77" width="100%"><br/>
-      グループ作成と一覧から詳細画面へ遷移できます。
-    </td>
-    <td>
-      <strong>Group詳細画面</strong><br/>
-      <img src="https://github.com/user-attachments/assets/8ad842c8-d733-44f4-b643-96073cdff0e5" width="100%"><br/>
-      単語の共有表示と詳細確認が可能です。
-    </td>
+    <td width="50%">アカウント情報の編集、フォロー申請、学習記録の確認が可能です。</td>
+    <td width="50%">「＋」でカテゴリーを作成し、単語一覧に遷移できます。</td>
   </tr>
 </table>
-<br/>
+
+<table width="100%" cellspacing="10">
+  <tr>
+    <td width="50%" align-items: center><b>単語一覧画面</b></td>
+    <td width="50%" align-items: center><b>単語詳細画面</b></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/285886f9-01b8-4933-ba7e-5bc727eab252" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/010ba713-4cdc-4568-ac13-66a7e4c3e781" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%">「＋」ボタンで単語を作成、その後単語詳細に遷移できます。</td>
+    <td width="50%">ハンバーガーメニュー内で単語カードの編集・削除・グループへ共有ができるようになっています。また、下部のトグルボタンをONにすると苦手と感じたカードとしてマークでき、Studyの本日のタスクで復習することが可能です。</td>
+  </tr>
+</table>
+
+<table width="100%" cellspacing="10">
+  <tr>
+    <td width="50%" ,align="center"><b>Study画面</b></td>
+    <td width="50%" align="center"><b>Study詳細画面</b></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/b72ba954-2a6f-4867-a1da-10a470def8b0" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/8d16fffa-57f1-4d06-845e-e8c88c6d596b" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%">単語の見返しを目的にした仕様になっています。画面内には、「本日のタスク」と各「カテゴリー一覧」が表示されています。「本日のタスク」は間違えた単語を再度学習し、再び間違えたものに関しては3日後に表示されるようになっています。「カテゴリー一覧」は詳細表示に遷移すできるようになっています。</td>
+    <td width="50%">「すべて or マークのみ」「順番 or ランダム」のフィルターを設定し、自由に単語の学習が行える様になっています。</td>
+  </tr>
+</table>
+
+<table width="100%" cellspacing="10">
+  <tr>
+    <td width="50%" align-items: center><b>Group画面</b></td>
+    <td width="50%" align-items: center><b>Group詳細画面</b></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/c3ea1a26-9b8a-4676-a9ab-89c0c2318b77" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/8ad842c8-d733-44f4-b643-96073cdff0e5" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%">「＋」ボタンのグループ作成や、グループの一覧を表示し、グループ詳細画面に遷移できる様になっています。</td>
+    <td width="50%">グループアカウント情報の変更や単語の一覧表示ができる様になっています。単語一覧では、共有した単語カードが共有者の名前とともに表示され、単語詳細画面に遷移できる様になっています。</td>
+  </tr>
+</table>
+<br>
 
 ### ⚪︎**ER図
 <img width="489" alt="Image" src="https://github.com/user-attachments/assets/c3725b72-ac6e-42b7-a1fd-946acbe24a48" />
-<br/>
+<br>
 
 ### ⚪︎**データベース設計
 #### users テーブル -------------------------------------------
@@ -191,7 +189,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 - belongs_to :user
 - belongs_to :word
 - belongs_to :group
-<br/>
+<br>
 
 ### ⚪︎工夫した点
 <details>
@@ -214,7 +212,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 - ユーザーが直感的に操作できるよう、シンプルなデザインを心掛けました。
 - 視覚的にわかるよう、新規登録は「＋」、削除は「×」といったマーク中心のデザインを意識しビューを作成しております。
 </details>
-<br/>
+<br>
 
 ## ⚪︎今後の課題及び追加予定機能
 <details>
@@ -246,4 +244,4 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 - 共有されているグループ内の単語を自分のカードとして保存できる様にする。
 </details>
-<br/>
+<br>

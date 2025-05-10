@@ -28,6 +28,20 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 ### ⚪︎機能一覧
 <table width="100%" cellspacing="10">
   <tr>
+    <td width="50%" align-items: center>ログイン画面</td>
+    <td width="50%" align-items: center>サインイン画面</td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/c4430d06-5508-4bc8-83ae-9e98b06103f3" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/b64d22a3-b9b8-4294-af12-0c7bffca7ba2" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%">グイン後、所定の画面に遷移できます。</td>
+    <td width="50%">情報を登録後、所定の画面に遷移できます。</td>
+  </tr>
+</table>
+<table width="100%" cellspacing="10">
+  <tr>
     <td width="50%">
       <strong>ログイン画面</strong><br/>
       <img src="https://github.com/user-attachments/assets/c4430d06-5508-4bc8-83ae-9e98b06103f3" width="100%"><br/>

@@ -63,7 +63,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
   </tr>
   <tr>
     <td width="50%"><img src="https://github.com/user-attachments/assets/91b75284-9e9e-4dd5-8592-0ed001c9de54" width="100%"></td>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/bae0ea2b-812a-4394-bdde-2a77f5838428" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/37d17381-8b72-46bc-ac11-d9a5788deb2e" width="100%"></td>
   </tr>
   <tr>
     <td width="50%">「＋」ボタンで単語を作成、その後単語詳細に遷移できます。</td>

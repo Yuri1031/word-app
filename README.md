@@ -43,12 +43,12 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 <table width="100%" cellspacing="10">
   <tr>
-    <td width="50%" align="center"><b>My page画面<</b></td>
+    <td width="50%" align="center"><b>My page画面</b></td>
     <td width="50%" align="center"><b>Bookshelf画面</b></td>
   </tr>
   <tr>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/76553a0b-3c3f-4a20-bcb7-67ddc5c13f4f" width="100%"></td>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/f0c73909-f5a8-4005-9c0b-2e8b9f4fe5d4" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/4365a548-85af-4e7e-9d12-98ba090076bc" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/af5dd63a-247e-417e-ac61-046ea6e0a999" width="100%"></td>
   </tr>
   <tr>
     <td width="50%">アカウント情報の編集、フォロー申請、学習記録の確認が可能です。</td>
@@ -62,8 +62,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
     <td width="50%" align="center"><b>単語詳細画面</b></td>
   </tr>
   <tr>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/285886f9-01b8-4933-ba7e-5bc727eab252" width="100%"></td>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/010ba713-4cdc-4568-ac13-66a7e4c3e781" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/91b75284-9e9e-4dd5-8592-0ed001c9de54" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/bae0ea2b-812a-4394-bdde-2a77f5838428" width="100%"></td>
   </tr>
   <tr>
     <td width="50%">「＋」ボタンで単語を作成、その後単語詳細に遷移できます。</td>
@@ -77,8 +77,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
     <td width="50%" align="center"><b>Study詳細画面</b></td>
   </tr>
   <tr>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/b72ba954-2a6f-4867-a1da-10a470def8b0" width="100%"></td>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/8d16fffa-57f1-4d06-845e-e8c88c6d596b" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/9103a9d6-cdf0-4a68-8e34-3d442ec67b91" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/a092c7b6-e865-4d9f-8f28-63143fd23289" width="100%"></td>
   </tr>
   <tr>
     <td width="50%">単語の見返しを目的にした仕様になっています。画面内には、「本日のタスク」と各「カテゴリー一覧」が表示されています。「本日のタスク」は間違えた単語を再度学習し、再び間違えたものに関しては3日後に表示されるようになっています。「カテゴリー一覧」は詳細表示に遷移すできるようになっています。</td>
@@ -92,8 +92,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
     <td width="50%" align="center"><b>Group詳細画面</b></td>
   </tr>
   <tr>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/c3ea1a26-9b8a-4676-a9ab-89c0c2318b77" width="100%"></td>
-    <td width="50%"><img src="https://github.com/user-attachments/assets/8ad842c8-d733-44f4-b643-96073cdff0e5" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/4a50d248-6f45-4b2b-87e5-c46885e0e61b" width="100%"></td>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/20654bc3-cf73-4d3a-abe3-050f231ce796" width="100%"></td>
   </tr>
   <tr>
     <td width="50%">「＋」ボタンのグループ作成や、グループの一覧を表示し、グループ詳細画面に遷移できる様になっています。</td>

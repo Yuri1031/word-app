@@ -89,8 +89,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_08_010450) do
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "nickname", default: "", null: false
-    t.integer "color_id", default: 0, null: false
-    t.string "email", default: "", null: false
+    t.integer "color_id", null: false
+    t.string "email", limit: 191, default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

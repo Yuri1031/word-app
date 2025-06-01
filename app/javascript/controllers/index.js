@@ -30,3 +30,6 @@ application.register("search", SearchController)
 
 import ClickAnswerController from "./click_answer_controller"
 application.register("click-answer", ClickAnswerController)
+
+import HoverColorController from "./hover_color_controller"
+application.register("hover-color", HoverColorController)

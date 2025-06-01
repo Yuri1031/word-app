@@ -14,9 +14,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :rbenv_type, :user
 set :rbenv_ruby, '3.2.0'
 
-# Bundler にネイティブ gem のビルドをスキップさせる（M1 Mac 対策など）
-set :bundle_env_variables, { 'BUNDLE_FORCE_RUBY_PLATFORM' => 'true' }
-
 # どの公開鍵を利用してデプロイするか
 set :ssh_options, auth_methods: ['publickey'],
                                   keys: ['~/.ssh/my-key-pair.pem'] 

@@ -1,3 +1,5 @@
+puts "✅ Unicorn config loaded at #{Time.now}"
+
 #サーバ上でのアプリケーションコードが設置されているディレクトリを変数に入れておく
 app_path = File.expand_path('../../', __FILE__)
 

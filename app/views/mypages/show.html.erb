@@ -82,10 +82,27 @@
                                 <%= f.text_field :nickname, class: "m_form_input" %>
                             </div>
 
-                            <div class="form_group">
-                                <%= f.label :color_id, "色", class: "m_form_label" %><br>
-                                <%= f.collection_select(:color_id, Color.all, :id, :name, {}, { class: "select-box m_form_input", id: "profile_pic" }) %>
+                            <div class="form_group form_group_color" data-controller="color">
+                            <%= f.label :color_id, "色", class: "m_form_label" %><br>
+                            <%= f.hidden_field :color_id, id: "user_color_id_modal", data: { color_target: "input" } %>
+                            <div class="dropdown">
+                                <button type="button" class="dropdown__btn" data-action="click->color#toggleMenu" data-color-target="button">select a color</button>
+                                <div class="dropdown__menu-layer" data-color-target="layer">
+                                <div class="dropdown__menu">
+                                    <% Color.all.each do |color| %>
+                                    <div class="dropdown__item color-option" style="background-color: <%= color.backcolor %>;" data-action="click->color#select" data-color-id="<%= color.id %>" title="<%= color.name %>"></div>
+                                    <% end %>
+                                </div>
+                                </div>
                             </div>
+                            </div>
+
+
+
+
+
+
+
               
                             <div class="form_group">
                                 <%= f.label :profile_pic, "プロフィール画像", class: "m_form_label" %><br>

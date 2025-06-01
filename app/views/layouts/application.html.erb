@@ -12,7 +12,7 @@
 
   <body>
     <div class="wrapper">
-      <div class="side_bar">
+      <div class="side_bar" style="background-color: <%= current_user&.color&.backcolor || '#D9D9D9' %>;">
         <%= render "bases/side_bar" %>
       </div>
 

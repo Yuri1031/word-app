@@ -1,17 +1,31 @@
 <div class="side_header">
     <div class="si Mypage">
-        <p class="user_nickname">
-            <% if current_user %>
-                 <%= link_to current_user.nickname, mypage_path %>
-              <% else %>
-                  <%= link_to "ログイン", new_user_session_path %>
+        <% if current_user %>
+            <%= link_to mypage_path, class: "si Mypage" do %>
+            <p class="user_nickname"><%= current_user.nickname %></p>
             <% end %>
-        </p>
+        <% else %>
+            <%= link_to new_user_session_path, class: "si Mypage" do %>
+            <p class="user_nickname">ログイン</p>
+            <% end %>
+        <% end %>
     </div>
 </div>
 
 <div class="side_bottom">
-    <div class="si Bookshelf"><p><%= link_to "Bookshelf", categories_path  %></p></div>
-    <div class="si Study"><p><%= link_to "Study", studies_path %></p></div>
-    <div class="si Group"><p><%= link_to "Group", groups_path %></p></div>
+    <div class="si Bookshelf">
+      <%= link_to categories_path, class: "si Bookshelf" do %>
+        <p>Bookshelf</p>
+      <% end %>
+    </div>
+    <div class="si Study">
+      <%= link_to studies_path, class: "si Study" do %>
+        <p>Study</p>
+      <% end %>
+    </div>
+    <div class="si Group">
+      <%= link_to groups_path, class: "si Group" do %>
+        <p>Group</p>
+      <% end %>
+    </div>
 </div>

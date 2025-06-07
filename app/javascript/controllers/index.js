@@ -2,34 +2,34 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "controllers/application"
+import { application } from "controllers/application.js"
 
-import ClickAnswerController from "controllers/click_answer_controller"
+import ClickAnswerController from "controllers/click_answer_controller.js"
 application.register("click-answer", ClickAnswerController)
 
 import ColorController from "controllers/color_controller.js"
 application.register("color", ColorController)
 
-import HelloController from "./hello_controller"
+import HelloController from "controllers/hello_controller.js"
 application.register("hello", HelloController)
 
-import HoverColorController from "./hover_color_controller"
+import HoverColorController from "controllers/hover_color_controller.js"
 application.register("hover-color", HoverColorController)
 
-import MenuController from "./menu_controller"
+import MenuController from "controllers/menu_controller.js"
 application.register("menu", MenuController)
 
-import ModalController from "./modal_controller"
+import ModalController from "controllers/modal_controller.js"
 application.register("modal", ModalController)
 
-import SearchController from "./search_controller"
+import SearchController from "controllers/search_controller.js"
 application.register("search", SearchController)
 
-import ShareController from "./share_controller"
+import ShareController from "controllers/share_controller.js"
 application.register("share", ShareController)
 
-import ToggleController from "./toggle_controller"
+import ToggleController from "controllers/toggle_controller.js"
 application.register("toggle", ToggleController)
 
-import WordMarkController from "./word_mark_controller"
+import WordMarkController from "controllers/word_mark_controller.js"
 application.register("word-mark", WordMarkController)

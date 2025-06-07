@@ -4,10 +4,10 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController.js)
+import HelloController from "./hello_controller.js"
+application.register("hello", HelloController)
 
-import ColorController from "./color_controller"
+import ColorController from "./color_controller.js"
 application.register("color", ColorController)
 
 import ModalController from "./modal_controller"

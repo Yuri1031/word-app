@@ -13,5 +13,3 @@ pin "JS", to: "JS.js"
 
 pin "chartkick" # @5.0.1
 pin "chart.js", to: "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"
-
-

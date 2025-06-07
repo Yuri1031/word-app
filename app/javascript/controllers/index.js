@@ -2,34 +2,34 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "controllers/application"
 
-import HelloController from "./hello_controller.js"
-application.register("hello", HelloController)
+import ClickAnswerController from "controllers/click_answer_controller"
+application.register("click-answer", ClickAnswerController)
 
-import ColorController from "./color_controller.js"
+import ColorController from "controllers/color_controller"
 application.register("color", ColorController)
 
-import ModalController from "./modal_controller"
-application.register("modal", ModalController)
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
 
-import ToggleController from "./toggle_controller"
-application.register("toggle", ToggleController)
+import HoverColorController from "./hover_color_controller"
+application.register("hover-color", HoverColorController)
 
 import MenuController from "./menu_controller"
 application.register("menu", MenuController)
 
-import ShareController from "./share_controller"
-application.register("share", ShareController)
-
-import WordMarkController from "./word_mark_controller"
-application.register("word-mark", WordMarkController)
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
 
 import SearchController from "./search_controller"
 application.register("search", SearchController)
 
-import ClickAnswerController from "./click_answer_controller"
-application.register("click-answer", ClickAnswerController)
+import ShareController from "./share_controller"
+application.register("share", ShareController)
 
-import HoverColorController from "./hover_color_controller"
-application.register("hover-color", HoverColorController)
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
+
+import WordMarkController from "./word_mark_controller"
+application.register("word-mark", WordMarkController)

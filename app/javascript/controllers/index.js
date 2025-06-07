@@ -5,7 +5,7 @@
 import { application } from "./application"
 
 import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+application.register("hello", HelloController.js)
 
 import ColorController from "./color_controller"
 application.register("color", ColorController)

@@ -7,7 +7,7 @@ import { application } from "controllers/application"
 import ClickAnswerController from "controllers/click_answer_controller"
 application.register("click-answer", ClickAnswerController)
 
-import ColorController from "controllers/color_controller"
+import ColorController from "controllers/color_controller.js"
 application.register("color", ColorController)
 
 import HelloController from "./hello_controller"

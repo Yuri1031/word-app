@@ -22,9 +22,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 ## ⚪︎アプリ詳細
 ### ⚪︎開発環境
-・ruby  : 3.2.0
-・rails : 7.1.0
-<br>
+・ruby  : 3.2.0　<br>
+・rails : 7.1.0　<br>
 
 ### ⚪︎機能一覧
 <table width="100%" cellspacing="10">

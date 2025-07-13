@@ -102,11 +102,11 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 </table>
 <br>
 
-### ⚪︎**ER図
+### ⚪︎ER図
 <img width="489" alt="Image" src="https://github.com/user-attachments/assets/c3725b72-ac6e-42b7-a1fd-946acbe24a48" />
 <br>
 
-### ⚪︎**データベース設計
+### ⚪︎データベース設計
 #### users テーブル -------------------------------------------
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |

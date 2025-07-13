@@ -6,7 +6,7 @@
 <br>
 
 ## ⚪︎URL
-※ (デプロイが完了後記載予定)
+https://word-app-qv6j.onrender.com/users/sign_in
 <br>
 
 ## テスト用アカウント

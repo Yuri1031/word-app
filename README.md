@@ -128,8 +128,8 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | title              | string     | null: false                    |
-| question           | string     | null: false                    |
-| answer             | string     | null: false                    |
+| question           | text       | null: false                    |
+| answer             | text       | null: false                    |
 | img                | string     |                                | ← ActiveStorageを使用。
 | user               | references | null: false, foreign_key: true |
 | category           | references | null: false, foreign_key: true |

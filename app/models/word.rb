@@ -4,6 +4,7 @@ class Word < ApplicationRecord
   has_many :word_marks, dependent: :destroy
   has_many :group_words, dependent: :destroy
   has_many :groups, through: :group_words
+  has_one_attached :uploaded_image
 
   validates :title, presence: true
   validates :question, presence: true

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'uploader/image'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   resources :bookshelves, only: [:index, :show]
   resources :studies, only: [:index,:show]
   resource :mypage, only: [:show, :update]
+  post '/uploader/image', to: 'uploader#image'
+
   
   resources :word_marks do 
     collection do
@@ -49,5 +52,6 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  
   
 end

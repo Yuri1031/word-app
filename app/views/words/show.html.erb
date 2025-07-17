@@ -72,20 +72,17 @@
        <p>マークされた単語がありません。</p>
       <% end %>
 
-      <div
-  class="word_q"
-  <%= 'data-action="click->click-answer#toggle"' if @from_study %>
-  data-word-id="<%= @word.id %>">
-  <%= @word.question %>
-</div>
+      <div class="word_q" <%= 'data-action="click->click-answer#toggle"' if @from_study %> data-word-id="<%= @word.id %>">
+        <%= raw(@word.question) %>
+      </div>
 
-<div
-  class="word_a"
-  data-word-id="<%= @word.id %>"
-  <%= 'data-click-answer-target="answer"' if @from_study %>
-  <%= 'style="display: none;"' if @from_study %>>
-  <%= @word.answer %>
-</div>
+      <div
+        class="word_a"
+        data-word-id="<%= @word.id %>"
+        <%= 'data-click-answer-target="answer"' if @from_study %>
+        <%= 'style="display: none;"' if @from_study %>>
+        <%= raw(@word.answer) %>
+      </div>
 
 
       <div class="toggle" data-controller="toggle">
@@ -97,8 +94,6 @@
            <%= 'checked' if @word.word_marks.exists?(user_id: current_user.id) %> />
         </label>
       </div>
-
-
     </div>
 
     <!-- > -->

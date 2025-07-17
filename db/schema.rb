@@ -115,8 +115,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_08_010450) do
 
   create_table "words", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
-    t.string "question", null: false
-    t.string "answer", null: false
+    t.text "question", null: false
+    t.text "answer", null: false
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false

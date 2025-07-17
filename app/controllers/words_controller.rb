@@ -1,5 +1,7 @@
 class WordsController < ApplicationController
-  
+  before_action only: [:create, :update] do
+    resize_before_save(params[:word][:image], 1200, 1200)
+  end
   def show
     @word = Word.find(params[:id])
     @category = @word.category
@@ -105,7 +107,16 @@ class WordsController < ApplicationController
 
   private
   def word_params
-    params.require(:word).permit(:title, :question, :answer)
+    params.require(:word).permit(:title, :question, :answer, :uploaded_image)
+  end
+
+  def resize_before_save(image_param, width, height)
+    return unless image_param.respond_to?(:tempfile)
+    ImageProcessing::MiniMagick
+      .source(image_param.tempfile)
+      .resize_to_limit(width, height)
+      .call(destination: image_param.tempfile.path)
+  rescue StandardError
   end
 
 

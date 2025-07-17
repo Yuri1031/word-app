@@ -33,3 +33,6 @@ application.register("toggle", ToggleController)
 
 import WordMarkController from "controllers/word_mark_controller"
 application.register("word-mark", WordMarkController)
+
+import TinymceController from "controllers/tinymce_controller"
+application.register("tinymce", TinymceController)

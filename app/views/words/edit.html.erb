@@ -9,13 +9,19 @@
           </div>
         </div>
 
-        <div class="word_q">
-          <%= f.text_area :question, class: "form_textarea" %>
+        <div data-controller="tinymce">
+          <div class="word_q">
+            <%= f.text_area :question, data: { tinymce_target: "editor" }, placeholder:"Question", class: ["form_textarea", "tinymce"] %>
+          </div>
         </div>
 
-        <div class="word_a">
-          <%= f.text_area :answer, class: "form_textarea" %>
+        <div data-controller="tinymce">
+          <div class="word_a">
+            <%= f.text_area :answer, data: { tinymce_target: "editor" }, placeholder:"Answer", class: ["form_textarea", "tinymce"] %>
+          </div>
         </div>
+
+        <%= tinymce %>
 
         <div class="form_edit">
           <%= f.submit "更新する", class: "edit_submit_button" %>

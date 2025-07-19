@@ -73,6 +73,21 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 <table width="100%" cellspacing="10">
   <tr>
+    <td width="50%" align="center"><b>単語新規登録・編集画面</b></td>
+    <td width="50%" align="center"><b>~~~</b></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="https://github.com/user-attachments/assets/67c0b5bd-388f-4b2b-8ecd-3c7a37d6f6a8" width="100%"></td>
+    <td width="50%"><img src="~~~" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%">リッチエディターにより、より柔軟に単語カードの作成が可能になっています。</td>
+    <td width="50%">~~~</td>
+  </tr>
+</table>
+
+<table width="100%" cellspacing="10">
+  <tr>
     <td width="50%" align="center"><b>Study画面</b></td>
     <td width="50%" align="center"><b>Study詳細画面</b></td>
   </tr>

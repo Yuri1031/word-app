@@ -1,0 +1,13 @@
+# config/tinymce.yml
+menubar: "insert view format table tools"
+plugins:
+  - lists
+  - link
+  - image
+  - table
+  - code
+  - wordcount
+toolbar:
+  - bold italic underline | forecolor backcolor |bullist numlist outdent indent | uploadimage | link image table | code help wordcount
+images_upload_url: '/uploader/image'
+automatic_uploads: true

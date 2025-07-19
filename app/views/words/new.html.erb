@@ -4,20 +4,26 @@
 
   <div class="main_bottom_word">
     <div class="main_card"> 
-      <%= form_with(model: @word, url: category_words_path(@category), data: { turbo_frame: "main_content" }) do |f| %>
+      <%= form_with(model: @word, url: category_words_path(@category), data: { turbo_frame: "main_content" }, multipart: true ) do |f| %>
               <div class="word_card_top">
                 <div class="word_title">
                   <%= f.text_field :title, class: "form_input", placeholder:"Title" %>
                 </div>
               </div>
 
-              <div class="word_q">
-                <%= f.text_area :question, class: "form_textarea" , placeholder:"Question" %>
+              <div data-controller="tinymce">
+                <div class="word_qt">
+                  <%= f.text_area :question, data: { tinymce_target: "editor" }, placeholder:"Question", class: ["form_textarea", "tinymce"] %>
+                </div>
               </div>
 
-              <div class="word_a">
-                <%= f.text_area :answer, class: "form_textarea", placeholder:"Answer" %>
+              <div data-controller="tinymce">
+                <div class="word_at">
+                  <%= f.text_area :answer, data: { tinymce_target: "editor" }, placeholder:"Answer", class: ["form_textarea", "tinymce"] %>
+                </div>
               </div>
+
+              <%= tinymce %>
 
               <div class="form_edit">
                 <%= f.submit "作成", class: "edit_submit_button" %>

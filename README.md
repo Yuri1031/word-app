@@ -237,7 +237,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 </details>
 
 <details>
-<summary>2. 単語作成機能</summary>
+<summary>2. 単語作成機能　　（✔︎実装済み）</summary>
 
 - 文字だけでなくマーカーや画像・動画等といったコンテンツも保存できる様にする。
 </details>
@@ -255,7 +255,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 </details>
 
 <details>
-<summary>5. 単語カードの保存機能の実装（✔︎実装済み）</summary>
+<summary>5. 単語カードの保存機能の実装</summary>
 
 - 共有されているグループ内の単語を自分のカードとして保存できる様にする。
 </details>

@@ -91,3 +91,5 @@ gem 'ransack'
 gem 'chartkick'
 
 gem 'tinymce-rails'
+
+gem 'browser', '~> 6.2'

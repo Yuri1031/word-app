@@ -91,6 +91,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
+    browser (6.2.0)
     builder (3.3.0)
     capistrano (3.19.2)
       airbrussh (>= 1.0.0)
@@ -354,6 +355,7 @@ PLATFORMS
 DEPENDENCIES
   active_hash
   bootsnap
+  browser
   capistrano
   capistrano-bundler
   capistrano-rails

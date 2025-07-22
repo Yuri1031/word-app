@@ -10,7 +10,7 @@
     </form>
 
     <div data-search-target="results" class="search-results scrollable hidden"></div>
-</div>
+  </div>
 
   <!-- logout -->
   <%= link_to destroy_user_session_path, method: :delete, class: "login_out", data: { controller: "hover-color", hover_color_target: "logout", user_color: current_user&.color&.backcolor || '#f0f0f0' } do %>

@@ -13,19 +13,46 @@
 </div>
 
 <div class="side_bottom">
-    <div class="si Bookshelf">
-      <%= link_to categories_path, class: "si Bookshelf" do %>
-        <p>Bookshelf</p>
-      <% end %>
-    </div>
-    <div class="si Study">
-      <%= link_to studies_path, class: "si Study" do %>
-        <p>Study</p>
-      <% end %>
-    </div>
-    <div class="si Group">
-      <%= link_to groups_path, class: "si Group" do %>
-        <p>Group</p>
-      <% end %>
-    </div>
+  <% if browser.device.mobile? %>
+      <div class="si Bookshelf">
+        <%= link_to categories_path, class: "si Bookshelf" do %>
+          <%= image_tag "bookshelf.png", class: "icon_side" %>
+        <% end %>
+      </div>
+      <div class="si Study">
+        <%= link_to studies_path, class: "si Study" do %>
+          <%= image_tag "study.png", class: "icon_side" %>
+        <% end %>
+      </div>
+      <div class="si Group">
+        <%= link_to groups_path, class: "si Group" do %>
+          <%= image_tag "group.png", class: "icon_side" %>
+        <% end %>
+      </div>
+      <div class="si mypage">
+        <%= link_to mypage_path, class: "si Mypage" do %>
+          <% if current_user.profile_pic.attached? %>
+            <%= image_tag current_user.profile_pic, class: "mypage_icon_img" %>
+          <% else %>
+            <%= image_tag "sample.png", class: "icon_side" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="si Bookshelf">
+        <%= link_to categories_path, class: "si Bookshelf" do %>
+          <p>Bookshelf</p>
+        <% end %>
+      </div>
+      <div class="si Study">
+        <%= link_to studies_path, class: "si Study" do %>
+          <p>Study</p>
+        <% end %>
+      </div>
+      <div class="si Group">
+        <%= link_to groups_path, class: "si Group" do %>
+          <p>Group</p>
+        <% end %>
+      </div>
+  <% end %>
 </div>

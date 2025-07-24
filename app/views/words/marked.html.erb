@@ -20,10 +20,10 @@
       </div>
 
       <div class="word_q" data-action="click->word-mark#toggleAnswer" data-word-id="<%= @word.id %>">
-        <%= @word.question %>
+        <%= raw(@word.question) %>
       </div>
       <div class="word_a" data-word-mark-target="answer" data-word-id="<%= @word.id %>" style="display: none;">
-        <%= @word.answer %>
+        <%= raw(@word.answer) %>
       </div>
 
       <div class="toggle">

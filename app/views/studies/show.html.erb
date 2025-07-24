@@ -13,12 +13,12 @@
       <%= form_with url: study_path(@category), method: :get, class:"study_select_form", local: true do |f| %>
       <div class="main_selector">
         <div class="study_select">
-          <label class="study_selector"><%= radio_button_tag 'filter', 'all', params[:filter] != 'marked', class: 'radi' %>全て</label>
+          <label class="study_selector"><%= radio_button_tag 'filter', 'all', params[:filter] != 'marked', class: 'radi' %>全て</label><br>
           <label class="study_selector"><%= radio_button_tag 'filter', 'marked', params[:filter] == 'marked', class: 'radi' %>マークのみ</label>
         </div>
 
         <div class="study_select">
-          <label class="study_selector"><%= radio_button_tag 'order', 'asc', params[:order] != 'random', class: 'radi' %>順番</label>
+          <label class="study_selector"><%= radio_button_tag 'order', 'asc', params[:order] != 'random', class: 'radi' %>順番</label><br>
           <label class="study_selector"><%= radio_button_tag 'order', 'random', params[:order] == 'random', class: 'radi' %>ランダム</label>
         </div>
       </div>

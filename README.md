@@ -51,7 +51,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
     <td width="50%"><img src="https://github.com/user-attachments/assets/af5dd63a-247e-417e-ac61-046ea6e0a999" width="100%"></td>
   </tr>
   <tr>
-    <td width="50%">アカウント情報の編集、フォロー申請、学習記録の確認が可能です。</td>
+    <td width="50%">アカウント情報の編集(セッティングマークから)、フォロー申請(プロフィール画像下のアイコンから)や、学習記録の確認が可能です。</td>
     <td width="50%">「＋」でカテゴリーを作成し、単語一覧に遷移できます。</td>
   </tr>
 </table>

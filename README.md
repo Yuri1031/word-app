@@ -80,6 +80,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
   </tr>
   <tr>
     <td width="50%"><img src="https://github.com/user-attachments/assets/67c0b5bd-388f-4b2b-8ecd-3c7a37d6f6a8" width="100%"></td>
+    <td></td>
     <!--
     <td width="50%"><img src="" width="100%"></td>
     -->

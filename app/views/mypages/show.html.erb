@@ -173,10 +173,19 @@
                             </div>
                         </div>  
                     <% end %>
-                <% end %>  
-                
+                <% end %>         
             </div>
-        </div>         
+        </div> 
+
+        <% if browser.device.mobile? %>
+          <div class="mypage_logout">
+          <%= link_to destroy_user_session_path, method: :delete, class: "login_out", data: { controller: "hover-color", hover_color_target: "logout", user_color: current_user&.color&.backcolor || '#f0f0f0' } do %>
+            <p>logout</p>
+          <% end %>
+          </div>
+        <% else %>
+          <%# logoutリンクを表示しない %>
+        <% end %> 
     </div>
 
 

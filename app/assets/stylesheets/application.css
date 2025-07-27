@@ -1003,7 +1003,7 @@ ul,li {
   }
   
 
-  /****/
+  /** group information **/
   .group_info {
     display: flex;
     justify-content: space-between;
@@ -1265,6 +1265,8 @@ ul,li {
 
 
 
+
+
 /************** スマホ用 **************/
 @media screen and (max-width: 768px){ 
   .wrapper {
@@ -1321,11 +1323,8 @@ ul,li {
   }
 
   /**** main ****/
-  .main {
+  .main{
     width: 100%;
-    /*
-    height: calc(100vh - 60px);
-    */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1339,9 +1338,6 @@ ul,li {
     justify-content: center;
     align-items: flex-start;
   }  
-  .login_out{
-    display: none;
-  }
   .main_content {
     width: 100%;
     height: auto;
@@ -1352,9 +1348,29 @@ ul,li {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    
     overflow-y: scroll;
   }
+  
+  /**** logout ****/
+ .login_out{
+   width: 100%;
+   height: auto;
+   background-color: #ffFFFF;
+   border-radius: 8px;
+   margin-right: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px #D9D9D9 solid;
+ }
+ .login_out p{
+  font-size: 1.2rem;
+  color: black;
+ }
+ .text{
+   width: 500px;
+   height: 30px;
+ }
 
   /*** search ***/
   .search {
@@ -2141,8 +2157,8 @@ ul,li {
     margin-bottom: 5px;
   }  
   .friend_img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid #ccc;
@@ -2151,6 +2167,8 @@ ul,li {
 
  /**** my page ****/
  .mypage_main {
+   width: 100%;
+   height: 100vh;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -2264,9 +2282,7 @@ ul,li {
    padding: 8px 10px;
    border-bottom: 1px solid #eee;
  }
-
-
- .mypage_two,.mypage_three {
+ .mypage_two,.mypage_three{
    width: 85%;   
    background: white;
    border-radius: 10px;
@@ -2276,6 +2292,16 @@ ul,li {
    padding: 20px;
    margin-top: 20px;
  }
+ .mypage_logout{
+   width: 85%;
+   height: auto;   
+   background: white;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   white-space: nowrap; 
+   padding: 20px;
+   margin-top: 20px;
+ } 
  .friend-list {
    display: flex;
    flex-wrap: nowrap;
@@ -2285,7 +2311,6 @@ ul,li {
    margin: 0;
    list-style: none;
  }
-
  .friend-list li {
    display: flex;
    flex-direction: column;
@@ -2391,6 +2416,65 @@ ul,li {
 .dropdown__item--active {
   border-color: #333;
 }
+
+/***** friend *****/
+ .btn_primary_friend{
+   width: 100%;
+   height: 40px;
+   margin: 5px 0 5px 0;
+   background-color: antiquewhite;
+   border: 1px #D9D9D9 solid;
+   border-radius: 5px;
+  }
+ .item-list-content {
+   max-height: 200px;
+   overflow-y: auto;
+   margin-top: 1em;
+  }
+ .f_result_contents{
+   width: 100%;
+   height: 35px;
+   border: 1px #D9D9D9 solid;
+   border-radius: 5px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 15px;
+  }
+ .f_result_list{
+   margin-left: 15px;
+  }
+ .btn_primary_addfriend, .btn_cancel_friend{
+   width: 80px;
+   height: 35px;
+   background-color: antiquewhite;
+   border: 1px #D9D9D9 solid;
+   border-radius: 5px;
+  }
+  .waiting_list{
+    overflow-y: scroll;    
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .f_list{
+    width: 100%;  
+    overflow: scroll;
+    margin-bottom: 15px;
+  }
+  
+  .f_waiting_list li{
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    border-bottom: 1px #D9D9D9 solid;
+  }
+  .btn_cancel_follow{
+    border: none;
+    background-color: white;
+    font-size: 1rem;
+  }
 
 
   

@@ -43,8 +43,8 @@
 
       </div>
 
-      <div class="word_q"><%= @word.question %></div>
-      <div class="word_a"><%= @word.answer %></div>
+      <div class="word_q"><%= raw(@word.question) %></div>
+      <div class="word_a"><%= raw(@word.answer) %></div>
       <p class="word_usernick"><%= @group_word.user.nickname %></p>
     </div>
 

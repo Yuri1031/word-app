@@ -41,7 +41,6 @@
   .top_login a, .top_register a{
     text-decoration: none;
     color: white;
-    
   }
   .top_login {
     border-radius: 8px 0 0 0;
@@ -57,12 +56,12 @@
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   }
 
-
   /******* turbo-frame *******/
   turbo-frame {
     display: block;
     width: 100%;
   }
+
   /********* error *********/
   .error{
     width: 100%;
@@ -137,7 +136,6 @@
   .forgot-password:hover {
     text-decoration: underline;
   }
-  
 
   /***** Register form *****/
   /***** color *****/
@@ -192,13 +190,208 @@
  .dropdown__item--active {
     border-color: #333;
   }
-  
-  
-  
+}
 
+
+
+
+
+
+
+/************* スマホ用 **************/
+@media screen and (max-width: 768px){
+  body {
+    background: #dbdbdb;
+    margin: 0;
+    padding: 0;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-weight: 100;
+    overflow-y: auto;
+  }
+  .wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .form_wrap {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     
+  }
+ .form_top {
+    display: flex;
+    width: 100%;
+  }
+ .top_login, .top_register {
+    flex: 1;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-weight: bold;
+    color: white;
+    background: #6a9f96;
+    box-shadow: inset 0px -3px 5px rgba(0, 0, 0, 0.2); /* 内側の影 */
+  }
+  .top_login a, .top_register a{
+    text-decoration: none;
+    color: white;
+    
+  }
+  .top_login {
+    border-radius: 8px 0 0 0;
+  }
+ .top_register {
+    border-radius: 0 8px 0 0;
+    background: #4f8b82; 
+  }
+ .form_bottom {
+    width: 100%;
+    background: white;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  }
 
 
+  /******* turbo-frame *******/
+  turbo-frame {
+    display: block;
+    width: 100%;
+  }
+  /********* error *********/
+  .error{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.8rem;
+    color: #4f8b82;
+    margin-bottom: 20px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-left: 4px solid #4f8b82;
+    border-radius: 4px;
+  }
+  .error_message{
+    list-style: disc inside;
+    padding-left: 20px;
+    margin: 0;
+  }
 
+  /******* Login form *******/
+  .content{
+    padding: 30px;
+    overflow: visible;
+    position: relative
+  }
+  h2{
+    margin-bottom: 30px;
+  }
+  .form_group{
+    width: 100%;
+    min-height: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+  }
+  .form_label {
+    width: 200px;
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+    text-align: left;
+    padding-top: 2px;
+  }
+  .form_input{
+    width: 100%;
+    border: none;
+    margin-left: 30px;
+    font-size: 20px;
+  }
+  .form_group_btn {
+    width: 100%;
+    margin-top: 40px;
+  }
+  .btn{
+    width: 100%;
+    height: 40px;
+    background-color: #78b3a9;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #6a9f96;
+    text-decoration: none;
+  }
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
 
+  /***** Register form *****/
+  /***** color *****/
+ .form_group_color{
+    width: 100%;
+    height: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #ddd;
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+  }
+ .dropdown__btn{
+    width: 100px;
+    height: 25px;
+    border: 1px solid #767676;
+    border-radius: 2px;
+ }
+ .dropdown {
+    width: 100%;
+    margin-left: 30px;
+    position: relative;
+ }
+ .dropdown__menu-layer {
+    width: 200px;
+    max-height: 200px;
+    display: none;
+    background-color: white;
+    border: 2px dashed #D9D9D9;
+    z-index: 9999;
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    padding: 10px;
+    overflow-y: auto;
+  }
+ .dropdown__menu-layer--show {
+    display: block;
+  }
+ .color-option {
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+ .color-option:hover {
+    opacity: 0.8;
+  }
+ .dropdown__item--active {
+    border-color: #333;
+  }
 }

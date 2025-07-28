@@ -1277,7 +1277,7 @@ ul,li {
   /**** side ****/
   .side_bar {
     width: 100%;
-    height: 60px;
+    height: 40px;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -1285,7 +1285,7 @@ ul,li {
     justify-content: space-around;
     background-color: #ffffff;
     z-index: 999;
-    padding: 5px 0;
+    padding: 10px 0;
   }
   .side_bottom {
     width: 100%;

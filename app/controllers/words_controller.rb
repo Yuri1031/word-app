@@ -2,6 +2,8 @@ class WordsController < ApplicationController
   before_action only: [:create, :update] do
     resize_before_save(params[:word][:image], 1200, 1200)
   end
+  before_action :set_from_study_flag, only: [:show, :update]
+
   def show
     @word = Word.find(params[:id])
     @category = @word.category
@@ -103,6 +105,11 @@ class WordsController < ApplicationController
     end
     redirect_to category_word_path(@word.category, @word), notice: "共有が完了しました。"
   end
+
+  def set_from_study_flag
+  @from_study = params[:from_study].to_s == "true"
+end
+
 
 
   private

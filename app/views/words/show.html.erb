@@ -14,7 +14,13 @@
 
     <!-- card -->
     <% if @word %>
-      <div class="main_card" <%= 'data-controller="click-answer"' if @from_study %>>
+    
+      <% if @from_study %>
+        <div class="main_card" data-controller="click-answer" data-from-study="true">
+       <% else %>
+        <div class="main_card">
+      <% end %>
+
         <div class="word_card_top">
           <div class="word_title"><%= @word.title %></div>
 
@@ -72,15 +78,15 @@
        <p>マークされた単語がありません。</p>
       <% end %>
 
-      <div class="word_q" <%= 'data-action="click->click-answer#toggle"' if @from_study %> data-word-id="<%= @word.id %>">
+      <div class="word_q" <%= 'data-action="click->click-answer#toggle"'.html_safe if @from_study %> data-word-id="<%= @word.id %>">
         <%= raw(@word.question) %>
       </div>
 
       <div
         class="word_a"
         data-word-id="<%= @word.id %>"
-        <%= 'data-click-answer-target="answer"' if @from_study %>
-        <%= 'style="display: none;"' if @from_study %>>
+        <%= 'data-click-answer-target="answer"'.html_safe if @from_study %>
+        <%= 'style="display: none"'.html_safe if @from_study %>>
         <%= raw(@word.answer) %>
       </div>
 

@@ -270,7 +270,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 </details>
 
 <details>
-<summary>6. スマホ画面対応</summary>
+<summary>6. スマホ画面対応　　（✔︎実装済み）</summary>
 
 - 画面デザインをスマホ画面対応にする。
 </details>

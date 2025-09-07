@@ -14,6 +14,7 @@
 
     <!-- card -->
     <% if @word %>
+<<<<<<< Updated upstream
     
       <% if @from_study %>
         <div class="main_card" data-controller="click-answer" data-from-study="true">
@@ -21,6 +22,9 @@
         <div class="main_card">
       <% end %>
 
+=======
+      <div class="main_card">
+>>>>>>> Stashed changes
         <div class="word_card_top">
           <div class="word_title"><%= @word.title %></div>
 
@@ -74,10 +78,8 @@
             </ul>
           </div>
         </div>
-       <% else %>
-       <p>マークされた単語がありません。</p>
-      <% end %>
 
+<<<<<<< Updated upstream
       <div class="word_q" <%= 'data-action="click->click-answer#toggle"'.html_safe if @from_study %> data-word-id="<%= @word.id %>">
         <%= raw(@word.question) %>
       </div>
@@ -89,18 +91,34 @@
         <%= 'style="display: none"'.html_safe if @from_study %>>
         <%= raw(@word.answer) %>
       </div>
+=======
+        <div class="word_q" <%= 'data-action="click->click-answer#toggle"' if @from_study %> data-word-id="<%= @word.id %>">
+          <%= @word.question %>
+        </div>
 
+        <div class="word_a" data-word-id="<%= @word.id %>" <%= 'data-click-answer-target="answer"' if @from_study %> <%= 'style="display: none;"' if @from_study %>> 
+          <%= @word.answer %> 
+        </div>
+>>>>>>> Stashed changes
 
-      <div class="toggle" data-controller="toggle">
-        <label class="toggle-button-2" data-toggle-target="label">
-          <input type="checkbox"
-           data-toggle-target="checkbox"
-           data-action="change->toggle#toggle"
-           data-word-id="<%= @word.id %>"
-           <%= 'checked' if @word.word_marks.exists?(user_id: current_user.id) %> />
-        </label>
+        <div class="toggle" data-controller="toggle">
+          <label class="toggle-button-2" data-toggle-target="label">
+            <input type="checkbox"
+            data-toggle-target="checkbox"
+            data-action="change->toggle#toggle"
+            data-word-id="<%= @word.id %>"
+            <%= 'checked' if @word.word_marks.exists?(user_id: current_user.id) %> />
+          </label>
+        </div>
       </div>
+<<<<<<< Updated upstream
     </div>
+=======
+     <% else %>
+      <p>マークされた単語がありません。</p>
+    <% end %>
+
+>>>>>>> Stashed changes
 
     <!-- > -->
     <% if @next_word %>

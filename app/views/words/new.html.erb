@@ -11,22 +11,18 @@
                 </div>
               </div>
 
-              <div data-controller="tinymce">
-                <div class="word_qt">
-                  <%= f.text_area :question, data: { tinymce_target: "editor" }, placeholder:"Question", class: ["form_textarea", "tinymce"] %>
-                </div>
+              <div class="word_qt">
+                <%= f.text_area :question, placeholder:"Question", class: "form_textarea" %>
               </div>
 
-              <div data-controller="tinymce">
-                <div class="word_at">
-                  <%= f.text_area :answer, data: { tinymce_target: "editor" }, placeholder:"Answer", class: ["form_textarea", "tinymce"] %>
-                </div>
+              <div class="word_at">
+                <%= f.text_area :answer, placeholder:"Answer", class: "form_textarea" %>
               </div>
 
               <div class="form_edit">
                 <%= f.submit "作成", class: "edit_submit_button" %>
               </div>
-            <% end %>
+      <% end %>
     </div>
     
   </div>  

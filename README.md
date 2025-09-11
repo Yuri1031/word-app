@@ -283,19 +283,58 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
 
 ## ⚪︎Making of this app 
 自身の学習メモとして見返せるように、制作時に気になったことをこちらに残しております。</summary>
-<!--
+
 <details>
-  <summary>非同期処理による、画面の入れ替え</summary>
-  - 「Work」「Life」「Hobby」タブをそれぞれクリックすると、タブに対応したビューを<div class="main_list">箇所に表示させる。<br>
+  <summary>modal 機能</summary>
+  - 新規作成の際にフォームがポップアップで現れるようにする。<br>
       
 ```html
-　
+<!-- modal (add card) -->
+<div data-controller="modal">　　　　// 参照先を modal_controller.js と指定
+    <div class="card_add" data-action="click->modal#open">　　　　// clickすると「modal_controller.js」の openメソッド が起動
+        <div class="card_pic"><%= image_tag "", class: "card_img"%></div>
+        <div class="card_name">+</div>
+    </div>
+
+    <!-- modal form -->
+    <div class="modal" data-modal-target="modal">　　　　　 // ターゲットとして指定（ターゲット名：modal）
+        <div class="modal__overlay" data-action="click->modal#close"></div>                  // clickすると「modal_controller.js」の closeメソッド が起動
+        <div class="modal__content">
+            <button class="modal__close-btn" data-action="click->modal#close">×</button>    // clickすると「modal_controller.js」の closeメソッド が起動
+            <h2>カテゴリーを追加</h2>
+            <%#= form_with(model: @category, url: categories_path, html: { multipart: true }, local: true) do |f| %>
+                <div>
+                    <%#= f.label :category_name, "カテゴリ名", class: "m_form_label" %><br>
+                    <%#= f.text_field :category_name, class: "m_form_input" %>
+                </div>
+                
+                <div class="form_actions">
+                    <%#= f.submit "作成", class: "btn_primary" %>
+                </div>
+            <%# end %>
+        </div>
+    </div>
+</div>
 ```
 <br>
 
 ```javascript
-   
+/////// modal //////
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+    static targets = ["modal"]
+
+    open(){
+        this.modalTarget.style.display = "block"　　// ターゲットとして指定したクラスのCSS(.modal)を「display = "block" (.modalを表示)」にする。
+    }
+
+    close(){
+        this.modalTarget.style.display = "none"   // ターゲットとして指定したクラスのCSS(.modal)を「display = "none"（modalを非表示）」にする。
+    }
+}
 ```
+<!--
   <table width="80%" cellspacing="10">
     <tr>
       <td width="20%" align="left"><b>data-target</b></td>

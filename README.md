@@ -297,7 +297,7 @@ wordshelfは、語彙を自由なカテゴリーで整理し、本棚に本を�
     </div>
 
     <!-- modal form -->
-    <div class="modal" data-modal-target="modal">　　　　　 // ターゲットとして指定（ターゲット名：modal）
+    <div class="modal" data-modal-target="modal">　　　　　       // 処理対象(ターゲット)として指定（ターゲット名：modal）
         <div class="modal__overlay" data-action="click->modal#close"></div>                  // clickすると「modal_controller.js」の closeメソッド が起動
         <div class="modal__content">
             <button class="modal__close-btn" data-action="click->modal#close">×</button>    // clickすると「modal_controller.js」の closeメソッド が起動
@@ -334,17 +334,91 @@ export default class extends Controller {
     }
 }
 ```
-<!--
-  <table width="80%" cellspacing="10">
-    <tr>
-      <td width="20%" align="left"><b>data-target</b></td>
-      <td width="80%" align="left">
-         HTML要素に自由にデータを持たせるための属性のひとつ。<br>
-        「どの要素を対象にするか」を紐づけるための目印として使われている。<br>
-         htmlで「data-target(←属性名)=""」と記載し、呼び出すときはJSに「要素.dataset.属性名」で呼び出す。<br>
-         例）data-target="work-list" → 要素.dataset.target
-      </td>
-    </tr>
-  </table>
 </details>
 
+<details>
+  <summary>dropdown 機能</summary>
+  - ☰をクリックすると、メニュー一覧が下に表示される。<br>
+      
+```html
+<div class="word_menu" data-controller="dropdown">                    // 参照先を dropdown_controller.js と指定
+    <button type="button" class="dropdown_menu"  data-action="click->dropdown#open">☰</button>            // clickすると「dropdown_controller.js」の openメソッド が起動
+    <ul class="menu1-lists" data-dropdown-target="dropdown">     // 処理対象(ターゲット)として指定（ターゲット名：dropdown）
+      <li class="menu-item">
+          <%= link_to "##", class: 'menu-link' do %>
+              <%= image_tag "menu1.png", class: "icon" %>
+              <span class="menu-text">edit</span>
+          <% end %>
+      </li>
+
+      <li class="menu-item">
+          <%= link_to "##" do %>
+              <%= image_tag "menu2.png", class: "icon" %>
+              <span class="menu-text">delete</span>
+          <% end %>
+      </li>
+    </ul>
+<div>
+```
+<br>
+
+```javascript
+/////// dropdown //////
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+    static targets = ["dropdown"]
+
+    closeOutsideClick = (event) => {
+  	  if (!this.element.contains(event.target)) {
+  	    this.dropdownTarget.style.display = "none"
+  	  }
+  	}
+
+    connect(){
+        document.addEventListener("click", this.closeOutsideClick) 
+    }
+
+    disconnect(){
+        document.removeEventListener("click", this.closeOutsideClick)
+	  }
+
+    open(event){
+        event.stopPropagation()
+        if(this.dropdownTarget.style.display === "block"){
+            this.dropdownTarget.style.display = "none"
+        } else {
+            this.dropdownTarget.style.display = "block"
+        }
+    }
+
+    close(){
+        this.dropdownTarget.style.display = "none"
+    }
+}
+--------------------------------------------------------------
+.closeOutsideClick
+  ...「クリックが要素の外で起きたら閉じる」仕組み。event.stopPropagation()を入れることで、対象のターゲット以外を押すと正しく閉じるようにする。<br>
+  
+  使い方
+  ① メソッドの定義
+  	closeOutsideClick = (event) => {　　　　　　　　　// ページ全体の click イベント
+  	  if (!this.element.contains(event.target)) {　// this.element.contains(event.target) → クリックした要素がコントローラ内かどうか判定
+  	    this.menuTarget.classList.add("hidden")
+  	  }
+  	}
+  	→ クリックされた要素が、ターゲットに含まれていなければ、hidden
+  	
+  ② メソッドを使う準備
+  	①で設定したメソッドを使うには以下、2箇所の記述が必要
+  	connect(){
+  	  document.addEventListener("click", this.closeOutsideClick) 　　　// イベントの登録。これでページ全体でクリックを監視。(これを入れないと、外側クリックが監視されない)
+  	}
+  　→ クリックが発生するたびに closeOutsideClick が呼ばれる。
+  	
+  	disconnect(){
+  	  document.removeEventListener("click", this.closeOutsideClick) 　// イベントの解除。
+  	}
+
+```
+</details>
